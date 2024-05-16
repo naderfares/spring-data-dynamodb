@@ -18,7 +18,7 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>io.github.boostchicken</groupId>
+    <groupId>io.github.naderfares</groupId>
     <artifactId>spring-data-dynamodb</artifactId>
     <version>5.2.6-SNAPSHOT</version>
     <name>Spring Data DynamoDB</name>
@@ -27,7 +27,7 @@
     <description>The primary goal of the Spring® Data project is to make it easier to build Spring-powered applications
         that use data access technologies.
         This module deals with enhanced support for a data access layer built on AWS DynamoDB.</description>
-    <url>https://github.com/boostchicken/spring-data-dynamodb</url>
+    <url>https://github.com/naderfares/spring-data-dynamodb</url>
 
     <licenses>
         <license>
@@ -498,9 +498,9 @@
     </build>
 
     <scm>
-        <url>https://github.com/boostchicken/spring-data-dynamodb</url>
-        <connection>scm:git:ssh://github.com/boostchicken/spring-data-dynamodb.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/boostchicken/spring-data-dynamodb.git</developerConnection>
+        <url>https://github.com/naderfares/spring-data-dynamodb</url>
+        <connection>scm:git:ssh://github.com/naderfares/spring-data-dynamodb.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/naderfares/spring-data-dynamodb.git</developerConnection>
         <tag>HEAD</tag>
   </scm>
 
@@ -749,7 +749,7 @@
     <distributionManagement>
         <site>
             <id>website</id>
-            <url>https://github.com/boostchicken/spring-data-dynamodb</url>
+            <url>https://github.com/naderfares/spring-data-dynamodb</url>
         </site>
         <snapshotRepository>
             <id>ossrh</id>
