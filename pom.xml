@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright © 2018 spring-data-dynamodb (https://github.com/boostchicken/spring-data-dynamodb)
+    Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -41,7 +41,7 @@
         <spring-data.version>2.4.15</spring-data.version>
 
         <hibernate-validator.version>6.2.2.Final</hibernate-validator.version>
-        <aws-java-sdk.version>1.12.150</aws-java-sdk.version>
+        <aws-java-sdk.version>1.12.724</aws-java-sdk.version>
         <junit.version>4.13.2</junit.version>
         <mockito.version>2.23.0</mockito.version>
         <cdi.version>2.0</cdi.version>
