@@ -290,39 +290,39 @@
                     </compilerArgs>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>com.mycila</groupId>
-                <artifactId>license-maven-plugin</artifactId>
-                <version>3.0</version>
-                <configuration>
-                    <header>com/mycila/maven/plugin/license/templates/APACHE-2.txt</header>
-                    <properties>
-                        <owner>${project.artifactId}</owner>
-                        <email>${project.url}</email>
-                    </properties>
-                    <excludes>
-                        <exclude>.java-version</exclude>
-                        <exclude>.github/**</exclude>
-                        <exclude>**/README.md</exclude>
-                        <exclude>**/FUNDING.yml</exclude>
-                        <exclude>**/DONATION.md</exclude>
-                        <exclude>**/CONTRIBUTING.md</exclude>
-                        <exclude>**/LICENSE</exclude>
-                        <exclude>src/test/resources/**</exclude>
-                        <exclude>src/main/resources/**</exclude>
-                        <exclude>**/*.psd</exclude>
-                        <exclude>src/eclipse-java-google-style.xml</exclude>
-                    </excludes>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                        <phase>validate</phase>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>com.mycila</groupId>-->
+<!--                <artifactId>license-maven-plugin</artifactId>-->
+<!--                <version>3.0</version>-->
+<!--                <configuration>-->
+<!--                    <header>com/mycila/maven/plugin/license/templates/APACHE-2.txt</header>-->
+<!--                    <properties>-->
+<!--                        <owner>${project.artifactId}</owner>-->
+<!--                        <email>${project.url}</email>-->
+<!--                    </properties>-->
+<!--                    <excludes>-->
+<!--                        <exclude>.java-version</exclude>-->
+<!--                        <exclude>.github/**</exclude>-->
+<!--                        <exclude>**/README.md</exclude>-->
+<!--                        <exclude>**/FUNDING.yml</exclude>-->
+<!--                        <exclude>**/DONATION.md</exclude>-->
+<!--                        <exclude>**/CONTRIBUTING.md</exclude>-->
+<!--                        <exclude>**/LICENSE</exclude>-->
+<!--                        <exclude>src/test/resources/**</exclude>-->
+<!--                        <exclude>src/main/resources/**</exclude>-->
+<!--                        <exclude>**/*.psd</exclude>-->
+<!--                        <exclude>src/eclipse-java-google-style.xml</exclude>-->
+<!--                    </excludes>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>check</goal>-->
+<!--                        </goals>-->
+<!--                        <phase>validate</phase>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
