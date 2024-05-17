@@ -301,6 +301,7 @@
                         <email>${project.url}</email>
                     </properties>
                     <excludes>
+                        <exclude>.java-version</exclude>
                         <exclude>.github/**</exclude>
                         <exclude>**/README.md</exclude>
                         <exclude>**/FUNDING.yml</exclude>
