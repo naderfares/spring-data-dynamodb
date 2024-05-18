@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,14 +21,14 @@ package org.socialsignin.spring.data.dynamodb.repository.support;
  */
 public interface EnableScanPermissions {
 
-	boolean isFindAllUnpaginatedScanEnabled();
+    boolean isFindAllUnpaginatedScanEnabled();
 
-	boolean isFindAllPaginatedScanEnabled();
+    boolean isFindAllPaginatedScanEnabled();
 
-	boolean isFindAllUnpaginatedScanCountEnabled();
+    boolean isFindAllUnpaginatedScanCountEnabled();
 
-	boolean isDeleteAllUnpaginatedScanEnabled();
+    boolean isDeleteAllUnpaginatedScanEnabled();
 
-	boolean isCountUnpaginatedScanEnabled();
+    boolean isCountUnpaginatedScanEnabled();
 
 }

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,5 +21,5 @@ package org.socialsignin.spring.data.dynamodb.repository.support;
  */
 public interface HashKeyExtractor<ID, H> {
 
-	H getHashKey(ID id);
+    H getHashKey(ID id);
 }

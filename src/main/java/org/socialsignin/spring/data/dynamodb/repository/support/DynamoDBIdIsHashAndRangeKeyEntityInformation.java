@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,6 @@ package org.socialsignin.spring.data.dynamodb.repository.support;
  * @author Sebastian Just
  */
 public interface DynamoDBIdIsHashAndRangeKeyEntityInformation<T, ID>
-		extends
-			DynamoDBHashAndRangeKeyExtractingEntityMetadata<T, ID>,
-			DynamoDBEntityInformation<T, ID> {
+        extends DynamoDBHashAndRangeKeyExtractingEntityMetadata<T, ID>, DynamoDBEntityInformation<T, ID> {
 
 }

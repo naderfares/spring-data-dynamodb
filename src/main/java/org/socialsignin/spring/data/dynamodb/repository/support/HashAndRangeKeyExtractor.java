@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,6 +21,6 @@ package org.socialsignin.spring.data.dynamodb.repository.support;
  */
 public interface HashAndRangeKeyExtractor<ID, H> extends HashKeyExtractor<ID, H> {
 
-	Object getRangeKey(ID id);
+    Object getRangeKey(ID id);
 
 }

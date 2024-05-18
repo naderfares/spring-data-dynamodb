@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,12 +26,12 @@ import java.lang.reflect.Method;
  */
 public interface DynamoDBHashAndRangeKeyMethodExtractor<ID> extends EntityMetadata<ID> {
 
-	Method getHashKeyMethod();
+    Method getHashKeyMethod();
 
-	Method getRangeKeyMethod();
+    Method getRangeKeyMethod();
 
-	Field getHashKeyField();
+    Field getHashKeyField();
 
-	Field getRangeKeyField();
+    Field getRangeKeyField();
 
 }

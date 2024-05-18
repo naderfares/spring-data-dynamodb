@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,23 +26,23 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig;
 
 public class DynamoDBMapperFactory implements FactoryBean<DynamoDBMapper>, BeanFactoryAware {
 
-	private BeanFactory beanFactory;
-    
-	@Override
-	public DynamoDBMapper getObject() throws Exception {
-		AmazonDynamoDB amazonDynamoDB = beanFactory.getBean(AmazonDynamoDB.class);
-		DynamoDBMapperConfig dynamoDBMapperConfig = beanFactory.getBean(DynamoDBMapperConfig.class);
-		return new DynamoDBMapper(amazonDynamoDB, dynamoDBMapperConfig);
-	}
+    private BeanFactory beanFactory;
 
-	@Override
-	public Class<?> getObjectType() {
-		return DynamoDBMapper.class;
-	}
+    @Override
+    public DynamoDBMapper getObject() throws Exception {
+        AmazonDynamoDB amazonDynamoDB = beanFactory.getBean(AmazonDynamoDB.class);
+        DynamoDBMapperConfig dynamoDBMapperConfig = beanFactory.getBean(DynamoDBMapperConfig.class);
+        return new DynamoDBMapper(amazonDynamoDB, dynamoDBMapperConfig);
+    }
 
-	@Override
-	public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-		this.beanFactory = beanFactory;
-	}
+    @Override
+    public Class<?> getObjectType() {
+        return DynamoDBMapper.class;
+    }
+
+    @Override
+    public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+        this.beanFactory = beanFactory;
+    }
 
 }

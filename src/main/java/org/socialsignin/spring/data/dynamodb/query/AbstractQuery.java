@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,35 +16,34 @@
 package org.socialsignin.spring.data.dynamodb.query;
 
 /**
- * {@link org.socialsignin.spring.data.dynamodb.mapping.DynamoDBPersistentProperty}
- * implementation
+ * {@link org.socialsignin.spring.data.dynamodb.mapping.DynamoDBPersistentProperty} implementation
  *
  * @author Michael Lavelle
  * @author Sebastian Just
  */
 public abstract class AbstractQuery<T> implements Query<T> {
 
-	protected boolean scanEnabled = false;
-	protected boolean scanCountEnabled = false;
+    protected boolean scanEnabled = false;
+    protected boolean scanCountEnabled = false;
 
-	@Override
-	public boolean isScanCountEnabled() {
-		return scanCountEnabled;
-	}
+    @Override
+    public boolean isScanCountEnabled() {
+        return scanCountEnabled;
+    }
 
-	@Override
-	public void setScanCountEnabled(boolean scanCountEnabled) {
-		this.scanCountEnabled = scanCountEnabled;
-	}
+    @Override
+    public void setScanCountEnabled(boolean scanCountEnabled) {
+        this.scanCountEnabled = scanCountEnabled;
+    }
 
-	@Override
-	public void setScanEnabled(boolean scanEnabled) {
-		this.scanEnabled = scanEnabled;
-	}
+    @Override
+    public void setScanEnabled(boolean scanEnabled) {
+        this.scanEnabled = scanEnabled;
+    }
 
-	@Override
-	public boolean isScanEnabled() {
-		return scanEnabled;
-	}
+    @Override
+    public boolean isScanEnabled() {
+        return scanEnabled;
+    }
 
 }

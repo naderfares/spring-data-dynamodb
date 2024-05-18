@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,59 +36,59 @@ import static org.junit.Assert.assertTrue;
 @RunWith(MockitoJUnitRunner.class)
 public class DynamoDBPersistentEntityTest {
 
-	static class DynamoDBPersistentEntity {
-		@DynamoDBHashKey
-		private String id;
+    static class DynamoDBPersistentEntity {
+        @DynamoDBHashKey
+        private String id;
 
-		@Id
-		private DynamoDBHashAndRangeKey hashRangeKey;
+        @Id
+        private DynamoDBHashAndRangeKey hashRangeKey;
 
-		@SuppressWarnings("unused")
-		private String name;
-	}
+        @SuppressWarnings("unused")
+        private String name;
+    }
 
-	@Mock
-	private Comparator<DynamoDBPersistentProperty> comparator;
+    @Mock
+    private Comparator<DynamoDBPersistentProperty> comparator;
 
-	private ClassTypeInformation<DynamoDBPersistentEntity> cti = ClassTypeInformation
-			.from(DynamoDBPersistentEntity.class);
-	private DynamoDBPersistentEntityImpl<DynamoDBPersistentEntity> underTest;
+    private ClassTypeInformation<DynamoDBPersistentEntity> cti = ClassTypeInformation
+            .from(DynamoDBPersistentEntity.class);
+    private DynamoDBPersistentEntityImpl<DynamoDBPersistentEntity> underTest;
 
-	@Before
-	public void setUp() {
-		underTest = new DynamoDBPersistentEntityImpl<>(cti, comparator);
-	}
+    @Before
+    public void setUp() {
+        underTest = new DynamoDBPersistentEntityImpl<>(cti, comparator);
+    }
 
-	@Test
-	public void testSomeProperty() throws NoSuchFieldException {
-		Property prop = Property.of(cti, DynamoDBPersistentEntity.class.getDeclaredField("name"));
+    @Test
+    public void testSomeProperty() throws NoSuchFieldException {
+        Property prop = Property.of(cti, DynamoDBPersistentEntity.class.getDeclaredField("name"));
 
-		DynamoDBPersistentProperty property = new DynamoDBPersistentPropertyImpl(prop, underTest,
-				SimpleTypeHolder.DEFAULT);
-		DynamoDBPersistentProperty actual = underTest.returnPropertyIfBetterIdPropertyCandidateOrNull(property);
+        DynamoDBPersistentProperty property = new DynamoDBPersistentPropertyImpl(prop, underTest,
+                SimpleTypeHolder.DEFAULT);
+        DynamoDBPersistentProperty actual = underTest.returnPropertyIfBetterIdPropertyCandidateOrNull(property);
 
-		assertNull(actual);
-	}
+        assertNull(actual);
+    }
 
-	@Test
-	public void testIdProperty() throws NoSuchFieldException {
-		Property prop = Property.of(cti, DynamoDBPersistentEntity.class.getDeclaredField("id"));
-		DynamoDBPersistentProperty property = new DynamoDBPersistentPropertyImpl(prop, underTest,
-				SimpleTypeHolder.DEFAULT);
-		DynamoDBPersistentProperty actual = underTest.returnPropertyIfBetterIdPropertyCandidateOrNull(property);
+    @Test
+    public void testIdProperty() throws NoSuchFieldException {
+        Property prop = Property.of(cti, DynamoDBPersistentEntity.class.getDeclaredField("id"));
+        DynamoDBPersistentProperty property = new DynamoDBPersistentPropertyImpl(prop, underTest,
+                SimpleTypeHolder.DEFAULT);
+        DynamoDBPersistentProperty actual = underTest.returnPropertyIfBetterIdPropertyCandidateOrNull(property);
 
-		assertNotNull(actual);
-		assertTrue(actual.isHashKeyProperty());
-	}
+        assertNotNull(actual);
+        assertTrue(actual.isHashKeyProperty());
+    }
 
-	@Test
-	public void testCompositeIdProperty() throws NoSuchFieldException {
-		Property prop = Property.of(cti, DynamoDBPersistentEntity.class.getDeclaredField("hashRangeKey"));
-		DynamoDBPersistentProperty property = new DynamoDBPersistentPropertyImpl(prop, underTest,
-				SimpleTypeHolder.DEFAULT);
-		DynamoDBPersistentProperty actual = underTest.returnPropertyIfBetterIdPropertyCandidateOrNull(property);
+    @Test
+    public void testCompositeIdProperty() throws NoSuchFieldException {
+        Property prop = Property.of(cti, DynamoDBPersistentEntity.class.getDeclaredField("hashRangeKey"));
+        DynamoDBPersistentProperty property = new DynamoDBPersistentPropertyImpl(prop, underTest,
+                SimpleTypeHolder.DEFAULT);
+        DynamoDBPersistentProperty actual = underTest.returnPropertyIfBetterIdPropertyCandidateOrNull(property);
 
-		assertNotNull(actual);
-		assertTrue(actual.isCompositeIdProperty());
-	}
+        assertNotNull(actual);
+        assertTrue(actual.isCompositeIdProperty());
+    }
 }

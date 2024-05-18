@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,19 +20,19 @@ import org.socialsignin.spring.data.dynamodb.core.DynamoDBOperations;
 
 public class QueryRequestCountQuery extends AbstractSingleEntityQuery<Long> {
 
-	private final DynamoDBOperations dynamoDBOperations;
-	private final QueryRequest queryRequest;
+    private final DynamoDBOperations dynamoDBOperations;
+    private final QueryRequest queryRequest;
 
-	public QueryRequestCountQuery(DynamoDBOperations dynamoDBOperations, QueryRequest queryRequest) {
-		super(null, Long.class);
-		this.queryRequest = queryRequest;
-		this.dynamoDBOperations = dynamoDBOperations;
-	}
+    public QueryRequestCountQuery(DynamoDBOperations dynamoDBOperations, QueryRequest queryRequest) {
+        super(null, Long.class);
+        this.queryRequest = queryRequest;
+        this.dynamoDBOperations = dynamoDBOperations;
+    }
 
-	@Override
-	public Long getSingleResult() {
+    @Override
+    public Long getSingleResult() {
 
-		return Long.valueOf(dynamoDBOperations.count(clazz, queryRequest));
-	}
+        return Long.valueOf(dynamoDBOperations.count(clazz, queryRequest));
+    }
 
 }

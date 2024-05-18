@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,6 +17,8 @@ package org.socialsignin.spring.data.dynamodb.repository;
 
 public @interface ExpressionAttribute {
     String key() default "";
+
     String value() default "";
+
     String parameterName() default "";
 }

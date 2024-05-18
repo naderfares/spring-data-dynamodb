@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,8 @@ import org.springframework.dao.DataAccessException;
 @SuppressWarnings("serial")
 public class BatchDeleteException extends DataAccessException {
 
-	public BatchDeleteException(String msg, Throwable cause) {
-		super(msg, cause);
-	}
+    public BatchDeleteException(String msg, Throwable cause) {
+        super(msg, cause);
+    }
 
 }

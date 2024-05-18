@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,6 +22,6 @@ package org.socialsignin.spring.data.dynamodb.config;
  */
 public abstract class BeanNames {
 
-	public static final String MAPPING_CONTEXT_BEAN_NAME = "dynamoDBMappingContext";
+    public static final String MAPPING_CONTEXT_BEAN_NAME = "dynamoDBMappingContext";
 
 }

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,10 +23,10 @@ import com.amazonaws.services.dynamodbv2.datamodeling.PaginatedQueryList;
  */
 public class AfterQueryEvent<T> extends DynamoDBMappingEvent<PaginatedQueryList<T>> {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	public AfterQueryEvent(PaginatedQueryList<T> source) {
-		super(source);
-	}
+    public AfterQueryEvent(PaginatedQueryList<T> source) {
+        super(source);
+    }
 
 }

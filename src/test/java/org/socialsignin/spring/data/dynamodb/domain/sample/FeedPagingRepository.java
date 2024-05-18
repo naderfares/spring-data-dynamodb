@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,5 +24,5 @@ import org.springframework.data.domain.Pageable;
 @EnableScan
 @EnableScanCount
 public interface FeedPagingRepository extends DynamoDBPagingAndSortingRepository<Feed, String> {
-	Page<Feed> findAllByMessageOrderByRegDateDesc(String message, Pageable pageable);
+    Page<Feed> findAllByMessageOrderByRegDateDesc(String message, Pageable pageable);
 }

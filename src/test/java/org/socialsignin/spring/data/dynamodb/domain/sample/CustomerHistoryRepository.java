@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,9 +21,9 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface CustomerHistoryRepository extends CrudRepository<CustomerHistory, CustomerHistoryId> {
 
-	@Query(filterExpression = "contains(#field, :value)",
-			expressionMappingNames = {@ExpressionAttribute(key = "#field", value = "createDt")},
-			expressionMappingValues = {@ExpressionAttribute(key=":value", value = "create")})
-	CustomerHistory findByTag(String tag);
+    @Query(filterExpression = "contains(#field, :value)", expressionMappingNames = {
+            @ExpressionAttribute(key = "#field", value = "createDt") }, expressionMappingValues = {
+                    @ExpressionAttribute(key = ":value", value = "create") })
+    CustomerHistory findByTag(String tag);
 
 }

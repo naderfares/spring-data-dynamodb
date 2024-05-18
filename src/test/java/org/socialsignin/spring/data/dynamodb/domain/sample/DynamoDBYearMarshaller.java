@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,10 +22,10 @@ import java.text.SimpleDateFormat;
 
 public class DynamoDBYearMarshaller extends DateDynamoDBMarshaller {
 
-	private static final String PATTERN = "yyyy";
+    private static final String PATTERN = "yyyy";
 
-	@Override
-	public DateFormat getDateFormat() {
-		return new SimpleDateFormat(PATTERN);
-	}
+    @Override
+    public DateFormat getDateFormat() {
+        return new SimpleDateFormat(PATTERN);
+    }
 }
