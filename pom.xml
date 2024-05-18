@@ -20,7 +20,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.naderfares</groupId>
     <artifactId>spring-data-dynamodb</artifactId>
-    <version>5.2.8-SNAPSHOT</version>
+    <version>5.2.8</version>
     <name>Spring Data DynamoDB</name>
     <inceptionYear>2018</inceptionYear>
 
@@ -541,7 +541,7 @@
         <url>https://github.com/naderfares/spring-data-dynamodb/tree/develop</url>
         <connection>scm:git:ssh://github.com/naderfares/spring-data-dynamodb.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/naderfares/spring-data-dynamodb.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>v5.2.8</tag>
     </scm>
 
     <repositories>
