@@ -271,6 +271,7 @@
                         <publishingServerId>central</publishingServerId>
                         <tokenAuth>true</tokenAuth>
                         <autoPublish>true</autoPublish>
+                        <waitUntil>published</waitUntil>
                     </configuration>
                 </plugin>
             </plugins>
@@ -334,11 +335,11 @@
     <distributionManagement>
         <repository>
             <id>central</id>
-            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <url>https://central.sonatype.com</url>
         </repository>
         <snapshotRepository>
             <id>central</id>
-            <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+            <url>https://central.sonatype.com</url>
         </snapshotRepository>
     </distributionManagement>
 
