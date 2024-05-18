@@ -343,10 +343,10 @@
     </distributionManagement>
 
     <scm>
-        <connection>scm:git:git://github.com/naderfares/spring-data-dynamodb.git</connection>
-        <developerConnection>scm:git:ssh://github.com:naderfares/spring-data-dynamodb.git</developerConnection>
+        <connection>scm:git:git@github.com:naderfares/spring-data-dynamodb.git</connection>
+        <developerConnection>scm:git:git@github.com:naderfares/spring-data-dynamodb.git</developerConnection>
         <url>https://github.com/naderfares/spring-data-dynamodb</url>
-        <tag>spring-data-dynamodb-5.2.9</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <developers>
