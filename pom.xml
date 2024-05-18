@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.naderfares</groupId>
     <artifactId>spring-data-dynamodb</artifactId>
-    <version>5.2.9-SNAPSHOT</version>
+    <version>5.2.9</version>
     <name>Spring Data DynamoDB</name>
     <description>The primary goal of the Spring® Data project is to make it easier to build Spring-powered applications that use data access technologies. This module deals with enhanced support for a data access layer built on AWS DynamoDB.</description>
     <url>https://github.com/naderfares/spring-data-dynamodb</url>
@@ -346,7 +346,7 @@
         <connection>scm:git:git@github.com:naderfares/spring-data-dynamodb.git</connection>
         <developerConnection>scm:git:git@github.com:naderfares/spring-data-dynamodb.git</developerConnection>
         <url>https://github.com/naderfares/spring-data-dynamodb</url>
-        <tag>HEAD</tag>
+        <tag>spring-data-dynamodb-5.2.9</tag>
     </scm>
 
     <developers>
