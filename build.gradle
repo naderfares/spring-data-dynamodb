@@ -84,6 +84,9 @@ publishing {
 }
 
 jreleaser {
+    project {
+        copyright = 'Licensed under the Apache License, Version 2.0.'
+    }
     signing {
         active = 'ALWAYS'
         armored = true
@@ -94,7 +97,7 @@ jreleaser {
                 sonatype {
                     active = 'ALWAYS'
                     url = 'https://central.sonatype.com/api/v1/publisher'
-                    stagingRepository('target/staging-deploy')
+                    stagingRepository('build/staging-deploy')
                 }
             }
         }

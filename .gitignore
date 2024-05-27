@@ -4,6 +4,8 @@
 target
 *.iml
 .idea
+build
+.gradle
 
 pom.xml.releaseBackup
 release.properties
