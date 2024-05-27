@@ -1,0 +1,1062 @@
+[INFO]  JReleaser 1.12.0
+------------------------------------------------------------
+jreleaser 1.12.0
+------------------------------------------------------------
+Build time:   2024-05-01 12:32:47Z
+Revision:     8f5795140149238b358a64e43fa5b8f83e55f64d
+JVM:          1.8.0_281 (Oracle Corporation 25.281-b09)
+------------------------------------------------------------
+[INFO]    - basedir set to /Users/nader/workspace/personal/spring-data-dynamodb
+[INFO]    - outputdir set to /Users/nader/workspace/personal/spring-data-dynamodb/build/jreleaser
+[DEBUG]   - basedir set to /Users/nader/workspace/personal/spring-data-dynamodb
+[DEBUG]   - baseOutputDirectory set to /Users/nader/workspace/personal/spring-data-dynamodb/build
+[DEBUG]   - outputDirectory set to /Users/nader/workspace/personal/spring-data-dynamodb/build/jreleaser
+[DEBUG]   - checksumDirectory set to /Users/nader/workspace/personal/spring-data-dynamodb/build/jreleaser/checksums
+[DEBUG]   - catalogsDirectory set to /Users/nader/workspace/personal/spring-data-dynamodb/build/jreleaser/catalogs
+[DEBUG]   - signaturesDirectory set to /Users/nader/workspace/personal/spring-data-dynamodb/build/jreleaser/signatures
+[DEBUG]   - prepareDirectory set to /Users/nader/workspace/personal/spring-data-dynamodb/build/jreleaser/prepare
+[DEBUG]   - packageDirectory set to /Users/nader/workspace/personal/spring-data-dynamodb/build/jreleaser/package
+[DEBUG]   - downloadDirectory set to /Users/nader/workspace/personal/spring-data-dynamodb/build/jreleaser/download
+[DEBUG]   - assembleDirectory set to /Users/nader/workspace/personal/spring-data-dynamodb/build/jreleaser/assemble
+[DEBUG]   - artifactsDirectory set to /Users/nader/workspace/personal/spring-data-dynamodb/build/jreleaser/artifacts
+[DEBUG]   - deployDirectory set to /Users/nader/workspace/personal/spring-data-dynamodb/build/jreleaser/deploy
+[INFO]  git-root-search set to false
+[INFO]  Loading variables from /Users/nader/.jreleaser/config.toml
+[DEBUG] The following variables are defined in config.toml:
+[DEBUG]   JRELEASER_GITHUB_TOKEN
+[DEBUG]   JRELEASER_GPG_PASSPHRASE
+[DEBUG]   JRELEASER_GPG_PUBLIC_KEY
+[DEBUG]   JRELEASER_GPG_SECRET_KEY
+[DEBUG]   JRELEASER_MAVENCENTRAL_PASSWORD
+[DEBUG]   JRELEASER_MAVENCENTRAL_USERNAME
+[INFO]  Validating configuration
+[INFO]  Strict mode set to false
+[DEBUG] adjusting distributions with assemblies
+[DEBUG]   [validation] --== ASSEMBLE ==--
+[DEBUG]   [validation] hooks
+[DEBUG]   [validation] hooks.command
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] hooks.script
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] project
+[DEBUG]   [validation] download
+[DEBUG]   [validation] catalog.swid
+[DEBUG]   [validation] catalog.swid.swid-tag
+[DEBUG]   [validation] assemble
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] signing
+[DEBUG]   [validation] release
+[DEBUG]   [validation] release.github
+[DEBUG]   [validation] checksum
+[DEBUG]   [validation] deploy
+[DEBUG]   [validation] deploy.maven
+[DEBUG]   [validation] deploy.maven.mavenCentral
+[DEBUG]   [validation] upload
+[DEBUG]   [validation] catalog
+[DEBUG]   [validation] catalog.sbom
+[DEBUG]   [validation] catalog.sbom.cyclonedx
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] catalog.sbom.syft
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] catalog.slsa
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce
+[DEBUG]   [validation] - disabled
+[DEBUG]   [postvalidation] project
+[DEBUG]   [postvalidation] assemble
+[DEBUG]   [postvalidation] assemble.jpackage
+[DEBUG]   [resolution] assemble
+[DEBUG]   [validation] --== FULL ==--
+[DEBUG]   [validation] hooks
+[DEBUG]   [validation] hooks.command
+[DEBUG]   [validation] hooks.script
+[DEBUG]   [validation] project
+[DEBUG]   [validation] download
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] catalog.swid
+[DEBUG]   [validation] catalog.swid.swid-tag
+[DEBUG]   [validation] assemble
+[DEBUG]   [validation] signing
+[DEBUG]   [validation] release
+[DEBUG]   [validation] release.github
+[DEBUG]   [validation] checksum
+[DEBUG]   [validation] deploy
+[DEBUG]   [validation] deploy.maven
+[DEBUG]   [validation] deploy.maven.mavenCentral
+[DEBUG]   [validation] deploy.maven.mavenCentral.sonatype
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] upload
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] packagers
+[DEBUG]   [validation] files
+[DEBUG]   [validation] catalog
+[DEBUG]   [validation] catalog.sbom
+[DEBUG]   [validation] catalog.sbom.cyclonedx
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] catalog.sbom.syft
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] catalog.slsa
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce
+[DEBUG]   [validation] announce.article
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.bluesky
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.discussions
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.discord
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.discourse
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.gitter
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.googleChat
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.linkedin
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.http
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.smtp
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.mastodon
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.mattermost
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.openCollective
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.sdkman
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.slack
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.teams
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.telegram
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.twitter
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.webhooks
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.zulip
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] - disabled
+[DEBUG]   [postvalidation] project
+[DEBUG]   [postvalidation] assemble
+[DEBUG]   [postvalidation] assemble.jpackage
+[DEBUG]   [postvalidation] distributions
+environment:
+ 
+hooks:
+    enabled: false
+    active: NEVER
+    command:
+        enabled: false
+        active: NEVER
+    script:
+        enabled: false
+        active: NEVER
+ 
+project:
+    name: spring-data-dynamodb
+    version: 5.2.11-SNAPSHOT
+    versionPattern: SEMVER
+    snapshot:
+        enabled: true
+        pattern: .*-SNAPSHOT
+        label: early-access
+        fullChangelog: false
+    description: Spring Data DynamoDB
+    longDescription: Spring Data DynamoDB
+    stereotype: NONE
+    links:
+        license: https://github.com/naderfares/spring-data-dynamodb/blob/gradle/LICENSE
+        bugTracker: https://{{repoHost}}/{{repoOwner}}/{{repoName}}/issues
+        vcsBrowser: https://{{repoHost}}/{{repoOwner}}/{{repoName}}
+    extraProperties:
+        versionMajor: 5
+        versionMinor: 2
+        versionPatch: 11
+        versionNumber: 5.2.11
+        versionTag: SNAPSHOT
+        versionWithUnderscores: 5_2_11_SNAPSHOT
+        versionWithDashes: 5-2-11-SNAPSHOT
+        versionNumberWithUnderscores: 5_2_11
+        versionNumberWithDashes: 5-2-11
+        effectiveVersionWithUnderscores: early_access
+        effectiveVersionWithDashes: early-access
+    java:
+        enabled: true
+        version: 8
+        groupId: io.github.naderfares
+        artifactId: spring-data-dynamodb
+        multiProject: false
+ 
+platform:
+ 
+release:
+    github:
+        enabled: true
+        host: github.com
+        owner: naderfares
+        name: spring-data-dynamodb
+        username: naderfares
+        token: ************
+        artifacts: true
+        files: true
+        checksums: true
+        catalogs: true
+        signatures: true
+        repoUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}
+        repoCloneUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}.git
+        commitUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}/commits
+        srcUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}/blob/{{repoBranch}}
+        downloadUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}/releases/download/{{tagName}}/{{artifactFile}}
+        releaseNotesUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}/releases/tag/{{tagName}}
+        latestReleaseUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}/releases/latest
+        issueTrackerUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}/issues
+        tagName: v{{projectVersion}}
+        releaseName: Release {{tagName}}
+        branch: gradle
+        branchPush: gradle
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        sign: false
+        skipTag: false
+        skipRelease: false
+        overwrite: true
+        update:
+            enabled: false
+        apiEndpoint: https://api.github.com
+        connectTimeout: 20
+        readTimeout: 60
+        changelog:
+            enabled: true
+            append:
+                enabled: false
+            links: false
+            skipMergeCommits: false
+            sort: DESC
+            formatted: NEVER
+            hide:
+            contributors:
+        milestone:
+            name: {{tagName}}
+            close: true
+        issues:
+            enabled: false
+            comment: ð This issue has been resolved in `{{tagName}}` ([Release Notes]({{releaseNotesUrl}}))
+            label:
+                name: released
+                color: #FF0000
+                description: Issue has been released
+        prerelease:
+            enabled: true
+        draft: false
+        releaseNotes:
+            enabled: false
+ 
+checksum:
+    name: checksums.txt
+    individual: false
+    algorithms:
+        SHA_256
+    artifacts: true
+    files: true
+ 
+signing:
+    enabled: true
+    active: ALWAYS
+    armored: true
+    verify: true
+    mode: MEMORY
+    artifacts: true
+    files: true
+    checksums: true
+    catalogs: true
+    passphrase: ************
+    publicKey: ************
+    secretKey: ************
+ 
+announce:
+    enabled: false
+    active: NEVER
+    article:
+        enabled: false
+        active: NEVER
+        commitAuthor:
+        repository:
+            enabled: false
+            name: article
+            token: **unset**
+    bluesky:
+        enabled: false
+        active: NEVER
+        handle: **unset**
+        password: **unset**
+    discord:
+        enabled: false
+        active: NEVER
+        webhook: **unset**
+    discourse:
+        enabled: false
+        active: NEVER
+        apiKey: **unset**
+        username: **unset**
+    discussions:
+        enabled: false
+        active: NEVER
+    gitter:
+        enabled: false
+        active: NEVER
+        webhook: **unset**
+    googlechat:
+        enabled: false
+        active: NEVER
+        webhook: **unset**
+    linkedin:
+        enabled: false
+        active: NEVER
+        owner: **unset**
+        accessToken: **unset**
+    smtp:
+        enabled: false
+        active: NEVER
+        auth: false
+        password: **unset**
+    mastodon:
+        enabled: false
+        active: NEVER
+        accessToken: **unset**
+    mattermost:
+        enabled: false
+        active: NEVER
+        webhook: **unset**
+        structuredMessage: true
+    opencollective:
+        enabled: false
+        active: NEVER
+        token: **unset**
+    sdkman:
+        enabled: false
+        consumerKey: **unset**
+        consumerToken: **unset**
+    slack:
+        enabled: false
+        active: NEVER
+        webhook: **unset**
+        token: **unset**
+    teams:
+        enabled: false
+        active: NEVER
+        webhook: **unset**
+    telegram:
+        enabled: false
+        active: NEVER
+        token: **unset**
+        chatId: **unset**
+    twitter:
+        enabled: false
+        active: NEVER
+        consumerKey: **unset**
+        consumerSecret: **unset**
+        accessToken: **unset**
+        accessTokenSecret: **unset**
+    zulip:
+        enabled: false
+        active: NEVER
+        apiKey: **unset**
+ 
+packagers:
+    appimage:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        requiresTerminal: false
+        repository:
+            enabled: false
+            owner: naderfares
+            name: appimage
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: naderfares
+            token: ************
+    asdf:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        repository:
+            enabled: false
+            owner: naderfares
+            name: asdf
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: naderfares
+            token: ************
+    brew:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        multiPlatform: false
+        repository:
+            enabled: false
+            owner: naderfares
+            name: homebrew-tap
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: naderfares
+            token: ************
+        cask:
+            enabled: false
+    chocolatey:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        apiKey: **unset**
+        remoteBuild: false
+        repository:
+            enabled: false
+            owner: naderfares
+            name: chocolatey-bucket
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: naderfares
+            token: ************
+    docker:
+        enabled: false
+        active: NEVER
+        useLocalArtifact: true
+        buildx:
+            enabled: false
+            createBuilder: true
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        repository:
+            enabled: false
+            owner: naderfares
+            name: docker
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: naderfares
+            token: ************
+            versionedSubfolders: false
+        continueOnError: false
+    flatpak:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        repository:
+            enabled: false
+            owner: naderfares
+            name: flatpak
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: naderfares
+            token: ************
+    gofish:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        repository:
+            enabled: false
+            owner: naderfares
+            name: naderfares-fish-food
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: naderfares
+            token: ************
+    jbang:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        repository:
+            enabled: false
+            owner: naderfares
+            name: jbang-catalog
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: naderfares
+            token: ************
+    jib:
+        enabled: false
+        active: NEVER
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        repository:
+            enabled: false
+            owner: naderfares
+            name: jib
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: naderfares
+            token: ************
+            versionedSubfolders: false
+        continueOnError: false
+    macports:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        repository:
+            enabled: false
+            owner: naderfares
+            name: macports
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: naderfares
+            token: ************
+    scoop:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        repository:
+            enabled: false
+            owner: naderfares
+            name: scoop-naderfares
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: naderfares
+            token: ************
+    sdkman:
+        enabled: false
+        continueOnError: false
+        connectTimeout: 20
+        readTimeout: 60
+        consumerKey: **unset**
+        consumerToken: **unset**
+    snap:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        base: core20
+        grade: stable
+        confinement: strict
+        remoteBuild: false
+        repository:
+            enabled: false
+            owner: naderfares
+            name: snap
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: naderfares
+            token: ************
+    spec:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        repository:
+            enabled: false
+            owner: naderfares
+            name: naderfares-spec
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: naderfares
+            token: ************
+    winget:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        package:
+        publisher:
+        installer:
+            type: WIX
+            scope: MACHINE
+            upgradeBehavior: INSTALL
+            dependencies:
+        repository:
+            enabled: false
+            owner: naderfares
+            name: winget
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: naderfares
+            token: ************
+ 
+download:
+    enabled: false
+    active: NEVER
+ 
+assemble:
+    enabled: false
+    active: NEVER
+ 
+deploy:
+    enabled: false
+    active: NEVER
+    maven:
+        enabled: false
+        active: NEVER
+        pomchecker:
+            version: 1.11.0
+            failOnWarning: true
+            failOnError: true
+        mavenCentral:
+            sonatype:
+                enabled: false
+                active: ALWAYS
+                connectTimeout: 0
+                readTimeout: 0
+                url: https://central.sonatype.com/api/v1/publisher
+                username: **unset**
+                password: **unset**
+                sign: false
+                checksums: false
+                sourceJar: false
+                javadocJar: false
+                verifyPom: false
+                applyMavenCentralRules: true
+                stagingRepositories:
+                    target/staging-deploy
+                retryDelay: 0
+                maxRetries: 0
+ 
+upload:
+    enabled: false
+    active: NEVER
+ 
+catalog:
+    enabled: false
+    active: NEVER
+    sbom:
+        enabled: false
+        active: NEVER
+        cyclonedx:
+            enabled: false
+            active: NEVER
+            distributions: false
+            files: false
+            pack:
+                enabled: false
+        syft:
+            enabled: false
+            active: NEVER
+            distributions: false
+            files: false
+            pack:
+                enabled: false
+    slsa:
+        enabled: false
+        active: NEVER
+        artifacts: true
+        files: true
+        deployables: true
+    swid:
+        enabled: false
+        active: NEVER
+        name: swid-tag
+        path: SWIDTAG
+        tagId: 4752496d-457a-35fb-9e06-506783dea366
+        tagVersion: 1
+        lang: en-US
+        corpus: false
+        patch: false
+        entities:
+            entity 0:
+                name: spring-data-dynamodb
+                regid: http://invalid.unavailable
+                roles:
+                    softwareCreator
+                    tagCreator
+ 
+[INFO]  Project version set to 5.2.11-SNAPSHOT
+[INFO]  Release is snapshot
+[INFO]  Timestamp is 2024-05-27T16:05:20.956-03:00
+[INFO]  HEAD is at f406c1a
+[INFO]  Platform is osx-x86_64
+[DEBUG] loading extension default-jreleaser-mustache:org.jreleaser.extensions.internal.mustache.DefaultMustacheExtension
+[DEBUG] adding org.jreleaser.extensions.internal.mustache.DefaultMustacheExtensionPoint from default-jreleaser-mustache extension
+[INFO]  dry-run set to false
+[INFO]  Generating changelog
+[DEBUG] resolving commits
+[DEBUG] looking for tag that matches 'early-access'
+[DEBUG] found tag early-access
+[DEBUG] sorting commits DESC
+[INFO]  Storing changelog: build/jreleaser/release/CHANGELOG.md
+[DEBUG] ## Changelog
+
+
+[INFO]  Calculating checksums for distributions and files
+[INFO]    [checksum] No files configured for checksum. Skipping
+[INFO]  Cataloging artifacts
+[INFO]    Cataloging is not enabled. Skipping
+[INFO]  Signing distributions and files
+[INFO]    [sign] No files configured for signing. Skipping
+[INFO]  Deploying Maven artifacts
+[INFO]    [maven] Deploying is not enabled. Skipping
+[INFO]  Uploading distributions and files
+[INFO]    [upload] Uploading is not enabled. Skipping
+[INFO]  Releasing to https://github.com/naderfares/spring-data-dynamodb@gradle
+[DEBUG] fetching all branches on naderfares/spring-data-dynamodb
+[DEBUG] looking up release with tag early-access at repository naderfares/spring-data-dynamodb
+[DEBUG] fetching release on naderfares/spring-data-dynamodb with tag early-access
+[DEBUG] release early-access does not exist
+[DEBUG] creating release early-access
+[DEBUG] deleting tag early-access from naderfares/spring-data-dynamodb
+[DEBUG] tagging local repository with early-access
+[DEBUG] creating release on naderfares/spring-data-dynamodb with tag early-access
+org.jreleaser.sdk.commons.RestAPIException: 422: Unprocessable Entity
+{"message":"Validation Failed","errors":[{"resource":"Release","code":"custom","field":"tag_name","message":"tag_name is not a valid tag"},{"resource":"Release","code":"custom","message":"Published releases must have a valid tag"},{"resource":"Release","code":"invalid","field":"target_commitish"}],"documentation_url":"https://docs.github.com/rest/releases/releases#create-a-release"}
+	at org.jreleaser.sdk.commons.ClientUtils.lambda$builder$1(ClientUtils.java:118)
+	at feign.InvocationContext.decodeError(InvocationContext.java:126)
+	at feign.InvocationContext.proceed(InvocationContext.java:72)
+	at feign.ResponseHandler.handleResponse(ResponseHandler.java:63)
+	at feign.SynchronousMethodHandler.executeAndDecode(SynchronousMethodHandler.java:114)
+	at feign.SynchronousMethodHandler.invoke(SynchronousMethodHandler.java:70)
+	at feign.ReflectiveFeign$FeignInvocationHandler.invoke(ReflectiveFeign.java:99)
+	at com.sun.proxy.$Proxy137.createRelease(Unknown Source)
+	at org.jreleaser.sdk.github.Github.createRelease(Github.java:334)
+	at org.jreleaser.sdk.github.GithubReleaser.createRelease(GithubReleaser.java:361)
+	at org.jreleaser.sdk.github.GithubReleaser.createRelease(GithubReleaser.java:232)
+	at org.jreleaser.sdk.git.release.AbstractReleaser.release(AbstractReleaser.java:59)
+	at org.jreleaser.engine.release.Releasers.release(Releasers.java:56)
+	at org.jreleaser.workflow.ReleaseWorkflowItem.doInvoke(ReleaseWorkflowItem.java:39)
+	at org.jreleaser.workflow.AbstractWorkflowItem.lambda$invoke$0(AbstractWorkflowItem.java:43)
+	at org.jreleaser.engine.hooks.HookExecutor.execute(HookExecutor.java:70)
+	at org.jreleaser.workflow.AbstractWorkflowItem.invoke(AbstractWorkflowItem.java:43)
+	at org.jreleaser.workflow.WorkflowImpl.doExecute(WorkflowImpl.java:129)
+	at org.jreleaser.workflow.WorkflowImpl.execute(WorkflowImpl.java:54)
+	at org.jreleaser.gradle.plugin.tasks.JReleaserFullReleaseTask.performAction(JReleaserFullReleaseTask.groovy:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:125)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.doExecute(StandardTaskAction.java:58)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:244)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:68)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:229)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:212)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:195)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:162)
+	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:105)
+	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:44)
+	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:59)
+	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:56)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:56)
+	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
+	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:41)
+	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:74)
+	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:50)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:28)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:67)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:37)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:61)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:26)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:67)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:45)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:40)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:29)
+	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
+	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:75)
+	at org.gradle.internal.Either$Right.fold(Either.java:175)
+	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:73)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:48)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:46)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:35)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:76)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:54)
+	at java.util.Optional.orElseGet(Optional.java:267)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:54)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:36)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:49)
+	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:27)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:71)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:39)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:65)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:36)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:106)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:55)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:64)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:43)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:125)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:56)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:36)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:289)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+	at java.util.Optional.orElseGet(Optional.java:267)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:48)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:35)
+	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:61)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:127)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:80)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:463)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:380)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[INFO]  Writing output properties to build/jreleaser/output.properties
+[ERROR] JReleaser failed after 1.597 s
+org.jreleaser.model.JReleaserException: Unexpected error when creating release
+	at org.jreleaser.workflow.ReleaseWorkflowItem.doInvoke(ReleaseWorkflowItem.java:41)
+	at org.jreleaser.workflow.AbstractWorkflowItem.lambda$invoke$0(AbstractWorkflowItem.java:43)
+	at org.jreleaser.engine.hooks.HookExecutor.execute(HookExecutor.java:70)
+	at org.jreleaser.workflow.AbstractWorkflowItem.invoke(AbstractWorkflowItem.java:43)
+	at org.jreleaser.workflow.WorkflowImpl.doExecute(WorkflowImpl.java:129)
+	at org.jreleaser.workflow.WorkflowImpl.execute(WorkflowImpl.java:54)
+	at org.jreleaser.gradle.plugin.tasks.JReleaserFullReleaseTask.performAction(JReleaserFullReleaseTask.groovy:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:125)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.doExecute(StandardTaskAction.java:58)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:244)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:68)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:229)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:212)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:195)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:162)
+	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:105)
+	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:44)
+	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:59)
+	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:56)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:56)
+	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
+	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:41)
+	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:74)
+	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:50)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:28)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:67)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:37)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:61)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:26)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:67)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:45)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:40)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:29)
+	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
+	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:75)
+	at org.gradle.internal.Either$Right.fold(Either.java:175)
+	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:73)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:48)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:46)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:35)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:76)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:54)
+	at java.util.Optional.orElseGet(Optional.java:267)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:54)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:36)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:49)
+	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:27)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:71)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:39)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:65)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:36)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:106)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:55)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:64)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:43)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:125)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:56)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:36)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:289)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+	at java.util.Optional.orElseGet(Optional.java:267)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:48)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:35)
+	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:61)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:127)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:80)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:463)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:380)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.jreleaser.model.spi.release.ReleaseException: org.jreleaser.sdk.commons.RestAPIException: 422: Unprocessable Entity
+{"message":"Validation Failed","errors":[{"resource":"Release","code":"custom","field":"tag_name","message":"tag_name is not a valid tag"},{"resource":"Release","code":"custom","message":"Published releases must have a valid tag"},{"resource":"Release","code":"invalid","field":"target_commitish"}],"documentation_url":"https://docs.github.com/rest/releases/releases#create-a-release"}
+	at org.jreleaser.sdk.github.GithubReleaser.createRelease(GithubReleaser.java:236)
+	at org.jreleaser.sdk.git.release.AbstractReleaser.release(AbstractReleaser.java:59)
+	at org.jreleaser.engine.release.Releasers.release(Releasers.java:56)
+	at org.jreleaser.workflow.ReleaseWorkflowItem.doInvoke(ReleaseWorkflowItem.java:39)
+	... 135 more
+Caused by: org.jreleaser.sdk.commons.RestAPIException: 422: Unprocessable Entity
+{"message":"Validation Failed","errors":[{"resource":"Release","code":"custom","field":"tag_name","message":"tag_name is not a valid tag"},{"resource":"Release","code":"custom","message":"Published releases must have a valid tag"},{"resource":"Release","code":"invalid","field":"target_commitish"}],"documentation_url":"https://docs.github.com/rest/releases/releases#create-a-release"}
+	at org.jreleaser.sdk.commons.ClientUtils.lambda$builder$1(ClientUtils.java:118)
+	at feign.InvocationContext.decodeError(InvocationContext.java:126)
+	at feign.InvocationContext.proceed(InvocationContext.java:72)
+	at feign.ResponseHandler.handleResponse(ResponseHandler.java:63)
+	at feign.SynchronousMethodHandler.executeAndDecode(SynchronousMethodHandler.java:114)
+	at feign.SynchronousMethodHandler.invoke(SynchronousMethodHandler.java:70)
+	at feign.ReflectiveFeign$FeignInvocationHandler.invoke(ReflectiveFeign.java:99)
+	at com.sun.proxy.$Proxy137.createRelease(Unknown Source)
+	at org.jreleaser.sdk.github.Github.createRelease(Github.java:334)
+	at org.jreleaser.sdk.github.GithubReleaser.createRelease(GithubReleaser.java:361)
+	at org.jreleaser.sdk.github.GithubReleaser.createRelease(GithubReleaser.java:232)
+	... 138 more
