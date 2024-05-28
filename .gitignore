@@ -4,9 +4,12 @@
 target
 *.iml
 .idea
+build/
+.gradle/
 
 pom.xml.releaseBackup
 release.properties
+.java-version
 
 # Package Files #
 *.jar

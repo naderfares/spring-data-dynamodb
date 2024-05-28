@@ -1,5 +1,5 @@
-/**
- * Copyright © 2018 spring-data-dynamodb (https://github.com/boostchicken/spring-data-dynamodb)
+/*
+ * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,43 +38,43 @@ import static org.junit.Assert.assertThat;
  */
 public class AuditingIntegrationTests {
 
-	@Test
-	public void enablesAuditingAndSetsPropertiesAccordingly() throws Exception {
+    @Test
+    public void enablesAuditingAndSetsPropertiesAccordingly() throws Exception {
 
-		AbstractApplicationContext context = new ClassPathXmlApplicationContext("auditing.xml", getClass());
+        AbstractApplicationContext context = new ClassPathXmlApplicationContext("auditing.xml", getClass());
 
-		DynamoDBMappingContext mappingContext = context.getBean(DynamoDBMappingContext.class);
-		mappingContext.getPersistentEntity(Entity.class);
+        DynamoDBMappingContext mappingContext = context.getBean(DynamoDBMappingContext.class);
+        mappingContext.getPersistentEntity(Entity.class);
 
-		Entity entity = new Entity();
-		BeforeSaveEvent<Entity> event = new BeforeSaveEvent<Entity>(entity);
-		context.publishEvent(event);
+        Entity entity = new Entity();
+        BeforeSaveEvent<Entity> event = new BeforeSaveEvent<Entity>(entity);
+        context.publishEvent(event);
 
-		assertThat(entity.created, is(notNullValue()));
-		assertThat(entity.modified, is(entity.created));
+        assertThat(entity.created, is(notNullValue()));
+        assertThat(entity.modified, is(entity.created));
 
-		Thread.sleep(10);
-		entity.id = 1L;
-		event = new BeforeSaveEvent<Entity>(entity);
-		context.publishEvent(event);
+        Thread.sleep(10);
+        entity.id = 1L;
+        event = new BeforeSaveEvent<Entity>(entity);
+        context.publishEvent(event);
 
-		assertThat(entity.created, is(notNullValue()));
-		assertThat(entity.modified, is(not(entity.created)));
-		context.close();
-	}
+        assertThat(entity.created, is(notNullValue()));
+        assertThat(entity.modified, is(not(entity.created)));
+        context.close();
+    }
 
-	@DynamoDBTable(tableName = "Entity")
-	class Entity {
+    @DynamoDBTable(tableName = "Entity")
+    class Entity {
 
-		@Id
-		Long id;
-		@CreatedDate
-		DateTime created;
-		DateTime modified;
+        @Id
+        Long id;
+        @CreatedDate
+        DateTime created;
+        DateTime modified;
 
-		@LastModifiedDate
-		public DateTime getModified() {
-			return modified;
-		}
-	}
+        @LastModifiedDate
+        public DateTime getModified() {
+            return modified;
+        }
+    }
 }

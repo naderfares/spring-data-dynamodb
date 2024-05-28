@@ -1,5 +1,5 @@
-/**
- * Copyright © 2018 spring-data-dynamodb (https://github.com/boostchicken/spring-data-dynamodb)
+/*
+ * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,63 +39,63 @@ import static org.mockito.Mockito.spy;
 @RunWith(MockitoJUnitRunner.class)
 public class DynamoDBRepositoryFactoryBeanTest {
 
-	@Mock
-	private ApplicationContext applicationContext;
-	@Mock
-	private DynamoDBOperations dynamoDBOperations;
-	@Mock
-	private DynamoDBMapperConfig dynamoDBMapperConfig;
-	@Mock
-	private AmazonDynamoDB amazonDynamoDB;
-	@Mock
-	private Entity2DynamoDBTableSynchronizer<User, String> tableSynchronizer;
-	@Mock
-	private DynamoDBMappingContextProcessor<User, String> dynamoDBMappingContextProcessor;
+    @Mock
+    private ApplicationContext applicationContext;
+    @Mock
+    private DynamoDBOperations dynamoDBOperations;
+    @Mock
+    private DynamoDBMapperConfig dynamoDBMapperConfig;
+    @Mock
+    private AmazonDynamoDB amazonDynamoDB;
+    @Mock
+    private Entity2DynamoDBTableSynchronizer<User, String> tableSynchronizer;
+    @Mock
+    private DynamoDBMappingContextProcessor<User, String> dynamoDBMappingContextProcessor;
 
-	private DynamoDBMappingContext dynamoDBMappingContext = new DynamoDBMappingContext();
+    private DynamoDBMappingContext dynamoDBMappingContext = new DynamoDBMappingContext();
 
-	private DynamoDBRepositoryFactoryBean<UserRepository, User, String> underTest;
+    private DynamoDBRepositoryFactoryBean<UserRepository, User, String> underTest;
 
-	public interface UserRepository extends Repository<User, String> {
+    public interface UserRepository extends Repository<User, String> {
 
-	}
+    }
 
-	@Before
-	public void setUp() {
-		underTest = spy(new DynamoDBRepositoryFactoryBean<>(UserRepository.class));
-		underTest.setDynamoDBMappingContext(dynamoDBMappingContext);
-		underTest.setEntity2DynamoDBTableSynchronizer(tableSynchronizer);
-		underTest.setDynamoDBMappingContextProcessor(dynamoDBMappingContextProcessor);
-	}
+    @Before
+    public void setUp() {
+        underTest = spy(new DynamoDBRepositoryFactoryBean<>(UserRepository.class));
+        underTest.setDynamoDBMappingContext(dynamoDBMappingContext);
+        underTest.setEntity2DynamoDBTableSynchronizer(tableSynchronizer);
+        underTest.setDynamoDBMappingContextProcessor(dynamoDBMappingContextProcessor);
+    }
 
-	@Test
-	public void testDynamoDBOperations() {
-		try {
-			underTest.getPersistentEntity();
-			fail();
-		} catch (NullPointerException /* IllegalStateException */ ise) {
-			assertTrue(true);
-		}
+    @Test
+    public void testDynamoDBOperations() {
+        try {
+            underTest.getPersistentEntity();
+            fail();
+        } catch (NullPointerException /* IllegalStateException */ ise) {
+            assertTrue(true);
+        }
 
-		underTest.setDynamoDBOperations(dynamoDBOperations);
-		underTest.afterPropertiesSet();
+        underTest.setDynamoDBOperations(dynamoDBOperations);
+        underTest.afterPropertiesSet();
 
-		assertNotNull(underTest.getPersistentEntity());
-	}
+        assertNotNull(underTest.getPersistentEntity());
+    }
 
-	@Test
-	public void testAmazonDynamoDB() {
-		try {
-			underTest.getPersistentEntity();
-			fail();
-		} catch (NullPointerException /* IllegalStateException */ ise) {
-			assertTrue(true);
-		}
+    @Test
+    public void testAmazonDynamoDB() {
+        try {
+            underTest.getPersistentEntity();
+            fail();
+        } catch (NullPointerException /* IllegalStateException */ ise) {
+            assertTrue(true);
+        }
 
-		underTest.setDynamoDBOperations(dynamoDBOperations);
-		underTest.afterPropertiesSet();
+        underTest.setDynamoDBOperations(dynamoDBOperations);
+        underTest.afterPropertiesSet();
 
-		assertNotNull(underTest.getPersistentEntity());
-	}
+        assertNotNull(underTest.getPersistentEntity());
+    }
 
 }
