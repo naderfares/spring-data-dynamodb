@@ -1,5 +1,5 @@
-/**
- * Copyright © 2018 spring-data-dynamodb (https://github.com/boostchicken/spring-data-dynamodb)
+/*
+ * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,33 +30,33 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CountByHashKeyQueryTest {
-	private static final Class<User> DOMAIN_CLASS = User.class;
-	@Mock
-	private DynamoDBOperations dynamoDBOperations;
-	@Mock
-	private User sampleEntity;
-	private Object hashKey;
-	private CountByHashKeyQuery<User> underTest;
+    private static final Class<User> DOMAIN_CLASS = User.class;
+    @Mock
+    private DynamoDBOperations dynamoDBOperations;
+    @Mock
+    private User sampleEntity;
+    private Object hashKey;
+    private CountByHashKeyQuery<User> underTest;
 
-	@Before
-	public void setUp() {
-		hashKey = ThreadLocalRandom.current().nextLong();
-		underTest = new CountByHashKeyQuery<>(dynamoDBOperations, DOMAIN_CLASS, hashKey);
-	}
+    @Before
+    public void setUp() {
+        hashKey = ThreadLocalRandom.current().nextLong();
+        underTest = new CountByHashKeyQuery<>(dynamoDBOperations, DOMAIN_CLASS, hashKey);
+    }
 
-	@Test
-	public void testGetSingleResultExists() {
-		when(dynamoDBOperations.load(DOMAIN_CLASS, hashKey)).thenReturn(sampleEntity);
-		Long actual = underTest.getSingleResult();
+    @Test
+    public void testGetSingleResultExists() {
+        when(dynamoDBOperations.load(DOMAIN_CLASS, hashKey)).thenReturn(sampleEntity);
+        Long actual = underTest.getSingleResult();
 
-		assertEquals(Long.valueOf(1), actual);
-	}
+        assertEquals(Long.valueOf(1), actual);
+    }
 
-	@Test
-	public void testGetSingleResultDoesntExist() {
-		when(dynamoDBOperations.load(DOMAIN_CLASS, hashKey)).thenReturn(null);
-		Long actual = underTest.getSingleResult();
+    @Test
+    public void testGetSingleResultDoesntExist() {
+        when(dynamoDBOperations.load(DOMAIN_CLASS, hashKey)).thenReturn(null);
+        Long actual = underTest.getSingleResult();
 
-		assertEquals(Long.valueOf(0), actual);
-	}
+        assertEquals(Long.valueOf(0), actual);
+    }
 }

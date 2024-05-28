@@ -1,5 +1,5 @@
-/**
- * Copyright © 2018 spring-data-dynamodb (https://github.com/boostchicken/spring-data-dynamodb)
+/*
+ * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,7 @@ import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
- * DynamoDB specific extension of
- * {@link org.springframework.data.repository.Repository}.
+ * DynamoDB specific extension of {@link org.springframework.data.repository.Repository}.
  * 
  * @author Michael Lavelle
  * @author Sebastian Just

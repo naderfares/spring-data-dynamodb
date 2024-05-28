@@ -1,5 +1,5 @@
-/**
- * Copyright © 2018 spring-data-dynamodb (https://github.com/boostchicken/spring-data-dynamodb)
+/*
+ * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,16 +25,16 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface UserPaginationRepository extends PagingAndSortingRepository<User, String> {
 
-	@EnableScan
-	@EnableScanCount
-	Page<User> findAllByName(String name, Pageable pageable);
+    @EnableScan
+    @EnableScanCount
+    Page<User> findAllByName(String name, Pageable pageable);
 
-	@EnableScan
-	List<User> findAllByName(String name);
+    @EnableScan
+    List<User> findAllByName(String name);
 
-	@EnableScan
-	List<User> findAll();
+    @EnableScan
+    List<User> findAll();
 
-	@EnableScan
-	void deleteAll();
+    @EnableScan
+    void deleteAll();
 }
