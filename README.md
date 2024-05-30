@@ -182,5 +182,5 @@ The code base has some history already in it - let's clarify it a bit:
 * It was forked and even further maintained under [github.com/boostchicken/spring-data-dynamodb)](https://github.com/boostchicken/spring-data-dynamodb) 
     * Available in Maven Central under [`io.github.boostchicken:spring-data-dynamodb`](https://repo1.maven.org/maven2/io/github/boostchicken/spring-data-dynamodb/)
 
-The Java package name/XSD namespace never changed from `org.socialsignin.spring.data.dynamodb`.
+The Java package name/XSD namespace never changed from `io.github.naderfares.spring.data.dynamodb`.
 But the XSD is now also available at [`https://boostchicken.github.io/spring-data-dynamodb/spring-dynamodb-1.0.xsd`](https://boostchicken.github.io/spring-data-dynamodb/spring-dynamodb-1.0.xsd).

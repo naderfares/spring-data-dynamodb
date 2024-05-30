@@ -34,7 +34,7 @@ dependencies {
 group = 'io.github.naderfares'
 
 description = 'Spring Data DynamoDB'
-java.sourceCompatibility = JavaVersion.VERSION_1_8
+java.sourceCompatibility = JavaVersion.VERSION_17
 
 java {
     withSourcesJar()

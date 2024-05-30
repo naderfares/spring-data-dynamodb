@@ -29,11 +29,11 @@ http://docs.socialsignin.org/schema/data/dynamodb http://docs.socialsignin.org/s
 
 
 
-    <context:component-scan base-package="org.socialsignin.spring.data.dynamodb.core">
+    <context:component-scan base-package="io.github.naderfares.spring.data.dynamodb.core">
         <context:include-filter type="regex" expression="org\.socialsignin\.spring\.data\.dynamodb\.core\.ConfigurationTI"/>
     </context:component-scan>
 
-    <dynamodb:repositories base-package="org.socialsignin.spring.data.dynamodb.domain.sample" amazon-dynamodb-ref="amazonDynamoDB">
+    <dynamodb:repositories base-package="io.github.naderfares.spring.data.dynamodb.domain.sample" amazon-dynamodb-ref="amazonDynamoDB">
         <repository:include-filter type="regex" expression="org\.socialsignin\.spring\.data\.dynamodb\.domain\.sample\.PlaylistRepository" />
     </dynamodb:repositories>
 

@@ -37,5 +37,5 @@ With dynamic parameters from methods
 ```
 2. [Support for Nested Repositories](https://github.com/boostchicken/spring-data-dynamodb/pull/24)
 ```
-@EnableDynamoDBRepositories(basePackages = "org.socialsignin.spring.data.dynamodb.domain.sample", considerNestedRepositories = true)
+@EnableDynamoDBRepositories(basePackages = "io.github.naderfares.spring.data.dynamodb.domain.sample", considerNestedRepositories = true)
 ```

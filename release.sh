@@ -1,1 +1,1 @@
-./gradlew jreleaserConfig  clean  publish jreleaserFullRelease
+./gradlew jreleaserConfig clean  publish jreleaserFullRelease
