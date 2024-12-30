@@ -101,7 +101,7 @@ public abstract class AbstractDynamoDBQueryCreator<T, ID, R>
                     for (Parameter p : ((ParametersParameterAccessor) parameterAccessor).getParameters()) {
                         if (p.getName().isPresent() && p.getName().get().equals(value.parameterName())) {
                             mappedExpressionValues.put(value.parameterName(),
-                                    (String) parameterAccessor.getBindableValue(p.getIndex()));
+                                    String.valueOf(parameterAccessor.getBindableValue(p.getIndex())));
                         }
                     }
                 }
