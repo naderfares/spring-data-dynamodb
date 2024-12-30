@@ -30,6 +30,7 @@
     <name>Spring Data DynamoDB</name>
     <inceptionYear>2018</inceptionYear>
 
+
     <description>The primary goal of the Spring® Data project is to make it easier to build Spring-powered applications
         that use data access technologies.
         This module deals with enhanced support for a data access layer built on AWS DynamoDB.
@@ -175,7 +176,7 @@
                     <properties>
                         <title>${project.name}</title>
                         <url>${project.url}</url>
-                        <year>${inceptionYear}</year>
+                        <year>${project.inceptionYear}</year>
                         <owner>Nader Fares</owner>
                         <email>naderfares@gmail.com</email>
                     </properties>
@@ -189,6 +190,7 @@
                         <exclude>src/test/resources/**</exclude>
                         <exclude>src/main/resources/**</exclude>
                         <exclude>**/*.psd</exclude>
+                        <exclude>**/*.java-version</exclude>
                         <exclude>src/eclipse-java-google-style.xml</exclude>
                     </excludes>
                 </configuration>

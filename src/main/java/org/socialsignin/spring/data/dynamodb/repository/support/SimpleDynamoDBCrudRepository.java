@@ -99,8 +99,7 @@ public class SimpleDynamoDBCrudRepository<T, ID>
       }
     }).toList();
 
-    Map<Class<?>, List<KeyPair>> keyPairsMap =
-        Collections.singletonMap(domainType, keyPairs);
+    Map<Class<?>, List<KeyPair>> keyPairsMap = Collections.singletonMap(domainType, keyPairs);
     return dynamoDBOperations.batchLoad(keyPairsMap);
   }
 

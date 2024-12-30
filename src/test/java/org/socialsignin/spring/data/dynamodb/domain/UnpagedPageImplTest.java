@@ -37,7 +37,8 @@ public class UnpagedPageImplTest {
   private List<Object> content;
   @Mock
   private Iterator<Object> iterator;
-  private final long total = new Random().nextInt(Integer.MAX_VALUE - 1) + 1; // Ensure it's never null
+  private final long total = new Random().nextInt(Integer.MAX_VALUE - 1) + 1; // Ensure it's never
+  // null
 
   private UnpagedPageImpl<Object> underTest;
 
