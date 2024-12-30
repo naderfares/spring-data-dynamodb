@@ -145,13 +145,13 @@ public abstract class AbstractDynamoDBQueryCriteria<T, ID>
       String filter = filterExpression.get();
       if (!StringUtils.isEmpty(filter)) {
         queryRequest.setFilterExpression(filter);
-        if (expressionAttributeNames != null && expressionAttributeNames.length > 0) {
+        if (expressionAttributeNames != null) {
           for (ExpressionAttribute attribute : expressionAttributeNames) {
             if (!StringUtils.isEmpty(attribute.key()))
               queryRequest.addExpressionAttributeNamesEntry(attribute.key(), attribute.value());
           }
         }
-        if (expressionAttributeValues != null && expressionAttributeValues.length > 0) {
+        if (expressionAttributeValues != null) {
           for (ExpressionAttribute value : expressionAttributeValues) {
             if (!StringUtils.isEmpty(value.key())) {
               if (mappedExpressionValues.containsKey(value.parameterName())) {
@@ -414,11 +414,11 @@ public abstract class AbstractDynamoDBQueryCriteria<T, ID>
   protected boolean isApplicableForGlobalSecondaryIndex() {
     boolean global = this.getGlobalSecondaryIndexName() != null;
     if (global && getHashKeyAttributeValue() != null && !entityInformation
-        .getGlobalSecondaryIndexNamesByPropertyName().keySet().contains(getHashKeyPropertyName())) {
+        .getGlobalSecondaryIndexNamesByPropertyName().containsKey(getHashKeyPropertyName())) {
       return false;
     }
 
-    int attributeConditionCount = attributeConditions.keySet().size();
+    int attributeConditionCount = attributeConditions.size();
     boolean attributeConditionsAppropriate =
         hasIndexHashKeyEqualCondition() && (attributeConditionCount == 1
             || (attributeConditionCount == 2 && hasIndexRangeKeyCondition()));
@@ -546,14 +546,12 @@ public abstract class AbstractDynamoDBQueryCriteria<T, ID>
       return converter.convert(value);
     }
 
-    DynamoDBMarshaller<V> marshaller =
-        (DynamoDBMarshaller<V>) entityInformation.getMarshallerForProperty(propertyName);
+    DynamoDBMarshaller<V> marshaller = entityInformation.getMarshallerForProperty(propertyName);
 
     if (marshaller != null) {
       return marshaller.marshall(value);
     } else if (tableModel != null) { // purely here for testing as DynamoDBMapperTableModel cannot
-                                     // be mocked using
-      // Mockito
+      // be mocked using Mockito
 
       String attributeName = getAttributeName(propertyName);
 

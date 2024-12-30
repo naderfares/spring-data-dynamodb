@@ -17,6 +17,8 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperTableModel;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.amazonaws.services.dynamodbv2.model.*;
+import org.apache.commons.lang3.BooleanUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.socialsignin.spring.data.dynamodb.core.DynamoDBOperations;
 import org.socialsignin.spring.data.dynamodb.query.*;
 import org.socialsignin.spring.data.dynamodb.repository.ExpressionAttribute;
@@ -86,11 +88,13 @@ public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID>
     return getRangeKeyAttributeValue() != null;
   }
 
+  @Override
   protected Query<T> buildSingleEntityLoadQuery(DynamoDBOperations dynamoDBOperations) {
     return new SingleEntityLoadByHashAndRangeKeyQuery<>(dynamoDBOperations,
         entityInformation.getJavaType(), getHashKeyPropertyValue(), getRangeKeyPropertyValue());
   }
 
+  @Override
   protected Query<Long> buildSingleEntityCountQuery(DynamoDBOperations dynamoDBOperations) {
     return new CountByHashAndRangeKeyQuery<>(dynamoDBOperations, entityInformation.getJavaType(),
         getHashKeyPropertyValue(), getRangeKeyPropertyValue());
@@ -99,8 +103,9 @@ public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID>
   private void checkComparisonOperatorPermittedForCompositeHashAndRangeKey(
       ComparisonOperator comparisonOperator) {
 
-    if (!ComparisonOperator.EQ.equals(comparisonOperator) && !ComparisonOperator.CONTAINS.equals(
-        comparisonOperator) && !ComparisonOperator.BEGINS_WITH.equals(comparisonOperator)) {
+    if (!ComparisonOperator.EQ.equals(comparisonOperator)
+        && !ComparisonOperator.CONTAINS.equals(comparisonOperator)
+        && !ComparisonOperator.BEGINS_WITH.equals(comparisonOperator)) {
       throw new UnsupportedOperationException(
           "Only EQ,CONTAINS,BEGINS_WITH supported for composite id comparison");
     }
@@ -148,7 +153,8 @@ public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID>
       queryExpression.withRangeKeyCondition(getRangeKeyAttributeName(), rangeKeyCondition);
       applySortIfSpecified(queryExpression, Collections.singletonList(getRangeKeyPropertyName()));
 
-    } else if (isOnlyASingleAttributeConditionAndItIsOnEitherRangeOrIndexRangeKey() || (isApplicableForGlobalSecondaryIndex())) {
+    } else if (isOnlyASingleAttributeConditionAndItIsOnEitherRangeOrIndexRangeKey()
+        || (isApplicableForGlobalSecondaryIndex())) {
 
       Entry<String, List<Condition>> singlePropertyConditions =
           propertyConditions.entrySet().iterator().next();
@@ -164,7 +170,8 @@ public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID>
         allowedSortProperties.add(singlePropertyConditions.getKey());
       }
 
-      for (Entry<String, List<Condition>> singleAttributeConditions : attributeConditions.entrySet()) {
+      for (Entry<String, List<Condition>> singleAttributeConditions : attributeConditions
+          .entrySet()) {
         for (Condition condition : singleAttributeConditions.getValue()) {
           queryExpression.withRangeKeyCondition(singleAttributeConditions.getKey(), condition);
         }
@@ -191,20 +198,29 @@ public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID>
         queryExpression.setFilterExpression(filter);
         if (expressionAttributeNames != null && expressionAttributeNames.length > 0) {
           for (ExpressionAttribute attribute : expressionAttributeNames) {
-            if (!StringUtils.isEmpty(attribute.key()))
+            if (!StringUtils.isEmpty(attribute.key())) {
               queryExpression.addExpressionAttributeNamesEntry(attribute.key(), attribute.value());
+            }
           }
         }
         if (expressionAttributeValues != null && expressionAttributeValues.length > 0) {
           for (ExpressionAttribute value : expressionAttributeValues) {
             if (!StringUtils.isEmpty(value.key())) {
+              String _value = null;
               if (mappedExpressionValues.containsKey(value.parameterName())) {
-                queryExpression.addExpressionAttributeValuesEntry(value.key(),
-                    new AttributeValue(mappedExpressionValues.get(value.parameterName())));
+                _value = mappedExpressionValues.get(value.parameterName());
               } else {
-                queryExpression.addExpressionAttributeValuesEntry(value.key(),
-                    new AttributeValue(value.value()));
+                _value = value.value();
               }
+              AttributeValue attribute = new AttributeValue();
+              if (BooleanUtils.toBooleanObject(_value) != null) {
+                attribute.withBOOL(BooleanUtils.toBoolean(_value));
+              } else if (NumberUtils.isCreatable(_value)) {
+                attribute.withN(_value);
+              } else {
+                attribute.withS(_value);
+              }
+              queryExpression.addExpressionAttributeValuesEntry(value.key(), attribute);
             }
           }
         }
@@ -215,11 +231,10 @@ public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID>
 
   protected List<Condition> getRangeKeyConditions() {
     List<Condition> rangeKeyConditions = null;
-    if (isApplicableForGlobalSecondaryIndex() && entityInformation.getGlobalSecondaryIndexNamesByPropertyName()
-        .containsKey(getRangeKeyPropertyName())) {
-      rangeKeyConditions = getRangeKeyAttributeValue() == null ?
-          null :
-          Collections.singletonList(
+    if (isApplicableForGlobalSecondaryIndex() && entityInformation
+        .getGlobalSecondaryIndexNamesByPropertyName().containsKey(getRangeKeyPropertyName())) {
+      rangeKeyConditions = getRangeKeyAttributeValue() == null ? null
+          : Collections.singletonList(
               createSingleValueCondition(getRangeKeyPropertyName(), ComparisonOperator.EQ,
                   getRangeKeyAttributeValue(), getRangeKeyAttributeValue().getClass(), true));
 
@@ -227,15 +242,15 @@ public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID>
     return rangeKeyConditions;
   }
 
+  @Override
   protected Query<T> buildFinderQuery(DynamoDBOperations dynamoDBOperations) {
     if (isApplicableForQuery()) {
       if (isApplicableForGlobalSecondaryIndex()) {
         String tableName = dynamoDBOperations.getOverriddenTableName(clazz,
             entityInformation.getDynamoDBTableName());
-        QueryRequest queryRequest =
-            buildQueryRequest(tableName, getGlobalSecondaryIndexName(), getHashKeyAttributeName(),
-                getRangeKeyAttributeName(), this.getRangeKeyPropertyName(), getHashKeyConditions(),
-                getRangeKeyConditions());
+        QueryRequest queryRequest = buildQueryRequest(tableName, getGlobalSecondaryIndexName(),
+            getHashKeyAttributeName(), getRangeKeyAttributeName(), this.getRangeKeyPropertyName(),
+            getHashKeyConditions(), getRangeKeyConditions());
         return new MultipleEntityQueryRequestQuery<>(dynamoDBOperations,
             entityInformation.getJavaType(), queryRequest);
       } else {
@@ -249,16 +264,16 @@ public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID>
     }
   }
 
+  @Override
   protected Query<Long> buildFinderCountQuery(DynamoDBOperations dynamoDBOperations,
       boolean pageQuery) {
     if (isApplicableForQuery()) {
       if (isApplicableForGlobalSecondaryIndex()) {
         String tableName = dynamoDBOperations.getOverriddenTableName(clazz,
             entityInformation.getDynamoDBTableName());
-        QueryRequest queryRequest =
-            buildQueryRequest(tableName, getGlobalSecondaryIndexName(), getHashKeyAttributeName(),
-                getRangeKeyAttributeName(), this.getRangeKeyPropertyName(), getHashKeyConditions(),
-                getRangeKeyConditions());
+        QueryRequest queryRequest = buildQueryRequest(tableName, getGlobalSecondaryIndexName(),
+            getHashKeyAttributeName(), getRangeKeyAttributeName(), this.getRangeKeyPropertyName(),
+            getHashKeyConditions(), getRangeKeyConditions());
         return new QueryRequestCountQuery(dynamoDBOperations, queryRequest);
 
       } else {
@@ -287,9 +302,8 @@ public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID>
     if (!isRangeKeySpecified() && attributeConditions.size() == 1) {
       Entry<String, List<Condition>> conditionsEntry =
           attributeConditions.entrySet().iterator().next();
-      if (conditionsEntry.getKey()
-          .equals(getRangeKeyAttributeName()) || getIndexRangeKeyAttributeNames().contains(
-          conditionsEntry.getKey())) {
+      if (conditionsEntry.getKey().equals(getRangeKeyAttributeName())
+          || getIndexRangeKeyAttributeNames().contains(conditionsEntry.getKey())) {
         if (conditionsEntry.getValue().size() == 1) {
           isOnlyASingleAttributeConditionAndItIsOnEitherRangeOrIndexRangeKey = true;
         }
@@ -304,8 +318,8 @@ public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID>
 
     boolean hasCondition = super.hasIndexHashKeyEqualCondition();
     if (!hasCondition) {
-      if (rangeKeyAttributeValue != null && entityInformation.isGlobalIndexHashKeyProperty(
-          rangeKeyPropertyName)) {
+      if (rangeKeyAttributeValue != null
+          && entityInformation.isGlobalIndexHashKeyProperty(rangeKeyPropertyName)) {
         hasCondition = true;
       }
     }
@@ -316,18 +330,19 @@ public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID>
   protected boolean hasIndexRangeKeyCondition() {
     boolean hasCondition = super.hasIndexRangeKeyCondition();
     if (!hasCondition) {
-      if (rangeKeyAttributeValue != null && entityInformation.isGlobalIndexRangeKeyProperty(
-          rangeKeyPropertyName)) {
+      if (rangeKeyAttributeValue != null
+          && entityInformation.isGlobalIndexRangeKeyProperty(rangeKeyPropertyName)) {
         hasCondition = true;
       }
     }
     return hasCondition;
   }
 
+  @Override
   protected boolean isApplicableForGlobalSecondaryIndex() {
     boolean global = super.isApplicableForGlobalSecondaryIndex();
-    if (global && getRangeKeyAttributeValue() != null && !entityInformation.getGlobalSecondaryIndexNamesByPropertyName()
-        .containsKey(getRangeKeyPropertyName())) {
+    if (global && getRangeKeyAttributeValue() != null && !entityInformation
+        .getGlobalSecondaryIndexNamesByPropertyName().containsKey(getRangeKeyPropertyName())) {
       return false;
     }
 
@@ -335,6 +350,7 @@ public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID>
 
   }
 
+  @Override
   protected String getGlobalSecondaryIndexName() {
     // Get the target global secondary index name using the property
     // conditions
@@ -349,9 +365,9 @@ public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID>
       if (this.hashKeyAttributeValue == null && getRangeKeyAttributeValue() != null) {
         String[] rangeKeyIndexNames = entityInformation.getGlobalSecondaryIndexNamesByPropertyName()
             .get(this.getRangeKeyPropertyName());
-        globalSecondaryIndexName = rangeKeyIndexNames != null && rangeKeyIndexNames.length > 0 ?
-            rangeKeyIndexNames[0] :
-            null;
+        globalSecondaryIndexName =
+            rangeKeyIndexNames != null && rangeKeyIndexNames.length > 0 ? rangeKeyIndexNames[0]
+                : null;
       }
     }
     return globalSecondaryIndexName;
@@ -359,7 +375,9 @@ public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID>
 
   public boolean isApplicableForQuery() {
 
-    return isOnlyHashKeySpecified() || (isHashKeySpecified() && isOnlyASingleAttributeConditionAndItIsOnEitherRangeOrIndexRangeKey() && comparisonOperatorsPermittedForQuery()) || isApplicableForGlobalSecondaryIndex();
+    return isOnlyHashKeySpecified() || (isHashKeySpecified()
+        && isOnlyASingleAttributeConditionAndItIsOnEitherRangeOrIndexRangeKey()
+        && comparisonOperatorsPermittedForQuery()) || isApplicableForGlobalSecondaryIndex();
 
   }
 
@@ -388,7 +406,8 @@ public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID>
 
   public DynamoDBQueryCriteria<T, ID> withRangeKeyEquals(Object value) {
     Assert.notNull(value,
-        "Creating conditions on null range keys not supported: please specify a value for '" + getRangeKeyPropertyName() + "'");
+        "Creating conditions on null range keys not supported: please specify a value for '"
+            + getRangeKeyPropertyName() + "'");
 
     rangeKeyAttributeValue = getPropertyAttributeValue(getRangeKeyPropertyName(), value);
     rangeKeyPropertyValue = value;
@@ -405,7 +424,8 @@ public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID>
       return withRangeKeyEquals(value);
     } else if (entityInformation.isCompositeHashAndRangeKeyProperty(propertyName)) {
       Assert.notNull(value,
-          "Creating conditions on null composite id properties not supported: please specify a value for '" + propertyName + "'");
+          "Creating conditions on null composite id properties not supported: please specify a value for '"
+              + propertyName + "'");
       Object hashKey = entityInformation.getHashKey((ID) value);
       Object rangeKey = entityInformation.getRangeKey((ID) value);
       if (hashKey != null) {
@@ -416,9 +436,8 @@ public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID>
       }
       return this;
     } else {
-      Condition condition =
-          createSingleValueCondition(propertyName, ComparisonOperator.EQ, value, propertyType,
-              false);
+      Condition condition = createSingleValueCondition(propertyName, ComparisonOperator.EQ, value,
+          propertyType, false);
       return withCondition(propertyName, condition);
     }
 
