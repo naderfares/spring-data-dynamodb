@@ -1,5 +1,7 @@
 /**
- * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
+ * Spring Data DynamoDB <https://github.com/naderfares/spring-data-dynamodb>
+ *
+ * Copyright © 2018 (Nader Fares <naderfares@gmail.com>) All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -35,7 +37,7 @@ import java.util.Date;
 @Deprecated
 public class AbstractDynamoDBDateMarshaller implements DynamoDBMarshaller<Date> {
 
-  private DateFormat dateFormat;
+  private final DateFormat dateFormat;
 
   public AbstractDynamoDBDateMarshaller(DateFormat dateFormat) {
     this.dateFormat = dateFormat;

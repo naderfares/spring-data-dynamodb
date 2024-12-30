@@ -1,5 +1,7 @@
 /**
- * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
+ * Spring Data DynamoDB <https://github.com/naderfares/spring-data-dynamodb>
+ *
+ * Copyright © 2018 (Nader Fares <naderfares@gmail.com>) All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -39,10 +41,10 @@ import java.util.Optional;
 public class DynamoDBIdIsHashKeyEntityInformationImpl<T, ID> extends
     FieldAndGetterReflectionEntityInformation<T, ID> implements DynamoDBEntityInformation<T, ID> {
 
-  private DynamoDBHashKeyExtractingEntityMetadata<T> metadata;
-  private HashKeyExtractor<ID, ID> hashKeyExtractor;
-  private Optional<String> projection = Optional.empty();
-  private Optional<Integer> limit = Optional.empty();
+  private final DynamoDBHashKeyExtractingEntityMetadata<T> metadata;
+  private final HashKeyExtractor<ID, ID> hashKeyExtractor;
+  private final Optional<String> projection = Optional.empty();
+  private final Optional<Integer> limit = Optional.empty();
 
   public DynamoDBIdIsHashKeyEntityInformationImpl(Class<T> domainClass,
       DynamoDBHashKeyExtractingEntityMetadata<T> metadata) {

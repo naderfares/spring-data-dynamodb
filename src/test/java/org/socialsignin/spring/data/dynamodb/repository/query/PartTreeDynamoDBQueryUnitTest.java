@@ -1,5 +1,7 @@
 /**
- * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
+ * Spring Data DynamoDB <https://github.com/naderfares/spring-data-dynamodb>
+ *
+ * Copyright © 2018 (Nader Fares <naderfares@gmail.com>) All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -434,7 +436,7 @@ public class PartTreeDynamoDBQueryUnitTest {
     Object o = partTreeDynamoDBQuery.execute(parameters);
 
     // Assert that we obtain the expected results
-    assertEquals(100l, o);
+    assertEquals(100L, o);
 
     // Assert that we scanned DynamoDB for the correct class
     assertEquals(playlistClassCaptor.getValue(), Playlist.class);
@@ -717,8 +719,7 @@ public class PartTreeDynamoDBQueryUnitTest {
 
     assertEquals(1, playlistQueryCaptor.getValue().getRangeKeyConditions().size());
 
-    Condition condition =
-        (Condition) playlistQueryCaptor.getValue().getRangeKeyConditions().get("displayName");
+    Condition condition = playlistQueryCaptor.getValue().getRangeKeyConditions().get("displayName");
     assertEquals(ComparisonOperator.EQ.name(), condition.getComparisonOperator());
     assertEquals(1, condition.getAttributeValueList().size());
     assertEquals("someDisplayName", condition.getAttributeValueList().get(0).getS());
@@ -883,8 +884,7 @@ public class PartTreeDynamoDBQueryUnitTest {
     assertEquals("someUserName", hashKeyPropertyPlaylist.getUserName());
 
     assertEquals(1, playlistQueryCaptor.getValue().getRangeKeyConditions().size());
-    Condition condition =
-        (Condition) playlistQueryCaptor.getValue().getRangeKeyConditions().get("displayName");
+    Condition condition = playlistQueryCaptor.getValue().getRangeKeyConditions().get("displayName");
     assertEquals(ComparisonOperator.EQ.name(), condition.getComparisonOperator());
     assertEquals(1, condition.getAttributeValueList().size());
     assertEquals("someDisplayName", condition.getAttributeValueList().get(0).getS());
@@ -937,8 +937,7 @@ public class PartTreeDynamoDBQueryUnitTest {
     assertEquals("someUserName", hashKeyPropertyPlaylist.getUserName());
 
     assertEquals(1, playlistQueryCaptor.getValue().getRangeKeyConditions().size());
-    Condition condition =
-        (Condition) playlistQueryCaptor.getValue().getRangeKeyConditions().get("displayName");
+    Condition condition = playlistQueryCaptor.getValue().getRangeKeyConditions().get("displayName");
     assertEquals(ComparisonOperator.EQ.name(), condition.getComparisonOperator());
     assertEquals(1, condition.getAttributeValueList().size());
     assertEquals("someDisplayName", condition.getAttributeValueList().get(0).getS());
@@ -1024,8 +1023,7 @@ public class PartTreeDynamoDBQueryUnitTest {
     assertEquals("someUserName", hashKeyPropertyPlaylist.getUserName());
 
     assertEquals(1, playlistQueryCaptor.getValue().getRangeKeyConditions().size());
-    Condition condition =
-        (Condition) playlistQueryCaptor.getValue().getRangeKeyConditions().get("displayName");
+    Condition condition = playlistQueryCaptor.getValue().getRangeKeyConditions().get("displayName");
     assertEquals(ComparisonOperator.EQ.name(), condition.getComparisonOperator());
     assertEquals(1, condition.getAttributeValueList().size());
     assertEquals("someDisplayName", condition.getAttributeValueList().get(0).getS());
@@ -1113,8 +1111,7 @@ public class PartTreeDynamoDBQueryUnitTest {
     assertEquals("someUserName", hashKeyPropertyPlaylist.getUserName());
 
     assertEquals(1, playlistQueryCaptor.getValue().getRangeKeyConditions().size());
-    Condition condition =
-        (Condition) playlistQueryCaptor.getValue().getRangeKeyConditions().get("DisplayName");
+    Condition condition = playlistQueryCaptor.getValue().getRangeKeyConditions().get("DisplayName");
     assertEquals(ComparisonOperator.EQ.name(), condition.getComparisonOperator());
     assertEquals(1, condition.getAttributeValueList().size());
     assertEquals("someDisplayName", condition.getAttributeValueList().get(0).getS());
@@ -1841,7 +1838,7 @@ public class PartTreeDynamoDBQueryUnitTest {
         User.class, "findByNameIn", 1, "id", null);
     Mockito.when(mockDynamoDBUserQueryMethod.isCollectionQuery()).thenReturn(true);
 
-    List<String> names = Arrays.asList(new String[] {"someName", "someOtherName"});
+    List<String> names = Arrays.asList("someName", "someOtherName");
 
     Mockito.when(mockUserScanResults.get(0)).thenReturn(mockUser);
     Mockito.when(mockUserScanResults.size()).thenReturn(1);

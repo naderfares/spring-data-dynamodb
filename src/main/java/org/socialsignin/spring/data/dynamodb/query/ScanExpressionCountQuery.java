@@ -1,5 +1,7 @@
 /**
- * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
+ * Spring Data DynamoDB <https://github.com/naderfares/spring-data-dynamodb>
+ *
+ * Copyright © 2018 (Nader Fares <naderfares@gmail.com>) All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -20,11 +22,11 @@ import org.springframework.util.Assert;
 public class ScanExpressionCountQuery<T> extends AbstractSingleEntityQuery<Long>
     implements Query<Long> {
 
-  private DynamoDBScanExpression scanExpression;
+  private final DynamoDBScanExpression scanExpression;
 
-  private Class<T> domainClass;
+  private final Class<T> domainClass;
 
-  private boolean pageQuery;
+  private final boolean pageQuery;
 
   public ScanExpressionCountQuery(DynamoDBOperations dynamoDBOperations, Class<T> clazz,
       DynamoDBScanExpression scanExpression, boolean pageQuery) {

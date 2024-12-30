@@ -1,5 +1,7 @@
 /**
- * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
+ * Spring Data DynamoDB <https://github.com/naderfares/spring-data-dynamodb>
+ *
+ * Copyright © 2018 (Nader Fares <naderfares@gmail.com>) All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -49,11 +51,11 @@ public class AbstractDynamoDBQueryTest {
   private Query<User> query;
   @Mock
   private Query<Long> countQuery;
-  private boolean isSingleEntityResultsRestriction = false;
+  private final boolean isSingleEntityResultsRestriction = false;
   private Integer resultsRestrictionIfApplicable = 0;
-  private boolean isDeleteQuery = false;
-  private boolean isExistsQuery = false;
-  private boolean isCountQuery = false;
+  private final boolean isDeleteQuery = false;
+  private final boolean isExistsQuery = false;
+  private final boolean isCountQuery = false;
   @Mock
   private DynamoDBOperations dynamoDBOperations;
   @Mock

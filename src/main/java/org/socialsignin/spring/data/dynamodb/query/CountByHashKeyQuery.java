@@ -1,5 +1,7 @@
 /**
- * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
+ * Spring Data DynamoDB <https://github.com/naderfares/spring-data-dynamodb>
+ *
+ * Copyright © 2018 (Nader Fares <naderfares@gmail.com>) All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -21,8 +23,8 @@ import org.socialsignin.spring.data.dynamodb.core.DynamoDBOperations;
  */
 public class CountByHashKeyQuery<T> extends AbstractSingleEntityQuery<Long> implements Query<Long> {
 
-  private Object hashKey;
-  private Class<T> entityClass;
+  private final Object hashKey;
+  private final Class<T> entityClass;
 
   public CountByHashKeyQuery(DynamoDBOperations dynamoDBOperations, Class<T> clazz,
       Object hashKey) {
@@ -33,7 +35,7 @@ public class CountByHashKeyQuery<T> extends AbstractSingleEntityQuery<Long> impl
 
   @Override
   public Long getSingleResult() {
-    return dynamoDBOperations.load(entityClass, hashKey) == null ? 0l : 1l;
+    return dynamoDBOperations.load(entityClass, hashKey) == null ? 0L : 1L;
   }
 
 }

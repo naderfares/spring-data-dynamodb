@@ -1,5 +1,7 @@
 /**
- * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
+ * Spring Data DynamoDB <https://github.com/naderfares/spring-data-dynamodb>
+ *
+ * Copyright © 2018 (Nader Fares <naderfares@gmail.com>) All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -51,7 +53,6 @@ public class FieldAndGetterReflectionEntityInformation<T, ID>
     ReflectionUtils.doWithMethods(domainClass, (method) -> {
       if (method.getAnnotation(annotation) != null) {
         this.method = method;
-        return;
       }
     });
 
@@ -60,15 +61,14 @@ public class FieldAndGetterReflectionEntityInformation<T, ID>
       ReflectionUtils.doWithFields(domainClass, (field) -> {
         if (field.getAnnotation(annotation) != null) {
           this.field = field;
-          return;
         }
       });
     }
 
     Assert.isTrue(this.method != null || this.field != null,
-        String.format("No field or method annotated with %s found!", annotation.toString()));
+        String.format("No field or method annotated with %s found!", annotation));
     Assert.isTrue(this.method == null || this.field == null,
-        String.format("Both field and method annotated with %s found!", annotation.toString()));
+        String.format("Both field and method annotated with %s found!", annotation));
 
     if (method != null) {
       ReflectionUtils.makeAccessible(method);

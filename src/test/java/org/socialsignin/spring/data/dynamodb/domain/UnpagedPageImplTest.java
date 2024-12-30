@@ -1,5 +1,7 @@
 /**
- * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
+ * Spring Data DynamoDB <https://github.com/naderfares/spring-data-dynamodb>
+ *
+ * Copyright © 2018 (Nader Fares <naderfares@gmail.com>) All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -35,7 +37,7 @@ public class UnpagedPageImplTest {
   private List<Object> content;
   @Mock
   private Iterator<Object> iterator;
-  private long total = new Random().nextInt(Integer.MAX_VALUE - 1) + 1; // Ensure it's never null
+  private final long total = new Random().nextInt(Integer.MAX_VALUE - 1) + 1; // Ensure it's never null
 
   private UnpagedPageImpl<Object> underTest;
 
@@ -69,14 +71,14 @@ public class UnpagedPageImplTest {
 
   @Test
   public void testEquals() {
-    assertFalse(underTest.equals(null));
-    assertFalse(underTest.equals(new Object()));
+    assertNotEquals(null, underTest);
+    assertNotEquals(underTest, new Object());
 
-    assertTrue(underTest.equals(underTest));
+    assertEquals(underTest, underTest);
 
-    assertTrue(underTest.equals(new UnpagedPageImpl<Object>(content, total)));
-    assertFalse(underTest.equals(new UnpagedPageImpl<Object>(content, total - 1)));
-    assertFalse(underTest.equals(new UnpagedPageImpl<Object>(Collections.emptyList(), 0)));
+    assertEquals(underTest, new UnpagedPageImpl<Object>(content, total));
+    assertNotEquals(underTest, new UnpagedPageImpl<Object>(content, total - 1));
+    assertNotEquals(underTest, new UnpagedPageImpl<Object>(Collections.emptyList(), 0));
   }
 
   @Test

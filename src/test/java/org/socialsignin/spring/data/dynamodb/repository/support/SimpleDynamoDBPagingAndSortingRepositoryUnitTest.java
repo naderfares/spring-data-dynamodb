@@ -1,5 +1,7 @@
 /**
- * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
+ * Spring Data DynamoDB <https://github.com/naderfares/spring-data-dynamodb>
+ *
+ * Copyright © 2018 (Nader Fares <naderfares@gmail.com>) All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -67,7 +69,7 @@ public class SimpleDynamoDBPagingAndSortingRepositoryUnitTest {
     testPlaylist = new Playlist(testPlaylistId);
 
     when(entityWithOnlyHashKeyInformation.getJavaType()).thenReturn(User.class);
-    when(entityWithOnlyHashKeyInformation.getHashKey(1l)).thenReturn(1l);
+    when(entityWithOnlyHashKeyInformation.getHashKey(1L)).thenReturn(1L);
 
     when(entityWithHashAndRangeKeyInformation.getJavaType()).thenReturn(Playlist.class);
     when(entityWithHashAndRangeKeyInformation.getHashKey(testPlaylistId)).thenReturn("michael");
@@ -79,7 +81,7 @@ public class SimpleDynamoDBPagingAndSortingRepositoryUnitTest {
     repoForEntityWithHashAndRangeKey = new SimpleDynamoDBPagingAndSortingRepository<>(
         entityWithHashAndRangeKeyInformation, dynamoDBOperations, mockEnableScanPermissions);
 
-    when(dynamoDBOperations.load(User.class, 1l)).thenReturn(testUser);
+    when(dynamoDBOperations.load(User.class, 1L)).thenReturn(testUser);
     when(dynamoDBOperations.load(Playlist.class, "michael", "playlist1")).thenReturn(testPlaylist);
 
   }
@@ -95,8 +97,8 @@ public class SimpleDynamoDBPagingAndSortingRepositoryUnitTest {
 
   @Test
   public void findOneEntityWithOnlyHashKey() {
-    Optional<User> user = repoForEntityWithOnlyHashKey.findById(1l);
-    Mockito.verify(dynamoDBOperations).load(User.class, 1l);
+    Optional<User> user = repoForEntityWithOnlyHashKey.findById(1L);
+    Mockito.verify(dynamoDBOperations).load(User.class, 1L);
     assertEquals(testUser, user.get());
   }
 

@@ -1,5 +1,7 @@
 /**
- * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
+ * Spring Data DynamoDB <https://github.com/naderfares/spring-data-dynamodb>
+ *
+ * Copyright © 2018 (Nader Fares <naderfares@gmail.com>) All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -87,7 +89,7 @@ public class SimpleDynamoDBCrudRepositoryTest {
     testPlaylist = new Playlist(testPlaylistId);
 
     when(entityWithSimpleIdInformation.getJavaType()).thenReturn(User.class);
-    when(entityWithSimpleIdInformation.getHashKey(1l)).thenReturn(1l);
+    when(entityWithSimpleIdInformation.getHashKey(1L)).thenReturn(1L);
 
     when(mockEnableScanPermissions.isFindAllUnpaginatedScanEnabled()).thenReturn(true);
     when(mockEnableScanPermissions.isDeleteAllUnpaginatedScanEnabled()).thenReturn(true);
@@ -103,7 +105,7 @@ public class SimpleDynamoDBCrudRepositoryTest {
     repoForEntityWithHashAndRangeKey = new SimpleDynamoDBCrudRepository<>(
         entityWithCompositeIdInformation, dynamoDBOperations, mockEnableScanPermissions);
 
-    when(dynamoDBOperations.load(User.class, 1l)).thenReturn(testUser);
+    when(dynamoDBOperations.load(User.class, 1L)).thenReturn(testUser);
     when(dynamoDBOperations.load(Playlist.class, "michael", "playlist1")).thenReturn(testPlaylist);
 
   }
@@ -183,9 +185,9 @@ public class SimpleDynamoDBCrudRepositoryTest {
 
   @Test
   public void existsEntityWithOnlyHashKey() {
-    when(dynamoDBOperations.load(User.class, 1l)).thenReturn(null);
+    when(dynamoDBOperations.load(User.class, 1L)).thenReturn(null);
 
-    boolean actual = repoForEntityWithOnlyHashKey.existsById(1l);
+    boolean actual = repoForEntityWithOnlyHashKey.existsById(1L);
 
     assertFalse(actual);
   }
@@ -199,8 +201,8 @@ public class SimpleDynamoDBCrudRepositoryTest {
 
   @Test
   public void findOneEntityWithOnlyHashKey() {
-    Optional<User> user = repoForEntityWithOnlyHashKey.findById(1l);
-    Mockito.verify(dynamoDBOperations).load(User.class, 1l);
+    Optional<User> user = repoForEntityWithOnlyHashKey.findById(1L);
+    Mockito.verify(dynamoDBOperations).load(User.class, 1L);
     assertEquals(testUser, user.get());
   }
 

@@ -1,5 +1,7 @@
 /**
- * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
+ * Spring Data DynamoDB <https://github.com/naderfares/spring-data-dynamodb>
+ *
+ * Copyright © 2018 (Nader Fares <naderfares@gmail.com>) All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -196,14 +198,14 @@ public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID>
       String filter = filterExpression.get();
       if (!StringUtils.isEmpty(filter)) {
         queryExpression.setFilterExpression(filter);
-        if (expressionAttributeNames != null && expressionAttributeNames.length > 0) {
+        if (expressionAttributeNames != null) {
           for (ExpressionAttribute attribute : expressionAttributeNames) {
             if (!StringUtils.isEmpty(attribute.key())) {
               queryExpression.addExpressionAttributeNamesEntry(attribute.key(), attribute.value());
             }
           }
         }
-        if (expressionAttributeValues != null && expressionAttributeValues.length > 0) {
+        if (expressionAttributeValues != null) {
           for (ExpressionAttribute value : expressionAttributeValues) {
             if (!StringUtils.isEmpty(value.key())) {
               String _value = null;

@@ -1,5 +1,7 @@
 /**
- * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
+ * Spring Data DynamoDB <https://github.com/naderfares/spring-data-dynamodb>
+ *
+ * Copyright © 2018 (Nader Fares <naderfares@gmail.com>) All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -22,8 +24,8 @@ import org.socialsignin.spring.data.dynamodb.core.DynamoDBOperations;
 public class SingleEntityLoadByHashAndRangeKeyQuery<T> extends AbstractSingleEntityQuery<T>
     implements Query<T> {
 
-  private Object hashKey;
-  private Object rangeKey;
+  private final Object hashKey;
+  private final Object rangeKey;
 
   public SingleEntityLoadByHashAndRangeKeyQuery(DynamoDBOperations dynamoDBOperations,
       Class<T> clazz, Object hashKey, Object rangeKey) {

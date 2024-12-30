@@ -1,5 +1,7 @@
 /**
- * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
+ * Spring Data DynamoDB <https://github.com/naderfares/spring-data-dynamodb>
+ *
+ * Copyright © 2018 (Nader Fares <naderfares@gmail.com>) All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -35,10 +37,10 @@ public class DynamoDBEntityMetadataSupport<T, ID>
   private final Class<T> domainType;
   private boolean hasRangeKey;
   private String hashKeyPropertyName;
-  private List<String> globalIndexHashKeyPropertyNames;
-  private List<String> globalIndexRangeKeyPropertyNames;
+  private final List<String> globalIndexHashKeyPropertyNames;
+  private final List<String> globalIndexRangeKeyPropertyNames;
 
-  private String dynamoDBTableName;
+  private final String dynamoDBTableName;
   private Map<String, String[]> globalSecondaryIndexNames = new HashMap<>();
 
   /**

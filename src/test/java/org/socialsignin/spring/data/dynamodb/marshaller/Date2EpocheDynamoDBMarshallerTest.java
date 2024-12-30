@@ -1,5 +1,7 @@
 /**
- * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
+ * Spring Data DynamoDB <https://github.com/naderfares/spring-data-dynamodb>
+ *
+ * Copyright © 2018 (Nader Fares <naderfares@gmail.com>) All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -53,7 +55,7 @@ public class Date2EpocheDynamoDBMarshallerTest {
   @Test
   public void testUnmarshall() {
     assertEquals(new Date(0), underTest.unmarshall(Date.class, "0"));
-    assertEquals(new Date(0), underTest.unconvert("0"));;
+    assertEquals(new Date(0), underTest.unconvert("0"));
 
   }
 

@@ -1,5 +1,7 @@
 /**
- * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
+ * Spring Data DynamoDB <https://github.com/naderfares/spring-data-dynamodb>
+ *
+ * Copyright © 2018 (Nader Fares <naderfares@gmail.com>) All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -33,7 +35,7 @@ public class DynamoDBHashAndRangeKeyExtractingEntityMetadataImpl<T, ID>
     extends DynamoDBEntityMetadataSupport<T, ID>
     implements DynamoDBHashAndRangeKeyExtractingEntityMetadata<T, ID> {
 
-  private DynamoDBHashAndRangeKeyMethodExtractor<T> hashAndRangeKeyMethodExtractor;
+  private final DynamoDBHashAndRangeKeyMethodExtractor<T> hashAndRangeKeyMethodExtractor;
 
   private Method hashKeySetterMethod;
   private Field hashKeyField;

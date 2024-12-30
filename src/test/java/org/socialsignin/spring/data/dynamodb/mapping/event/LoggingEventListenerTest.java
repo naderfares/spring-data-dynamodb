@@ -1,5 +1,7 @@
 /**
- * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
+ * Spring Data DynamoDB <https://github.com/naderfares/spring-data-dynamodb>
+ *
+ * Copyright © 2018 (Nader Fares <naderfares@gmail.com>) All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -68,49 +70,49 @@ public class LoggingEventListenerTest {
   public void testAfterDelete() {
     underTest.onApplicationEvent(new AfterDeleteEvent<>(sampleEntity));
 
-    assertThat(logger.getLoggingEvents(), is(asList(trace("onAfterDelete: {}", sampleEntity))));
+    assertThat(logger.getLoggingEvents(), is(List.of(trace("onAfterDelete: {}", sampleEntity))));
   }
 
   @Test
   public void testAfterLoad() {
     underTest.onApplicationEvent(new AfterLoadEvent<>(sampleEntity));
 
-    assertThat(logger.getLoggingEvents(), is(asList(trace("onAfterLoad: {}", sampleEntity))));
+    assertThat(logger.getLoggingEvents(), is(List.of(trace("onAfterLoad: {}", sampleEntity))));
   }
 
   @Test
   public void testAfterQuery() {
     underTest.onApplicationEvent(new AfterQueryEvent<>(sampleQueryList));
 
-    assertThat(logger.getLoggingEvents(), is(asList(trace("onAfterQuery: {}", sampleEntity))));
+    assertThat(logger.getLoggingEvents(), is(List.of(trace("onAfterQuery: {}", sampleEntity))));
   }
 
   @Test
   public void testAfterSave() {
     underTest.onApplicationEvent(new AfterSaveEvent<>(sampleEntity));
 
-    assertThat(logger.getLoggingEvents(), is(asList(trace("onAfterSave: {}", sampleEntity))));
+    assertThat(logger.getLoggingEvents(), is(List.of(trace("onAfterSave: {}", sampleEntity))));
   }
 
   @Test
   public void testAfterScan() {
     underTest.onApplicationEvent(new AfterScanEvent<>(sampleScanList));
 
-    assertThat(logger.getLoggingEvents(), is(asList(trace("onAfterScan: {}", sampleEntity))));
+    assertThat(logger.getLoggingEvents(), is(List.of(trace("onAfterScan: {}", sampleEntity))));
   }
 
   @Test
   public void testBeforeDelete() {
     underTest.onApplicationEvent(new BeforeDeleteEvent<>(sampleEntity));
 
-    assertThat(logger.getLoggingEvents(), is(asList(trace("onBeforeDelete: {}", sampleEntity))));
+    assertThat(logger.getLoggingEvents(), is(List.of(trace("onBeforeDelete: {}", sampleEntity))));
   }
 
   @Test
   public void testBeforeSave() {
     underTest.onApplicationEvent(new BeforeSaveEvent<>(sampleEntity));
 
-    assertThat(logger.getLoggingEvents(), is(asList(trace("onBeforeSave: {}", sampleEntity))));
+    assertThat(logger.getLoggingEvents(), is(List.of(trace("onBeforeSave: {}", sampleEntity))));
   }
 
 }

@@ -1,5 +1,7 @@
 /**
- * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
+ * Spring Data DynamoDB <https://github.com/naderfares/spring-data-dynamodb>
+ *
+ * Copyright © 2018 (Nader Fares <naderfares@gmail.com>) All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -63,7 +65,7 @@ public class DynamoDBRepositoryConfigExtension extends RepositoryConfigurationEx
       new ConcurrentHashMap<>();
   private BeanDefinitionRegistry registry;
   private String defaultDynamoDBMappingContext;
-  private Map<String, String> dynamoDBTemplateCache = new HashMap<>();
+  private final Map<String, String> dynamoDBTemplateCache = new HashMap<>();
   private String dynamoDBMapperName;
   private String dynamoDBMapperConfigName;
 
