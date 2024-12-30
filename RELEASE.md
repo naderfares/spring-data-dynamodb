@@ -12,7 +12,7 @@ mvn formatter:format
 mvn license:format
 ```
 
-# Release process 
+# Release process
 
 1. Check `pom.xml` for the proper `<version />` tag
 2. Check `pom.xml` `<Specification-Version />` entries

@@ -1,17 +1,15 @@
 /**
  * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
  */
 package org.socialsignin.spring.data.dynamodb.repository.support;
 
@@ -30,71 +28,74 @@ import static org.junit.Assert.assertTrue;
 
 public class EnableScanAnnotationPermissionTest {
 
+  @Before
+  public void setUp() {
+
+  }
+
+  @Test
+  public void testSampleRepository() {
+    EnableScanAnnotationPermissions underTest =
+        new EnableScanAnnotationPermissions(SampleRepository.class);
+
+    assertTrue(underTest.isCountUnpaginatedScanEnabled());
+    assertTrue(underTest.isDeleteAllUnpaginatedScanEnabled());
+    assertTrue(underTest.isFindAllPaginatedScanEnabled());
+    assertFalse(underTest.isFindAllUnpaginatedScanCountEnabled());
+    assertTrue(underTest.isFindAllUnpaginatedScanEnabled());
+  }
+
+  @Test
+  public void testSampleNoScanRepository() {
+    EnableScanAnnotationPermissions underTest =
+        new EnableScanAnnotationPermissions(SampleMethodRepository.class);
+
+    assertTrue(underTest.isCountUnpaginatedScanEnabled());
+    assertTrue(underTest.isDeleteAllUnpaginatedScanEnabled());
+    assertTrue(underTest.isFindAllPaginatedScanEnabled());
+    assertTrue(underTest.isFindAllUnpaginatedScanCountEnabled());
+    assertTrue(underTest.isFindAllUnpaginatedScanEnabled());
+  }
+
+  @Test
+  public void testSampleMethodRepository() {
+    EnableScanAnnotationPermissions underTest =
+        new EnableScanAnnotationPermissions(SampleNoScanRepository.class);
+
+    assertFalse(underTest.isCountUnpaginatedScanEnabled());
+    assertFalse(underTest.isDeleteAllUnpaginatedScanEnabled());
+    assertFalse(underTest.isFindAllPaginatedScanEnabled());
+    assertFalse(underTest.isFindAllUnpaginatedScanCountEnabled());
+    assertFalse(underTest.isFindAllUnpaginatedScanEnabled());
+  }
+
+  @EnableScan
+  public interface SampleRepository {
+    List<User> findAll();
+  }
+
+  public interface SampleNoScanRepository {
+    List<User> findAll();
+  }
+
+  @EnableScanCount
+  public interface SampleMethodRepository {
+
     @EnableScan
-    public interface SampleRepository {
-        List<User> findAll();
-    }
+    int someMethodThatsIgnored();
 
-    public interface SampleNoScanRepository {
-        List<User> findAll();
-    }
+    @EnableScan
+    int count();
 
-    @EnableScanCount
-    public interface SampleMethodRepository {
+    @EnableScan
+    void deleteAll();
 
-        @EnableScan
-        int someMethodThatsIgnored();
+    @EnableScan
+    List<User> findAll();
 
-        @EnableScan
-        int count();
+    @EnableScan
+    Page<User> findAll(Pageable pageable);
 
-        @EnableScan
-        void deleteAll();
-
-        @EnableScan
-        List<User> findAll();
-
-        @EnableScan
-        Page<User> findAll(Pageable pageable);
-
-    }
-
-    @Before
-    public void setUp() {
-
-    }
-
-    @Test
-    public void testSampleRepository() {
-        EnableScanAnnotationPermissions underTest = new EnableScanAnnotationPermissions(SampleRepository.class);
-
-        assertTrue(underTest.isCountUnpaginatedScanEnabled());
-        assertTrue(underTest.isDeleteAllUnpaginatedScanEnabled());
-        assertTrue(underTest.isFindAllPaginatedScanEnabled());
-        assertFalse(underTest.isFindAllUnpaginatedScanCountEnabled());
-        assertTrue(underTest.isFindAllUnpaginatedScanEnabled());
-    }
-
-    @Test
-    public void testSampleNoScanRepository() {
-        EnableScanAnnotationPermissions underTest = new EnableScanAnnotationPermissions(SampleMethodRepository.class);
-
-        assertTrue(underTest.isCountUnpaginatedScanEnabled());
-        assertTrue(underTest.isDeleteAllUnpaginatedScanEnabled());
-        assertTrue(underTest.isFindAllPaginatedScanEnabled());
-        assertTrue(underTest.isFindAllUnpaginatedScanCountEnabled());
-        assertTrue(underTest.isFindAllUnpaginatedScanEnabled());
-    }
-
-    @Test
-    public void testSampleMethodRepository() {
-        EnableScanAnnotationPermissions underTest = new EnableScanAnnotationPermissions(SampleNoScanRepository.class);
-
-        assertFalse(underTest.isCountUnpaginatedScanEnabled());
-        assertFalse(underTest.isDeleteAllUnpaginatedScanEnabled());
-        assertFalse(underTest.isFindAllPaginatedScanEnabled());
-        assertFalse(underTest.isFindAllUnpaginatedScanCountEnabled());
-        assertFalse(underTest.isFindAllUnpaginatedScanEnabled());
-    }
+  }
 
 }

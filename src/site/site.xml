@@ -16,9 +16,9 @@
     limitations under the License.
 
 -->
-<project name="Spring Data DynamoDB"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         name="Spring Data DynamoDB"
          xmlns="http://maven.apache.org/DECORATION/1.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
 
     <skin>
@@ -28,8 +28,10 @@
     </skin>
 
     <poweredBy>
-        <logo width="155" name="AWS DynamoDB" href="https://aws.amazon.com/dynamodb/" img="images/powered-by/aws.png" target="_blank" />
-        <logo width="155" name="Spring Data" href="http://projects.spring.io/spring-data/" img="images/powered-by/spring.png" target="_blank" />
+        <logo width="155" name="AWS DynamoDB" href="https://aws.amazon.com/dynamodb/" img="images/powered-by/aws.png"
+              target="_blank"/>
+        <logo width="155" name="Spring Data" href="http://projects.spring.io/spring-data/"
+              img="images/powered-by/spring.png" target="_blank"/>
     </poweredBy>
 
     <custom>
@@ -70,17 +72,18 @@
         </head>
 
         <menu name="Main">
-            <item name="About" href="index.html" />
-            <item name="Contributing" href="contributing.html" />
-            <item name="Donation" href="donation.html" />
+            <item name="About" href="index.html"/>
+            <item name="Contributing" href="contributing.html"/>
+            <item name="Donation" href="donation.html"/>
         </menu>
 
-        <menu ref="reports" />
+        <menu ref="reports"/>
 
         <links>
-            <item name="Maven Central" href="https://mvnrepository.com/artifact/com.github.spring-data-dynamodb/spring-data-dynamodb"/>
-            <item name="Open Hub" href="https://www.openhub.net/p/spring-data-dynamodb" />
-            <item name="Github" href="https://www.github.com/spring-data-dynamodb/spring-data-dynamodb" />
+            <item name="Maven Central"
+                  href="https://mvnrepository.com/artifact/com.github.spring-data-dynamodb/spring-data-dynamodb"/>
+            <item name="Open Hub" href="https://www.openhub.net/p/spring-data-dynamodb"/>
+            <item name="Github" href="https://www.github.com/spring-data-dynamodb/spring-data-dynamodb"/>
         </links>
     </body>
 

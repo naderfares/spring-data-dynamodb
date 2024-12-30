@@ -1,17 +1,15 @@
 /**
  * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
  */
 package org.socialsignin.spring.data.dynamodb.config;
 
@@ -37,43 +35,44 @@ import static org.junit.Assert.assertThat;
  */
 public class AuditingIntegrationTests {
 
-    @Test
-    public void enablesAuditingAndSetsPropertiesAccordingly() throws Exception {
+  @Test
+  public void enablesAuditingAndSetsPropertiesAccordingly() throws Exception {
 
-        AbstractApplicationContext context = new ClassPathXmlApplicationContext("auditing.xml", getClass());
+    AbstractApplicationContext context =
+        new ClassPathXmlApplicationContext("auditing.xml", getClass());
 
-        DynamoDBMappingContext mappingContext = context.getBean(DynamoDBMappingContext.class);
-        mappingContext.getPersistentEntity(Entity.class);
+    DynamoDBMappingContext mappingContext = context.getBean(DynamoDBMappingContext.class);
+    mappingContext.getPersistentEntity(Entity.class);
 
-        Entity entity = new Entity();
-        BeforeSaveEvent<Entity> event = new BeforeSaveEvent<Entity>(entity);
-        context.publishEvent(event);
+    Entity entity = new Entity();
+    BeforeSaveEvent<Entity> event = new BeforeSaveEvent<Entity>(entity);
+    context.publishEvent(event);
 
-        assertThat(entity.created, is(notNullValue()));
-        assertThat(entity.modified, is(entity.created));
+    assertThat(entity.created, is(notNullValue()));
+    assertThat(entity.modified, is(entity.created));
 
-        Thread.sleep(10);
-        entity.id = 1L;
-        event = new BeforeSaveEvent<Entity>(entity);
-        context.publishEvent(event);
+    Thread.sleep(10);
+    entity.id = 1L;
+    event = new BeforeSaveEvent<Entity>(entity);
+    context.publishEvent(event);
 
-        assertThat(entity.created, is(notNullValue()));
-        assertThat(entity.modified, is(not(entity.created)));
-        context.close();
+    assertThat(entity.created, is(notNullValue()));
+    assertThat(entity.modified, is(not(entity.created)));
+    context.close();
+  }
+
+  @DynamoDBTable(tableName = "Entity")
+  class Entity {
+
+    @Id
+    Long id;
+    @CreatedDate
+    LocalDateTime created;
+    LocalDateTime modified;
+
+    @LastModifiedDate
+    public LocalDateTime getModified() {
+      return modified;
     }
-
-    @DynamoDBTable(tableName = "Entity")
-    class Entity {
-
-        @Id
-        Long id;
-        @CreatedDate
-        LocalDateTime created;
-        LocalDateTime modified;
-
-        @LastModifiedDate
-        public LocalDateTime getModified() {
-            return modified;
-        }
-    }
+  }
 }

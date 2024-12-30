@@ -1,17 +1,15 @@
 /**
  * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
  */
 package org.socialsignin.spring.data.dynamodb.mapping.event;
 
@@ -34,141 +32,139 @@ import static org.mockito.Mockito.*;
 @RunWith(MockitoJUnitRunner.class)
 public class AbstractDynamoDBEventListenerTest {
 
-    private User sampleEntity = new User();
-    @Mock
-    private PaginatedQueryList<User> sampleQueryList;
-    @Mock
-    private PaginatedScanList<User> sampleScanList;
+  private User sampleEntity = new User();
+  @Mock
+  private PaginatedQueryList<User> sampleQueryList;
+  @Mock
+  private PaginatedScanList<User> sampleScanList;
 
-    @Mock
-    private DynamoDBMappingEvent<User> brokenEvent;
+  @Mock
+  private DynamoDBMappingEvent<User> brokenEvent;
 
-    private AbstractDynamoDBEventListener<User> underTest;
+  private AbstractDynamoDBEventListener<User> underTest;
 
-    @Before
-    public void setUp() {
-        underTest = Mockito.spy(new AbstractDynamoDBEventListener<User>() {
-        });
+  @Before
+  public void setUp() {
+    underTest = Mockito.spy(new AbstractDynamoDBEventListener<User>() {});
 
-        List<User> queryList = new ArrayList<>();
-        queryList.add(sampleEntity);
-        when(sampleQueryList.stream()).thenReturn(queryList.stream());
-        when(sampleScanList.stream()).thenReturn(queryList.stream());
-    }
+    List<User> queryList = new ArrayList<>();
+    queryList.add(sampleEntity);
+    when(sampleQueryList.stream()).thenReturn(queryList.stream());
+    when(sampleScanList.stream()).thenReturn(queryList.stream());
+  }
 
-    @Test(expected = AssertionError.class)
-	public void testNullArgument() {
-		// This is impossible but let's be sure that it is covered
-		when(brokenEvent.getSource()).thenReturn(null);
+  @Test(expected = AssertionError.class)
+  public void testNullArgument() {
+    // This is impossible but let's be sure that it is covered
+    when(brokenEvent.getSource()).thenReturn(null);
 
-		underTest.onApplicationEvent(brokenEvent);
-	}
+    underTest.onApplicationEvent(brokenEvent);
+  }
 
-    @Test(expected = AssertionError.class)
-	public void testUnknownEvent() {
-		// Simulate an unknown event
-		when(brokenEvent.getSource()).thenReturn(new User());
+  @Test(expected = AssertionError.class)
+  public void testUnknownEvent() {
+    // Simulate an unknown event
+    when(brokenEvent.getSource()).thenReturn(new User());
 
-		underTest.onApplicationEvent(brokenEvent);
-	}
+    underTest.onApplicationEvent(brokenEvent);
+  }
 
-    @Test
-    public void testRawType() {
-        underTest = Mockito.spy(new AbstractDynamoDBEventListener<User>() {
-        });
+  @Test
+  public void testRawType() {
+    underTest = Mockito.spy(new AbstractDynamoDBEventListener<User>() {});
 
-        assertSame(User.class, underTest.getDomainClass());
-    }
+    assertSame(User.class, underTest.getDomainClass());
+  }
 
-    @Test
-    public void testAfterDelete() {
-        underTest.onApplicationEvent(new AfterDeleteEvent<>(sampleEntity));
+  @Test
+  public void testAfterDelete() {
+    underTest.onApplicationEvent(new AfterDeleteEvent<>(sampleEntity));
 
-        verify(underTest).onAfterDelete(sampleEntity);
-        verify(underTest, never()).onAfterLoad(any());
-        verify(underTest, never()).onAfterQuery(any());
-        verify(underTest, never()).onAfterSave(any());
-        verify(underTest, never()).onAfterScan(any());
-        verify(underTest, never()).onBeforeDelete(any());
-        verify(underTest, never()).onBeforeSave(any());
-    }
+    verify(underTest).onAfterDelete(sampleEntity);
+    verify(underTest, never()).onAfterLoad(any());
+    verify(underTest, never()).onAfterQuery(any());
+    verify(underTest, never()).onAfterSave(any());
+    verify(underTest, never()).onAfterScan(any());
+    verify(underTest, never()).onBeforeDelete(any());
+    verify(underTest, never()).onBeforeSave(any());
+  }
 
-    @Test
-    public void testAfterLoad() {
-        underTest.onApplicationEvent(new AfterLoadEvent<>(sampleEntity));
+  @Test
+  public void testAfterLoad() {
+    underTest.onApplicationEvent(new AfterLoadEvent<>(sampleEntity));
 
-        verify(underTest, never()).onAfterDelete(any());
-        verify(underTest).onAfterLoad(sampleEntity);
-        verify(underTest, never()).onAfterQuery(any());
-        verify(underTest, never()).onAfterSave(any());
-        verify(underTest, never()).onAfterScan(any());
-        verify(underTest, never()).onBeforeDelete(any());
-        verify(underTest, never()).onBeforeSave(any());
-    }
+    verify(underTest, never()).onAfterDelete(any());
+    verify(underTest).onAfterLoad(sampleEntity);
+    verify(underTest, never()).onAfterQuery(any());
+    verify(underTest, never()).onAfterSave(any());
+    verify(underTest, never()).onAfterScan(any());
+    verify(underTest, never()).onBeforeDelete(any());
+    verify(underTest, never()).onBeforeSave(any());
+  }
 
-    @Test
-    public void testAfterQuery() {
-        underTest.onApplicationEvent(new AfterQueryEvent<>(sampleQueryList));
+  @Test
+  public void testAfterQuery() {
+    underTest.onApplicationEvent(new AfterQueryEvent<>(sampleQueryList));
 
-        verify(underTest, never()).onAfterDelete(any());
-        verify(underTest, never()).onAfterLoad(any());
-        verify(underTest).onAfterQuery(sampleEntity);
-        verify(underTest, never()).onAfterSave(any());
-        verify(underTest, never()).onAfterScan(any());
-        verify(underTest, never()).onBeforeDelete(any());
-        verify(underTest, never()).onBeforeSave(any());
-    }
+    verify(underTest, never()).onAfterDelete(any());
+    verify(underTest, never()).onAfterLoad(any());
+    verify(underTest).onAfterQuery(sampleEntity);
+    verify(underTest, never()).onAfterSave(any());
+    verify(underTest, never()).onAfterScan(any());
+    verify(underTest, never()).onBeforeDelete(any());
+    verify(underTest, never()).onBeforeSave(any());
+  }
 
-    @Test
-    public void testAfterSave() {
-        underTest.onApplicationEvent(new AfterSaveEvent<>(sampleEntity));
+  @Test
+  public void testAfterSave() {
+    underTest.onApplicationEvent(new AfterSaveEvent<>(sampleEntity));
 
-        verify(underTest, never()).onAfterDelete(any());
-        verify(underTest, never()).onAfterLoad(any());
-        verify(underTest, never()).onAfterQuery(any());
-        verify(underTest).onAfterSave(sampleEntity);
-        verify(underTest, never()).onAfterScan(any());
-        verify(underTest, never()).onBeforeDelete(any());
-        verify(underTest, never()).onBeforeSave(any());
-    }
+    verify(underTest, never()).onAfterDelete(any());
+    verify(underTest, never()).onAfterLoad(any());
+    verify(underTest, never()).onAfterQuery(any());
+    verify(underTest).onAfterSave(sampleEntity);
+    verify(underTest, never()).onAfterScan(any());
+    verify(underTest, never()).onBeforeDelete(any());
+    verify(underTest, never()).onBeforeSave(any());
+  }
 
-    @Test
-    public void testAfterScan() {
-        underTest.onApplicationEvent(new AfterScanEvent<>(sampleScanList));
+  @Test
+  public void testAfterScan() {
+    underTest.onApplicationEvent(new AfterScanEvent<>(sampleScanList));
 
-        verify(underTest, never()).onAfterDelete(any());
-        verify(underTest, never()).onAfterLoad(any());
-        verify(underTest, never()).onAfterQuery(any());
-        verify(underTest, never()).onAfterSave(any());
-        verify(underTest).onAfterScan(sampleEntity);
-        verify(underTest, never()).onBeforeDelete(any());
-        verify(underTest, never()).onBeforeSave(any());
-    }
+    verify(underTest, never()).onAfterDelete(any());
+    verify(underTest, never()).onAfterLoad(any());
+    verify(underTest, never()).onAfterQuery(any());
+    verify(underTest, never()).onAfterSave(any());
+    verify(underTest).onAfterScan(sampleEntity);
+    verify(underTest, never()).onBeforeDelete(any());
+    verify(underTest, never()).onBeforeSave(any());
+  }
 
-    @Test
-    public void testBeforeDelete() {
-        underTest.onApplicationEvent(new BeforeDeleteEvent<>(sampleEntity));
+  @Test
+  public void testBeforeDelete() {
+    underTest.onApplicationEvent(new BeforeDeleteEvent<>(sampleEntity));
 
-        verify(underTest, never()).onAfterDelete(any());
-        verify(underTest, never()).onAfterLoad(any());
-        verify(underTest, never()).onAfterQuery(any());
-        verify(underTest, never()).onAfterSave(any());
-        verify(underTest, never()).onAfterScan(any());
-        verify(underTest).onBeforeDelete(sampleEntity);
-        verify(underTest, never()).onBeforeSave(any());
-    }
+    verify(underTest, never()).onAfterDelete(any());
+    verify(underTest, never()).onAfterLoad(any());
+    verify(underTest, never()).onAfterQuery(any());
+    verify(underTest, never()).onAfterSave(any());
+    verify(underTest, never()).onAfterScan(any());
+    verify(underTest).onBeforeDelete(sampleEntity);
+    verify(underTest, never()).onBeforeSave(any());
+  }
 
-    @Test
-    public void testBeforeSave() {
-        underTest.onApplicationEvent(new BeforeSaveEvent<>(sampleEntity));
+  @Test
+  public void testBeforeSave() {
+    underTest.onApplicationEvent(new BeforeSaveEvent<>(sampleEntity));
 
-        verify(underTest, never()).onAfterDelete(any());
-        verify(underTest, never()).onAfterLoad(any());
-        verify(underTest, never()).onAfterQuery(any());
-        verify(underTest, never()).onAfterSave(any());
-        verify(underTest, never()).onAfterScan(any());
-        verify(underTest, never()).onBeforeDelete(any());
-        verify(underTest).onBeforeSave(sampleEntity);
-    }
+    verify(underTest, never()).onAfterDelete(any());
+    verify(underTest, never()).onAfterLoad(any());
+    verify(underTest, never()).onAfterQuery(any());
+    verify(underTest, never()).onAfterSave(any());
+    verify(underTest, never()).onAfterScan(any());
+    verify(underTest, never()).onBeforeDelete(any());
+    verify(underTest).onBeforeSave(sampleEntity);
+  }
 
 }

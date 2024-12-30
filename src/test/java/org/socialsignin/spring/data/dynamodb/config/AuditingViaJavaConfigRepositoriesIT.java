@@ -1,17 +1,15 @@
 /**
  * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
  */
 package org.socialsignin.spring.data.dynamodb.config;
 
@@ -47,57 +45,56 @@ import static org.mockito.Mockito.doReturn;
  * @author Vito Limandibhrata
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { DynamoDBLocalResource.class,
-        AuditingViaJavaConfigRepositoriesIT.TestAppConfig.class })
-@TestPropertySource(properties = { "spring.data.dynamodb.entity2ddl.auto=create" })
+@ContextConfiguration(classes = {DynamoDBLocalResource.class,
+    AuditingViaJavaConfigRepositoriesIT.TestAppConfig.class})
+@TestPropertySource(properties = {"spring.data.dynamodb.entity2ddl.auto=create"})
 public class AuditingViaJavaConfigRepositoriesIT {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AuditingViaJavaConfigRepositoriesIT.class);
+  private static final Logger LOGGER =
+      LoggerFactory.getLogger(AuditingViaJavaConfigRepositoriesIT.class);
+  @Autowired
+  AuditableUserRepository auditableUserRepository;
+  @Autowired
+  AuditorAware<AuditableUser> auditorAware;
+  AuditableUser auditor;
 
-    @Configuration
-    @EnableDynamoDBAuditing(auditorAwareRef = "auditorProvider")
-    @EnableDynamoDBRepositories(mappingContextRef = "dynamoDBMappingContext", basePackages = "org.socialsignin.spring.data.dynamodb.domain.sample")
-    public static class TestAppConfig {
+  @Before
+  public void setUp() throws InterruptedException {
+    this.auditor = auditableUserRepository.save(new AuditableUser("auditor"));
+    assertThat(this.auditor, is(notNullValue()));
 
-        @SuppressWarnings("unchecked")
-        @Bean(name = "auditorProvider")
-        public AuditorAware<AuditableUser> auditorProvider() {
-            LOGGER.info("mocked auditorProvider provided");
-            return Mockito.mock(AuditorAware.class);
-        }
+    Optional<AuditableUser> auditorUser = auditableUserRepository.findById(this.auditor.getId());
+    assertTrue(auditorUser.isPresent());
+
+  }
+
+  @Test
+  public void basicAuditing() {
+
+    doReturn(Optional.of(this.auditor.getId())).when(this.auditorAware).getCurrentAuditor();
+
+    AuditableUser savedUser = auditableUserRepository.save(new AuditableUser("user"));
+
+    assertThat(savedUser.getCreatedAt(), is(notNullValue()));
+    assertThat(savedUser.getCreatedBy(), is(this.auditor.getId()));
+
+    assertThat(savedUser.getLastModifiedAt(), is(notNullValue()));
+    assertThat(savedUser.getLastModifiedBy(), is(this.auditor.getId()));
+
+  }
+
+  @Configuration
+  @EnableDynamoDBAuditing(auditorAwareRef = "auditorProvider")
+  @EnableDynamoDBRepositories(mappingContextRef = "dynamoDBMappingContext",
+      basePackages = "org.socialsignin.spring.data.dynamodb.domain.sample")
+  public static class TestAppConfig {
+
+    @SuppressWarnings("unchecked")
+    @Bean(name = "auditorProvider")
+    public AuditorAware<AuditableUser> auditorProvider() {
+      LOGGER.info("mocked auditorProvider provided");
+      return Mockito.mock(AuditorAware.class);
     }
-
-    @Autowired
-    AuditableUserRepository auditableUserRepository;
-
-    @Autowired
-    AuditorAware<AuditableUser> auditorAware;
-
-    AuditableUser auditor;
-
-    @Before
-    public void setUp() throws InterruptedException {
-        this.auditor = auditableUserRepository.save(new AuditableUser("auditor"));
-        assertThat(this.auditor, is(notNullValue()));
-
-        Optional<AuditableUser> auditorUser = auditableUserRepository.findById(this.auditor.getId());
-        assertTrue(auditorUser.isPresent());
-
-    }
-
-    @Test
-    public void basicAuditing() {
-
-        doReturn(Optional.of(this.auditor.getId())).when(this.auditorAware).getCurrentAuditor();
-
-        AuditableUser savedUser = auditableUserRepository.save(new AuditableUser("user"));
-
-        assertThat(savedUser.getCreatedAt(), is(notNullValue()));
-        assertThat(savedUser.getCreatedBy(), is(this.auditor.getId()));
-
-        assertThat(savedUser.getLastModifiedAt(), is(notNullValue()));
-        assertThat(savedUser.getLastModifiedBy(), is(this.auditor.getId()));
-
-    }
+  }
 
 }

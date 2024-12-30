@@ -1,24 +1,31 @@
-[![Build Status](https://travis-ci.org/prasanna0586/spring-data-dynamodb.svg?branch=develop)](https://travis-ci.org/prasanna0586/spring-data-dynamodb) 
+[![Build Status](https://travis-ci.org/prasanna0586/spring-data-dynamodb.svg?branch=develop)](https://travis-ci.org/prasanna0586/spring-data-dynamodb)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.prasanna0586/spring-data-dynamodb/badge.svg)](https://search.maven.org/search?q=g:io.github.prasanna0586)
 
 # Spring  Data DynamoDB #
 
 <img style="float:left; margin: 0px 15px 15px 0px;" src="/assets/images/dynamodb.svg" />
 
-The primary goal of the [Spring® Data](https://projects.spring.io/spring-data/) project is to make it easier to build Spring-powered applications that use data access technologies.
+The primary goal of the [Spring® Data](https://projects.spring.io/spring-data/) project is to make it easier to build
+Spring-powered applications that use data access technologies.
 
-This module deals with enhanced support for a data access layer built on [AWS DynamoDB](https://aws.amazon.com/dynamodb/).
+This module deals with enhanced support for a data access layer built
+on [AWS DynamoDB](https://aws.amazon.com/dynamodb/).
 
 Technical infos can be found on the [project page](https://derjust.github.io/spring-data-dynamodb/).
 
 ## Supported Features ##
 
-* Implementation of [CRUD methods for](https://docs.spring.io/spring-data/commons/docs/current/reference/html/#repositories.definition) DynamoDB Entities
-* Dynamic query generation from [query method names](https://docs.spring.io/spring-data/commons/docs/current/reference/html/#repositories.query-methods.query-creation) ([Supported keywords and comparison operators](https://github.com/derjust/spring-data-dynamodb/wiki/Supported-Spring-Data-Comparison-Operators))
+* Implementation
+  of [CRUD methods for](https://docs.spring.io/spring-data/commons/docs/current/reference/html/#repositories.definition)
+  DynamoDB Entities
+* Dynamic query generation
+  from [query method names](https://docs.spring.io/spring-data/commons/docs/current/reference/html/#repositories.query-methods.query-creation) ([Supported keywords and comparison operators](https://github.com/derjust/spring-data-dynamodb/wiki/Supported-Spring-Data-Comparison-Operators))
 * [Projections](https://github.com/derjust/spring-data-dynamodb/wiki/Projections)
-* Possibility to integrate [custom repository code](https://github.com/derjust/spring-data-dynamodb/wiki/Custom-repository-implementations)
+* Possibility to
+  integrate [custom repository code](https://github.com/derjust/spring-data-dynamodb/wiki/Custom-repository-implementations)
 * Easy Spring annotation based integration
-* [REST support](https://github.com/derjust/spring-data-dynamodb-examples/blob/master/README-rest.md) via [spring-data-rest](https://projects.spring.io/spring-data-rest/)
+* [REST support](https://github.com/derjust/spring-data-dynamodb-examples/blob/master/README-rest.md)
+  via [spring-data-rest](https://projects.spring.io/spring-data-rest/)
 
 ## Demo application ##
 
@@ -37,9 +44,12 @@ Download the JAR though [Maven Central](https://mvnrepository.com/artifact/io.gi
 </dependency>
 ```
 
-Setup DynamoDB configuration as well as enabling Spring-Data DynamoDB repository support via Annotation ([XML-based configuration](wiki/Quick-Start---XML-based-configuration))
+Setup DynamoDB configuration as well as enabling Spring-Data DynamoDB repository support via
+Annotation ([XML-based configuration](wiki/Quick-Start---XML-based-configuration))
 
-Create a DynamoDB entity [User](https://github.com/derjust/spring-data-dynamodb-examples/blob/master/src/main/java/com/github/derjust/spring_data_dynamodb_examples/simple/User.java) for this table:
+Create a DynamoDB
+entity [User](https://github.com/derjust/spring-data-dynamodb-examples/blob/master/src/main/java/com/github/derjust/spring_data_dynamodb_examples/simple/User.java)
+for this table:
 
 ```java
 @DynamoDBTable(tableName = "User")
@@ -78,7 +88,8 @@ public class User {
 }
 ```
 
-Create a CRUD repository interface [UserRepository](https://github.com/derjust/spring-data-dynamodb-examples/blob/master/src/main/java/com/github/derjust/spring_data_dynamodb_examples/simple/UserRepository.java):
+Create a CRUD repository
+interface [UserRepository](https://github.com/derjust/spring-data-dynamodb-examples/blob/master/src/main/java/com/github/derjust/spring_data_dynamodb_examples/simple/UserRepository.java):
 
 ```java
 @EnableScan
@@ -101,7 +112,9 @@ public interface PagingUserRepository extends PagingAndSortingRepository<User, S
 }
 ```
 
-Create the configuration class [DynamoDBConfig](https://github.com/derjust/spring-data-dynamodb-examples/blob/master/src/test/java/com/github/derjust/spring_data_dynamodb_examples/simple/UserRepositoryIT.java#L61):
+Create the configuration
+class [DynamoDBConfig](https://github.com/derjust/spring-data-dynamodb-examples/blob/master/src/test/java/com/github/derjust/spring_data_dynamodb_examples/simple/UserRepositoryIT.java#L61):
+
 ```java
 @Configuration
 @EnableDynamoDBRepositories(basePackageClasses = UserRepository.class)
@@ -140,20 +153,24 @@ public static class DynamoDBConfig {
 }
 ```
 
-And finally write a test client [UserRepositoryIT](https://github.com/derjust/spring-data-dynamodb-examples/blob/master/src/test/java/com/github/derjust/spring_data_dynamodb_examples/simple/UserRepositoryIT.java) or start calling it from your existing Spring code.
+And finally write a test
+client [UserRepositoryIT](https://github.com/derjust/spring-data-dynamodb-examples/blob/master/src/test/java/com/github/derjust/spring_data_dynamodb_examples/simple/UserRepositoryIT.java)
+or start calling it from your existing Spring code.
 
-
-The full source code is available at [spring-data-dynamodb-examples' simple example](https://github.com/derjust/spring-data-dynamodb-examples/blob/master/README-simple.md)
+The full source code is available
+at [spring-data-dynamodb-examples' simple example](https://github.com/derjust/spring-data-dynamodb-examples/blob/master/README-simple.md)
 
 ## More
-More sample code can be found in the [spring-data-dynamodb-examples](https://github.com/derjust/spring-data-dynamodb-examples) project.
+
+More sample code can be found in
+the [spring-data-dynamodb-examples](https://github.com/derjust/spring-data-dynamodb-examples) project.
 
 Advanced topics can be found in the [wiki](https://github.com/derjust/spring-data-dynamodb/wiki).
 
-
 ## Version & Spring Framework compatibility ##
 
-The major and minor number of this library refers to the compatible Spring framework version. The build number is used as specified by SEMVER.
+The major and minor number of this library refers to the compatible Spring framework version. The build number is used
+as specified by SEMVER.
 
 API changes will follow SEMVER and loosely the Spring Framework releases.
 
@@ -171,16 +188,24 @@ API changes will follow SEMVER and loosely the Spring Framework releases.
 
 `spring-data-dynamodb` depends directly on `spring-data` as also `spring-tx`.
 
-`compile` and `runtime` dependencies are kept to a minimum to allow easy integration, for example into 
+`compile` and `runtime` dependencies are kept to a minimum to allow easy integration, for example into
 Spring-Boot projects.
 
 ## History
+
 The code base has some history already in it - let's clarify it a bit:
-* The code base was established under [github.com/michaellavelle/spring-data-dynamodb)](https://github.com/michaellavelle/spring-data-dynamodb)
-* It was forked and further maintained under [github.com/derjust/spring-data-dynamodb)](https://github.com/derjust/spring-data-dynamodb) 
-    * Available in Maven Central under [`com.github.derjust:spring-data-dynamodb`](http://central.maven.org/maven2/com/github/derjust/spring-data-dynamodb/)
-* It was forked and even further maintained under [github.com/boostchicken/spring-data-dynamodb)](https://github.com/boostchicken/spring-data-dynamodb) 
-    * Available in Maven Central under [`io.github.boostchicken:spring-data-dynamodb`](https://repo1.maven.org/maven2/io/github/boostchicken/spring-data-dynamodb/)
+
+* The code base was established
+  under [github.com/michaellavelle/spring-data-dynamodb)](https://github.com/michaellavelle/spring-data-dynamodb)
+* It was forked and further maintained
+  under [github.com/derjust/spring-data-dynamodb)](https://github.com/derjust/spring-data-dynamodb)
+    * Available in Maven Central under [
+      `com.github.derjust:spring-data-dynamodb`](http://central.maven.org/maven2/com/github/derjust/spring-data-dynamodb/)
+* It was forked and even further maintained
+  under [github.com/boostchicken/spring-data-dynamodb)](https://github.com/boostchicken/spring-data-dynamodb)
+    * Available in Maven Central under [
+      `io.github.boostchicken:spring-data-dynamodb`](https://repo1.maven.org/maven2/io/github/boostchicken/spring-data-dynamodb/)
 
 The Java package name/XSD namespace never changed from `org.socialsignin.spring.data.dynamodb`.
-But the XSD is now also available at [`https://boostchicken.github.io/spring-data-dynamodb/spring-dynamodb-1.0.xsd`](https://boostchicken.github.io/spring-data-dynamodb/spring-dynamodb-1.0.xsd).
+But the XSD is now also available at [
+`https://boostchicken.github.io/spring-data-dynamodb/spring-dynamodb-1.0.xsd`](https://boostchicken.github.io/spring-data-dynamodb/spring-dynamodb-1.0.xsd).

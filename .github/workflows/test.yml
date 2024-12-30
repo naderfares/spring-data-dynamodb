@@ -2,10 +2,10 @@ name: "Build With Tests"
 
 on:
   push:
-    branches: [develop, master]
+    branches: [ develop, master ]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [develop]
+    branches: [ develop ]
   schedule:
     - cron: '0 18 * * 0'
 

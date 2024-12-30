@@ -1,17 +1,15 @@
 /**
  * Copyright © 2018 spring-data-dynamodb (https://github.com/naderfares/spring-data-dynamodb)
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
  */
 package org.socialsignin.spring.data.dynamodb.core;
 
@@ -27,43 +25,41 @@ import java.util.Map;
  */
 public interface DynamoDBOperations {
 
-    <T> int count(Class<T> domainClass, DynamoDBQueryExpression<T> queryExpression);
+  <T> int count(Class<T> domainClass, DynamoDBQueryExpression<T> queryExpression);
 
-    <T> int count(Class<T> domainClass, DynamoDBScanExpression scanExpression);
+  <T> int count(Class<T> domainClass, DynamoDBScanExpression scanExpression);
 
-    <T> int count(Class<T> clazz, QueryRequest mutableQueryRequest);
+  <T> int count(Class<T> clazz, QueryRequest mutableQueryRequest);
 
-    <T> PaginatedQueryList<T> query(Class<T> clazz, QueryRequest queryRequest);
+  <T> PaginatedQueryList<T> query(Class<T> clazz, QueryRequest queryRequest);
 
-    <T> PaginatedQueryList<T> query(Class<T> domainClass, DynamoDBQueryExpression<T> queryExpression);
+  <T> PaginatedQueryList<T> query(Class<T> domainClass, DynamoDBQueryExpression<T> queryExpression);
 
-    <T> PaginatedScanList<T> scan(Class<T> domainClass, DynamoDBScanExpression scanExpression);
+  <T> PaginatedScanList<T> scan(Class<T> domainClass, DynamoDBScanExpression scanExpression);
 
-    <T> T load(Class<T> domainClass, Object hashKey, Object rangeKey);
+  <T> T load(Class<T> domainClass, Object hashKey, Object rangeKey);
 
-    <T> T load(Class<T> domainClass, Object hashKey);
+  <T> T load(Class<T> domainClass, Object hashKey);
 
-    <T> List<T> batchLoad(Map<Class<?>, List<KeyPair>> itemsToGet);
+  <T> List<T> batchLoad(Map<Class<?>, List<KeyPair>> itemsToGet);
 
-    <T> T save(T entity);
+  <T> T save(T entity);
 
-    List<FailedBatch> batchSave(Iterable<?> entities);
+  List<FailedBatch> batchSave(Iterable<?> entities);
 
-    <T> T delete(T entity);
+  <T> T delete(T entity);
 
-    List<FailedBatch> batchDelete(Iterable<?> entities);
+  List<FailedBatch> batchDelete(Iterable<?> entities);
 
-    <T> String getOverriddenTableName(Class<T> domainClass, String tableName);
+  <T> String getOverriddenTableName(Class<T> domainClass, String tableName);
 
-    /**
-     * Provides access to the DynamoDB mapper table model of the underlying domain type.
-     *
-     * @param <T>
-     *            The type of the domain type itself
-     * @param domainClass
-     *            A domain type
-     *
-     * @return Corresponding DynamoDB table model
-     */
-    <T> DynamoDBMapperTableModel<T> getTableModel(Class<T> domainClass);
+  /**
+   * Provides access to the DynamoDB mapper table model of the underlying domain type.
+   *
+   * @param <T> The type of the domain type itself
+   * @param domainClass A domain type
+   *
+   * @return Corresponding DynamoDB table model
+   */
+  <T> DynamoDBMapperTableModel<T> getTableModel(Class<T> domainClass);
 }
