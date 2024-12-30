@@ -31,9 +31,9 @@ Download the JAR though [Maven Central](https://mvnrepository.com/artifact/io.gi
 
 ```xml
 <dependency>
-  <groupId>io.github.prasanna0586</groupId>
+  <groupId>io.github.naderfares</groupId>
   <artifactId>spring-data-dynamodb</artifactId>
-  <version>6.0.3</version>
+  <version>6.0.4</version>
 </dependency>
 ```
 
