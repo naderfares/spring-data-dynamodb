@@ -45,7 +45,7 @@ Download the JAR though [Maven Central](https://mvnrepository.com/artifact/io.gi
 ```
 
 Setup DynamoDB configuration as well as enabling Spring-Data DynamoDB repository support via
-Annotation ([XML-based configuration](wiki/Quick-Start---XML-based-configuration))
+Annotation ([XML-based configuration](docs/Quick-Start---XML-based-configuration.md))
 
 Create a DynamoDB
 entity [User](https://github.com/derjust/spring-data-dynamodb-examples/blob/master/src/main/java/com/github/derjust/spring_data_dynamodb_examples/simple/User.java)

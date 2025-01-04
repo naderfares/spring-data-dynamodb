@@ -17,3 +17,5 @@ release.properties
 .checkstyle
 
 .DS_Store
+docs/
+tmp/
