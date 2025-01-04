@@ -137,19 +137,6 @@ public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID>
     }
   }
 
-  private static AttributeValue getAttributeValue(String value) {
-    AttributeValue attribute = new AttributeValue();
-    if (BooleanUtils.toBooleanObject(value) != null) {
-      attribute.withBOOL(BooleanUtils.toBoolean(value));
-    } else if (NumberUtils.isCreatable(value)) {
-      attribute.withN(value);
-    } else {
-
-      attribute.withS(value);
-    }
-    return attribute;
-  }
-
   public DynamoDBQueryExpression<T> buildQueryExpression() {
     DynamoDBQueryExpression<T> queryExpression = new DynamoDBQueryExpression<>();
     if (isHashKeySpecified()) {
@@ -235,6 +222,18 @@ public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID>
       }
     }
     return queryExpression;
+  }
+
+  private static AttributeValue getAttributeValue(String value) {
+    AttributeValue attribute = new AttributeValue();
+    if (BooleanUtils.toBooleanObject(value) != null) {
+      attribute.withBOOL(BooleanUtils.toBoolean(value));
+    } else if (NumberUtils.isCreatable(value)) {
+      attribute.withN(value);
+    } else {
+      attribute.withS(value);
+    }
+    return attribute;
   }
 
   protected List<Condition> getRangeKeyConditions() {

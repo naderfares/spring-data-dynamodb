@@ -18,6 +18,8 @@ package org.socialsignin.spring.data.dynamodb.repository.query;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperTableModel;
 import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
 import org.socialsignin.spring.data.dynamodb.core.DynamoDBOperations;
+import org.socialsignin.spring.data.dynamodb.marshaller.Date2IsoDynamoDBMarshaller;
+import org.socialsignin.spring.data.dynamodb.marshaller.Instant2IsoDynamoDBMarshaller;
 import org.socialsignin.spring.data.dynamodb.query.Query;
 import org.socialsignin.spring.data.dynamodb.repository.ExpressionAttribute;
 import org.socialsignin.spring.data.dynamodb.repository.QueryConstants;
@@ -36,6 +38,7 @@ import org.springframework.util.ClassUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
+import java.time.Instant;
 import java.util.*;
 
 /**
@@ -102,7 +105,7 @@ public abstract class AbstractDynamoDBQueryCreator<T, ID, R>
           for (Parameter p : ((ParametersParameterAccessor) parameterAccessor).getParameters()) {
             if (p.getName().isPresent() && p.getName().get().equals(value.parameterName())) {
               mappedExpressionValues.put(value.parameterName(),
-                  String.valueOf(parameterAccessor.getBindableValue(p.getIndex())));
+                  parseToString(parameterAccessor.getBindableValue(p.getIndex())));
             }
           }
         }
@@ -111,6 +114,16 @@ public abstract class AbstractDynamoDBQueryCreator<T, ID, R>
       this.expressionAttributeValues = null;
     }
     this.dynamoDBOperations = dynamoDBOperations;
+  }
+
+  private String parseToString(Object value) {
+    if (value instanceof Date) {
+      return new Date2IsoDynamoDBMarshaller().marshall((Date) value);
+    } else if (value instanceof Instant) {
+      return new Instant2IsoDynamoDBMarshaller().marshall((Instant) value);
+    } else {
+      return value.toString();
+    }
   }
 
   @Override
