@@ -391,6 +391,49 @@ public class CRUDOperationsIT {
 
   }
 
+  @Test
+  public void testFilterWithDateBetween() {
+    // Prepare
+    Date date1 = Date.from(Instant.now().minusSeconds(60));
+    Date date2 = Date.from(Instant.now().minusSeconds(30));
+    Date date3 = Date.from(Instant.now().minusSeconds(15));
+    Date date4 = Date.from(Instant.now().minusSeconds(1));
+    String postCode = "1234";
+
+    User u1 = new User();
+    String name1 = "name1" + ThreadLocalRandom.current().nextLong();
+    u1.setId("u1");
+    u1.setName(name1);
+    u1.setPostCode(postCode);
+    u1.setNumberOfPlaylists(1);
+    u1.setJoinDate(date1);
+
+    User u2 = new User();
+    String name2 = "name1" + ThreadLocalRandom.current().nextLong();
+    u2.setId("u2");
+    u2.setName(name2);
+    u2.setPostCode(postCode);
+    u2.setNumberOfPlaylists(2);
+    u2.setJoinDate(date2);
+
+    User u3 = new User();
+    String name3 = "name1" + ThreadLocalRandom.current().nextLong();
+    u3.setId("u3");
+    u3.setName(name3);
+    u3.setPostCode(postCode);
+    u3.setNumberOfPlaylists(3);
+    u3.setJoinDate(date4);
+
+    userPaginationRepository.saveAll(Arrays.asList(u1, u2, u3));
+
+    Page<User> all = userPaginationRepository.findByPostCode(postCode, Pageable.unpaged());
+    assertEquals(3, all.getNumberOfElements());
+
+    Page<User> validInterval =
+        userPaginationRepository.findByPostCode(postCode, date1, date3, Pageable.unpaged());
+    assertEquals(2, validInterval.getNumberOfElements());
+  }
+
   @SafeVarargs
   private final <E> Set<E> setOf(E... values) {
     Set<E> result = new HashSet<>();

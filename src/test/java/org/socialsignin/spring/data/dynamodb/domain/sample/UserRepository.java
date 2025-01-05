@@ -23,6 +23,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
