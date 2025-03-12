@@ -19,8 +19,6 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperTableModel;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.amazonaws.services.dynamodbv2.model.*;
-import org.apache.commons.lang3.BooleanUtils;
-import org.apache.commons.lang3.math.NumberUtils;
 import org.socialsignin.spring.data.dynamodb.core.DynamoDBOperations;
 import org.socialsignin.spring.data.dynamodb.query.*;
 import org.socialsignin.spring.data.dynamodb.repository.ExpressionAttribute;
@@ -214,26 +212,13 @@ public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID>
               } else {
                 _value = value.value();
               }
-              AttributeValue attribute = getAttributeValue(_value);
-              queryExpression.addExpressionAttributeValuesEntry(value.key(), attribute);
+              queryExpression.addExpressionAttributeValuesEntry(value.key(), buildAttributeValue(_value));
             }
           }
         }
       }
     }
     return queryExpression;
-  }
-
-  private static AttributeValue getAttributeValue(String value) {
-    AttributeValue attribute = new AttributeValue();
-    if (BooleanUtils.toBooleanObject(value) != null) {
-      attribute.withBOOL(BooleanUtils.toBoolean(value));
-    } else if (NumberUtils.isCreatable(value)) {
-      attribute.withN(value);
-    } else {
-      attribute.withS(value);
-    }
-    return attribute;
   }
 
   protected List<Condition> getRangeKeyConditions() {
