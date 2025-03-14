@@ -18,7 +18,10 @@ package org.socialsignin.spring.data.dynamodb.repository.query;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperTableModel;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
-import com.amazonaws.services.dynamodbv2.model.*;
+import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
+import com.amazonaws.services.dynamodbv2.model.Condition;
+import com.amazonaws.services.dynamodbv2.model.QueryRequest;
+import com.amazonaws.services.dynamodbv2.model.Select;
 import org.socialsignin.spring.data.dynamodb.core.DynamoDBOperations;
 import org.socialsignin.spring.data.dynamodb.query.*;
 import org.socialsignin.spring.data.dynamodb.repository.ExpressionAttribute;
@@ -212,7 +215,8 @@ public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID>
               } else {
                 _value = value.value();
               }
-              queryExpression.addExpressionAttributeValuesEntry(value.key(), buildAttributeValue(_value));
+              queryExpression.addExpressionAttributeValuesEntry(value.key(),
+                  buildAttributeValue(_value));
             }
           }
         }

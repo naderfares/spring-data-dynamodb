@@ -162,7 +162,8 @@ public abstract class AbstractDynamoDBQueryCriteria<T, ID>
                 queryRequest.addExpressionAttributeValuesEntry(value.key(),
                     buildAttributeValue(mappedExpressionValues.get(value.parameterName())));
               } else {
-                queryRequest.addExpressionAttributeValuesEntry(value.key(), buildAttributeValue(value.value()));
+                queryRequest.addExpressionAttributeValuesEntry(value.key(),
+                    buildAttributeValue(value.value()));
               }
             }
           }
