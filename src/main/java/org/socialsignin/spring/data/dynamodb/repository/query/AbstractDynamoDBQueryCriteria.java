@@ -17,6 +17,8 @@ package org.socialsignin.spring.data.dynamodb.repository.query;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.*;
 import com.amazonaws.services.dynamodbv2.model.*;
+import org.apache.commons.lang3.BooleanUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.socialsignin.spring.data.dynamodb.core.DynamoDBOperations;
 import org.socialsignin.spring.data.dynamodb.marshaller.Date2IsoDynamoDBMarshaller;
 import org.socialsignin.spring.data.dynamodb.marshaller.Instant2IsoDynamoDBMarshaller;
@@ -158,10 +160,9 @@ public abstract class AbstractDynamoDBQueryCriteria<T, ID>
             if (!StringUtils.isEmpty(value.key())) {
               if (mappedExpressionValues.containsKey(value.parameterName())) {
                 queryRequest.addExpressionAttributeValuesEntry(value.key(),
-                    new AttributeValue(mappedExpressionValues.get(value.parameterName())));
+                    buildAttributeValue(mappedExpressionValues.get(value.parameterName())));
               } else {
-                queryRequest.addExpressionAttributeValuesEntry(value.key(),
-                    new AttributeValue(value.value()));
+                queryRequest.addExpressionAttributeValuesEntry(value.key(), buildAttributeValue(value.value()));
               }
             }
           }
@@ -169,6 +170,18 @@ public abstract class AbstractDynamoDBQueryCriteria<T, ID>
       }
     }
     return queryRequest;
+  }
+
+  AttributeValue buildAttributeValue(String value) {
+    AttributeValue attribute = new AttributeValue();
+    if (BooleanUtils.toBooleanObject(value) != null) {
+      attribute.withBOOL(BooleanUtils.toBoolean(value));
+    } else if (NumberUtils.isCreatable(value)) {
+      attribute.withN(value);
+    } else {
+      attribute.withS(value);
+    }
+    return attribute;
   }
 
   protected void applyConsistentReads(QueryRequest queryRequest) {
