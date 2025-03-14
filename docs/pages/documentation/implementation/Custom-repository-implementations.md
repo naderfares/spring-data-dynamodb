@@ -1,3 +1,9 @@
+---
+layout: page
+parent: Implementation
+title: Custom repository implementations
+---
+
 # Overview
 
 Spring-Data provides hooks to add customized methods to a repository bean to allow for any kind of custom handling that
@@ -15,7 +21,7 @@ First we need to declare the custom methods that needs to be implemented:
 ```java
 public interface DeviceValueAdditionRepository {
 
-    String fancyCustomMethod();
+  String fancyCustomMethod();
 }
 ```
 
@@ -25,12 +31,12 @@ Next add the 'custom interface' to the regular interface (the one which is imple
 Everything that applies to regular DynamoDB repositories is still true & valid here.
 
 ```java
-@EnableScan
-public interface DeviceValueRepository 
-       extends CrudRepository<DeviceValue, DeviceValueKey>,
-               DeviceValueAdditionRepository {
 
-    List<DeviceValue> findAll();
+@EnableScan
+public interface DeviceValueRepository
+    extends CrudRepository<DeviceValue, DeviceValueKey>, DeviceValueAdditionRepository {
+
+  List<DeviceValue> findAll();
 }
 ```
 
@@ -44,21 +50,21 @@ It is important to name the class implementing the custom interface the same as 
 // https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.single-repository-behavior
 public class DeviceValueRepositoryImpl implements DeviceValueAdditionRepository {
 
-    // Inject everything you want as this is created like a normal bean
-    @Autowired
-    DynamoDBTemplate dynamoDBTemplate;
+  // Inject everything you want as this is created like a normal bean
+  @Autowired
+  DynamoDBTemplate dynamoDBTemplate;
 
-    @Override
-    public String fancyCustomMethod() {
-        // custom code here
+  @Override
+  public String fancyCustomMethod() {
+    // custom code here
 
-        DeviceValue dv = dynamoDBTemplate.load(DeviceValue.class, "42");
-        if (dv == null) {
-            return "Not found";
-        } else {
-            return dv.getTag();
-        }
+    DeviceValue dv = dynamoDBTemplate.load(DeviceValue.class, "42");
+    if (dv == null) {
+      return "Not found";
+    } else {
+      return dv.getTag();
     }
+  }
 }
 ``` 
 
@@ -67,16 +73,17 @@ public class DeviceValueRepositoryImpl implements DeviceValueAdditionRepository 
 Afterwards the new, extended repository can be used as any other repository:
 
 ```java
+
 @Autowired
 private DeviceValueRepository repository;
-	
+
 public void callingMethod() {
 
-    // Call a standard method from the repository
-    repository.findAll();
+  // Call a standard method from the repository
+  repository.findAll();
 
-    // Call the custom-implemented method 
-    repository.fancyCustomMethod();
+  // Call the custom-implemented method 
+  repository.fancyCustomMethod();
 }
 ```
 

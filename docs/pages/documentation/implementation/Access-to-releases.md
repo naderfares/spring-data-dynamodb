@@ -1,3 +1,9 @@
+---
+layout: page
+title: Access to releases
+parent: Implementation
+---
+
 Regular releases are available
 via [Maven Central](http://mvnrepository.com/artifact/com.github.derjust/spring-data-dynamodb) and should not require
 any additional setup.
@@ -16,13 +22,18 @@ The _quickest_ way is to add to the `pom.xml`
 Add to `pom.xml`
 
 ```xml
+
 <repositories>
-  <repository>
-    <id>snapshots-repo</id>
-    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    <releases><enabled>false</enabled></releases>
-    <snapshots><enabled>true</enabled></snapshots>
-  </repository>
+    <repository>
+        <id>snapshots-repo</id>
+        <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        <releases>
+            <enabled>false</enabled>
+        </releases>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
 </repositories>
 ```
 

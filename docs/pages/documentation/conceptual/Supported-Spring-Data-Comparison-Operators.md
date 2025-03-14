@@ -1,3 +1,9 @@
+---
+title: Supported Spring Data Comparison Operators
+parent: Conceptual
+layout: page
+---
+
 Spring-data-dynamodb supports both findBy and queryBy repository methods in the same way:
 
 1. It tries to build a DynamoDB QueryRequest, but is only able to do so if all properties in the method name are one of

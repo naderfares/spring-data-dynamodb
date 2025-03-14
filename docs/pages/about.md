@@ -17,17 +17,18 @@ on [AWS DynamoDB](https://aws.amazon.com/dynamodb/).
 
 Technical infos can be found on the [project page](https://naderfares.github.io/spring-data-dynamodb/).
 
-
 ## Quick Start ##
 
 Download the JAR though [Maven Central](https://mvnrepository.com/artifact/io.github.naderfares/spring-data-dynamodb)
 
 Add the following to your `pom.xml`:
+
 ```xml
+
 <dependency>
-  <groupId>io.github.naderfares</groupId>
-  <artifactId>spring-data-dynamodb</artifactId>
-  <version>6.0.9</version>
+    <groupId>io.github.naderfares</groupId>
+    <artifactId>spring-data-dynamodb</artifactId>
+    <version>6.0.9</version>
 </dependency>
 ```
 
@@ -62,27 +63,28 @@ API changes will follow SEMVER and loosely the Spring Framework releases.
 Spring-Boot projects.
 
 ## History
+
 The code base has some history already in it - let's clarify it a bit:
 
 * The code base was established
   under [github.com/michaellavelle/spring-data-dynamodb)](https://github.com/michaellavelle/spring-data-dynamodb)
 * It was forked and further maintained
   under [github.com/derjust/spring-data-dynamodb)](https://github.com/derjust/spring-data-dynamodb)
-  * Available in Maven Central under [
-    `com.github.derjust:spring-data-dynamodb`](http://central.maven.org/maven2/com/github/derjust/spring-data-dynamodb/)
+    * Available in Maven Central under [
+      `com.github.derjust:spring-data-dynamodb`](http://central.maven.org/maven2/com/github/derjust/spring-data-dynamodb/)
 * It was forked and even further maintained
   under [github.com/boostchicken/spring-data-dynamodb)](https://github.com/boostchicken/spring-data-dynamodb)
-  * Available in Maven Central under [
-    `io.github.boostchicken:spring-data-dynamodb`](https://repo1.maven.org/maven2/io/github/boostchicken/spring-data-dynamodb/)
+    * Available in Maven Central under [
+      `io.github.boostchicken:spring-data-dynamodb`](https://repo1.maven.org/maven2/io/github/boostchicken/spring-data-dynamodb/)
 * It was forked and even further maintained
   under [github.com/boostchicken/spring-data-dynamodb)](https://github.com/boostchicken/spring-data-dynamodb)
-  * Available in Maven Central under [
-    `io.github.boostchicken:spring-data-dynamodb`](https://repo1.maven.org/maven2/io/github/boostchicken/spring-data-dynamodb/)
+    * Available in Maven Central under [
+      `io.github.boostchicken:spring-data-dynamodb`](https://repo1.maven.org/maven2/io/github/boostchicken/spring-data-dynamodb/)
 * It was forked and even further maintained
   under [github.com/prasanna0586/spring-data-dynamodb)](https://github.com/prasanna0586/spring-data-dynamodb)
-  * Available in Maven Central under [
-    `io.github.prasanna0586:spring-data-dynamodb`](https://repo1.maven.org/maven2/io/github/prasanna0586/spring-data-dynamodb/)
+    * Available in Maven Central under [
+      `io.github.prasanna0586:spring-data-dynamodb`](https://repo1.maven.org/maven2/io/github/prasanna0586/spring-data-dynamodb/)
 * It was forked and even further maintained
   under [github.com/naderfares/spring-data-dynamodb)](https://github.com/naderfares/spring-data-dynamodb)
-  * Available in Maven Central under [
-    `io.github.naderfares:spring-data-dynamodb`](https://repo1.maven.org/maven2/io/github/naderfares/spring-data-dynamodb/)
+    * Available in Maven Central under [
+      `io.github.naderfares:spring-data-dynamodb`](https://repo1.maven.org/maven2/io/github/naderfares/spring-data-dynamodb/)

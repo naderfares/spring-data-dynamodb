@@ -1,3 +1,9 @@
+---
+layout: page
+parent: Operational
+title: Spring Data REST
+---
+
 ## Introduction
 
 `spring-data-dynamodb` is compatible with [Spring Data REST](https://projects.spring.io/spring-data-rest/).

@@ -1,3 +1,9 @@
+---
+layout: page
+parent: Implementation
+title: Quick Start - XML based configuration
+---
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"

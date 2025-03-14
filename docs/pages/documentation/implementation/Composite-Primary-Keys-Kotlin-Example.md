@@ -1,3 +1,9 @@
+---
+layout: page
+parent: Implementation
+title: Composite Primary Keys Kotlin Example
+---
+
 # Overview
 
 This example demonstrates how to model DynamoDB HASH/RANGE partition keys using a SpringData-style composite primary key

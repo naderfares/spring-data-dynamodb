@@ -1,3 +1,9 @@
+---
+layout: page
+title: Alter table name during runtime
+parent: Operational
+---
+
 By default, table names are statically defined via the entity class annotation:
 
 ```java
@@ -25,27 +31,28 @@ The table names can be altered via an altered `DynamoDBMapperConfig` bean:
 > which sets all fields to `null` potentially causing `NullPointerException`s later on!
 
 ```java
+
 @Configuration
-@EnableDynamoDBRepositories(
-    dynamoDBMapperConfigRef = "dynamoDBMapperConfig",  // This literal has to match the bean name - otherwise the default DynamoDBMapperConfig will be used
+@EnableDynamoDBRepositories(dynamoDBMapperConfigRef = "dynamoDBMapperConfig",
+    // This literal has to match the bean name - otherwise the default DynamoDBMapperConfig will be used
     basePackages = "com.acme.repository") // The package with the @DynamoDBTable entity classes
 public class DynamoDBConfig {
-    @Bean
-    public DynamoDBMapperConfig dynamoDBMapperConfig(TableNameOverride tableNameOverrider) {
-        // Create empty DynamoDBMapperConfig builder
-	DynamoDBMapperConfig.Builder builder = new DynamoDBMapperConfig.Builder();
-	// Inject missing defaults from the deprecated method
-	builder.withTypeConverterFactory(DynamoDBTypeConverterFactory.standard());
-	builder.withTableNameResolver(DefaultTableNameResolver.INSTANCE);
-        // Inject the table name overrider bean
-	builder.withTableNameOverride(tableNameOverrider());
-	return builder.build();
-    }
-    
-    @Bean
-    public TableNameOverride tableNameOverrider() {
+  @Bean
+  public DynamoDBMapperConfig dynamoDBMapperConfig(TableNameOverride tableNameOverrider) {
+    // Create empty DynamoDBMapperConfig builder
+    DynamoDBMapperConfig.Builder builder = new DynamoDBMapperConfig.Builder();
+    // Inject missing defaults from the deprecated method
+    builder.withTypeConverterFactory(DynamoDBTypeConverterFactory.standard());
+    builder.withTableNameResolver(DefaultTableNameResolver.INSTANCE);
+    // Inject the table name overrider bean
+    builder.withTableNameOverride(tableNameOverrider());
+    return builder.build();
+  }
+
+  @Bean
+  public TableNameOverride tableNameOverrider() {
         ...
-    }
+  }
 }
 ```
 
@@ -57,19 +64,21 @@ some default behavior that is sufficient for most scenarios:
 Prefix each table with a literal:
 
 ```java
-    @Bean
-    public TableNameOverride tableNameOverrider() {
-        String prefix = ... // Use @Value to inject values via Spring or use any logic to define the table prefix
-        return TableNameOverride.withTableNamePrefix(prefix);
-    }
+
+@Bean
+public TableNameOverride tableNameOverrider() {
+  String prefix = ... // Use @Value to inject values via Spring or use any logic to define the table prefix
+  return TableNameOverride.withTableNamePrefix(prefix);
+}
 ```
 
 or resolve each table name to the same one:
 
 ```java
-    @Bean
-    public TableNameOverride tableNameOverrider() {
-        String singleTableName = ... // Use @Value to inject values via Spring or use any logic to define the table prefix
-        return TableNameOverride.withTableNameReplacement(singleTableName);
-    }
+
+@Bean
+public TableNameOverride tableNameOverrider() {
+  String singleTableName = ... // Use @Value to inject values via Spring or use any logic to define the table prefix
+  return TableNameOverride.withTableNameReplacement(singleTableName);
+}
 ```

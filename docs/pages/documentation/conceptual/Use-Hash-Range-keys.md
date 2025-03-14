@@ -1,3 +1,9 @@
+---
+layout: page
+parent: Conceptual
+title: Use Hash-Range keys
+---
+
 # Overview
 
 Using a `Range` and `Hash` as a combined key requires a little bit more code to leverage AWS SDK for DynamoDB and
@@ -57,28 +63,28 @@ annotation *again* - this time without table column configuration.
 
 ```java
 public class PlaylistId implements Serializable {
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-	private String userName;
-	private String playlistName;
+  private String userName;
+  private String playlistName;
 
-	@DynamoDBHashKey
-	public String getUserName() {
-		return userName;
-	}
+  @DynamoDBHashKey
+  public String getUserName() {
+    return userName;
+  }
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+  public void setUserName(String userName) {
+    this.userName = userName;
+  }
 
-	@DynamoDBRangeKey
-	public String getPlaylistName() {
-		return playlistName;
-	}
+  @DynamoDBRangeKey
+  public String getPlaylistName() {
+    return playlistName;
+  }
 
-	public void setPlaylistName(String playlistName) {
-		this.playlistName = playlistName;
-	}
+  public void setPlaylistName(String playlistName) {
+    this.playlistName = playlistName;
+  }
 }
 ```
 

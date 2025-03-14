@@ -1,3 +1,9 @@
+---
+layout: page
+parent: Implementation
+title: Autocreate Tables
+---
+
 (This feature is available since version `5.1.0`)
 
 The required tables for operation can be created during application startup.

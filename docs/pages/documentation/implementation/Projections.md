@@ -1,3 +1,10 @@
+---
+layout: page
+parent: Implementation
+title: Projections
+---
+
+
 Projections are supported by the [
 `@Query` annotation](https://derjust.github.io/spring-data-dynamodb/apidocs/org/socialsignin/spring/data/dynamodb/repository/Query.html)
 via
@@ -9,12 +16,13 @@ provided (comma separated):
 ```java
 import org.socialsignin.spring.data.dynamodb.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+
 import java.util.List;
 
 public interface UserRepository extends CrudRepository<User, String> {
 
-	@Query(fields = "leaveDate")
-	List<User> findByPostCode(String postCode);
+  @Query(fields = "leaveDate")
+  List<User> findByPostCode(String postCode);
 ```
 
 All attributes that are not specified in the `fields` list will be `null` - this includes the hash/range key attributes!

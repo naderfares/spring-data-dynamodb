@@ -1,3 +1,10 @@
+---
+layout: page
+parent: Operational
+title: Multi Repository configuration
+---
+
+
 Multiple repository factories try to register all repository interfaces with them - which doesn't work very well.
 Especially because spring-boot does a lot of auto-magic behind the curtain via the implicit existing
 `@EnableJpaRepositories`.
@@ -8,13 +15,12 @@ entities are registered):
 For Spring-Boot:
 
 ```java
+
 @SpringBootApplication
-@EnableJpaRepositories(includeFilters = {
-	@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {CustomerRepository.class})
-})
+@EnableJpaRepositories(
+    includeFilters = {@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {CustomerRepository.class})})
 @EnableDynamoDBRepositories(includeFilters = {
-	@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {DeviceValueRepository.class})
-})
+    @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {DeviceValueRepository.class})})
 public class Application {
 ```
 
