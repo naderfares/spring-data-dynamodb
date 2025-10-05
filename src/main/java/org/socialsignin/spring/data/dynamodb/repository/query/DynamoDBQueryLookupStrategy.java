@@ -189,34 +189,4 @@ public class DynamoDBQueryLookupStrategy {
 
     }
   }
-
-    /**
-     * Creates a {@link QueryLookupStrategy} for the given
-     * {@link com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper} and {@link Key}.
-     *
-     * @param dynamoDBOperations
-     *            The current operation
-     * @param key
-     *            The key of the entity
-     *
-     * @return The created {@link QueryLookupStrategy}
-     */
-    public static QueryLookupStrategy create(DynamoDBOperations dynamoDBOperations, Key key) {
-
-        if (key == null) {
-            return new CreateQueryLookupStrategy(dynamoDBOperations);
-        }
-
-        switch (key) {
-            case CREATE:
-                return new CreateQueryLookupStrategy(dynamoDBOperations);
-            case USE_DECLARED_QUERY:
-                throw new IllegalArgumentException(String.format("Unsupported query lookup strategy %s!", key));
-            case CREATE_IF_NOT_FOUND:
-                return new CreateIfNotFoundQueryLookupStrategy(dynamoDBOperations);
-            default:
-                throw new IllegalArgumentException(String.format("Unsupported query lookup strategy %s!", key));
-        }
-    }
-
 }
