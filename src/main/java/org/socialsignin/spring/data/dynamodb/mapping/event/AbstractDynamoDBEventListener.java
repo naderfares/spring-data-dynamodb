@@ -67,7 +67,7 @@ public abstract class AbstractDynamoDBEventListener<E>
   /*
    * (non-Javadoc)
    *
-   * @see org.springframework.context.ApplicationListener#onApplicationEvent(org
+    @see org.springframework.context.ApplicationListener#onApplicationEvent(org
    * .springframework.context.ApplicationEvent)
    */
   @Override

@@ -322,4 +322,18 @@ public abstract class AbstractDynamoDBQuery<T, ID> implements RepositoryQuery, E
     }
   }
 
+    /*
+     * (non-Javadoc)
+     * @see org.springframework.data.repository.query.RepositoryQuery#execute(java .lang.Object[])
+     */
+    public Object execute(Object[] parameters) {
+
+        return getExecution().execute(this, parameters);
+    }
+
+    @Override
+    public DynamoDBQueryMethod<T, ID> getQueryMethod() {
+        return this.method;
+    }
+
 }

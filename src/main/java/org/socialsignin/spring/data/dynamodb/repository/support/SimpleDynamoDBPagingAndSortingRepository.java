@@ -31,17 +31,14 @@ import java.util.List;
 
 /**
  * Default implementation of the
- * {@link org.springframework.data.repository.PagingAndSortingRepository} interface.
- *
- * Due to DynamoDB limitations, sorting is not supported for find-all operations
- *
- * Due to DynamoDB limitations, paging for find-all queries is not possible using an integer page
- * number For paged requests, attempt to approximate paging behavior by limiting the number of items
- * which will be scanned, and by returning a sublist of the result-set.
- *
- * NB: Number of results scanned for a given page request is proportional to the page number
+ * {@link org.springframework.data.repository.PagingAndSortingRepository} interface. Due
+ * to DynamoDB limitations, sorting is not supported for find-all operations Due to DynamoDB limitations, paging for
+ * find-all queries is not possible using an integer page
+ * number For paged requests, attempt to approximate paging
+ * behavior by limiting the number of items
+ * which will be scanned, and by returning a sublist of the result-set. NB:
+ * Number of results scanned for a given page request is proportional to the page number
  * requested!
- *
  *
  * @author Michael Lavelle
  * @author Sebastian Just

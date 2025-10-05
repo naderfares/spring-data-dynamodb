@@ -54,7 +54,8 @@ API changes will follow SEMVER and loosely the Spring Framework releases.
 | 5.0.x                          | \>= 2.0 && < 2.1          | \>= 5.0 && \< 5.1              | Kay-SR1                       |
 | 5.1.x                          | == 2.1                    | \>= 5.1                        | Lovelace-SR1                  |
 | 5.2.x                          | \>= 2.2                   | \>= 5.2                        | Moore-RELEASE, Nuemann-RELASE |
-| 6.0.x                          | \>= 3.2.5                 | \>=6.1.6                       | 2023.1.5                      |
+| 6.0.3                          | \>= 3.2.5                 | \>=6.1.6                       | 2023.1.5                      |
+| 6.0.4                          | \>= 3.5.6                 | \>=6.2.11                      | 2025.0.4                      |
 
 `spring-data-dynamodb` depends directly on `spring-data` as also `spring-tx`.
 

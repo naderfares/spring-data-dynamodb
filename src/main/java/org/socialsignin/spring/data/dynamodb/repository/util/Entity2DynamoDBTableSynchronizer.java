@@ -38,9 +38,7 @@ import java.util.stream.Collectors;
 
 /**
  * This is the base class for all classes performing the validation or auto-creation of tables based
- * on the entity classes.
- *
- * //TODO: It would be nice if the checks would run in parallel via a TaskScheduler (if available)
+ * on the entity classes. //TODO: It would be nice if the checks would run in parallel via a TaskScheduler (if available)
  *
  * @see Entity2DDL
  */

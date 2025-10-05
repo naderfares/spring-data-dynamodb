@@ -140,7 +140,7 @@ public class DynamoDBEntityMetadataSupport<T, ID>
   /*
    * (non-Javadoc)
    *
-   * @see org.springframework.data.repository.core.EntityMetadata#getJavaType()
+    @see org.springframework.data.repository.core.EntityMetadata#getJavaType()
    */
   @Override
   public Class<T> getJavaType() {

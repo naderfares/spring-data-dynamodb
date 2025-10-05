@@ -92,7 +92,7 @@ public class UnpagedPageImplTest {
     String actual = underTest.toString();
 
     assertTrue(actual,
-        actual.startsWith("Page 1 of 1 containing org.mockito.codegen.Iterator$MockitoMock"));
+        actual.matches("^Page 1 of 1 containing .+ instances$"));
   }
 
   @Test

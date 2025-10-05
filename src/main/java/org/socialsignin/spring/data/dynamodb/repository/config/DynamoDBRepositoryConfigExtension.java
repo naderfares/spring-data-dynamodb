@@ -102,7 +102,7 @@ public class DynamoDBRepositoryConfigExtension extends RepositoryConfigurationEx
   /*
    * (non-Javadoc)
    *
-   * @see org.springframework.data.repository.config. RepositoryConfigurationExtensionSupport
+    @see org.springframework.data.repository.config. RepositoryConfigurationExtensionSupport
    * #postProcess(org.springframework.beans .factory.support.BeanDefinitionBuilder,
    * org.springframework.data.repository .config.XmlRepositoryConfigurationSource)
    */
