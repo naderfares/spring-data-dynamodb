@@ -290,10 +290,14 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+            </plugin>
+            <plugin>
                 <groupId>org.sonatype.central</groupId>
                 <artifactId>central-publishing-maven-plugin</artifactId>
                 <version>0.9.0</version>
-                <extensions>true</extensions>
+                <extensions>false</extensions>
                 <configuration>
                     <publishingServerId>central</publishingServerId>
                     <!--<tokenAuth>true</tokenAuth>-->
@@ -411,6 +415,13 @@
         <developerConnection>scm:git:git@github.com:naderfares/spring-data-dynamodb.git</developerConnection>
         <tag>v6.0.11-SNAPSHOT</tag>
     </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>central</id>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <profiles>
         <profile>
