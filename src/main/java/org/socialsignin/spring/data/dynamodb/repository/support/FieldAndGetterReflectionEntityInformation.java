@@ -81,7 +81,7 @@ public class FieldAndGetterReflectionEntityInformation<T, ID>
   /*
    * (non-Javadoc)
    *
-    @see org.springframework.data.repository.core.EntityInformation#getId(java .lang.Object)
+   * @see org.springframework.data.repository.core.EntityInformation#getId(java .lang.Object)
    */
   @Override
   @SuppressWarnings("unchecked")
@@ -97,7 +97,7 @@ public class FieldAndGetterReflectionEntityInformation<T, ID>
   /*
    * (non-Javadoc)
    *
-    @see org.springframework.data.repository.core.EntityInformation#getIdType()
+   * @see org.springframework.data.repository.core.EntityInformation#getIdType()
    */
   @Override
   @SuppressWarnings("unchecked")

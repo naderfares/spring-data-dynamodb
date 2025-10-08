@@ -47,7 +47,7 @@ public class QueryConstants {
      * @see <a href=
      *      "https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/datamodeling/DynamoDBQueryExpression.html#setConsistentRead-boolean-">Consistent
      *      Reads</a>
-
+     *
      * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression#setConsistentRead(boolean)
      */
     EVENTUAL

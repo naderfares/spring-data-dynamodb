@@ -86,7 +86,7 @@ public class DynamoDBQueryLookupStrategy {
     /*
      * (non-Javadoc)
      *
-      @see org.springframework.data.repository.query.QueryLookupStrategy#
+     * @see org.springframework.data.repository.query.QueryLookupStrategy#
      * resolveQuery(java.lang.reflect.Method,
      * org.springframework.data.repository.core.RepositoryMetadata,
      * org.springframework.data.repository.core.NamedQueries)

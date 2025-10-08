@@ -87,7 +87,7 @@ class DynamoDBPersistentPropertyImpl
   /*
    * (non-Javadoc)
    *
-    @see org.springframework.data.mapping.model.AnnotationBasedPersistentProperty #isIdProperty()
+   * @see org.springframework.data.mapping.model.AnnotationBasedPersistentProperty #isIdProperty()
    */
   @Override
   public boolean isIdProperty() {
@@ -104,7 +104,7 @@ class DynamoDBPersistentPropertyImpl
   /*
    * (non-Javadoc)
    *
-    @see org.springframework.data.mapping.model.AbstractPersistentProperty#isEntity ()
+   * @see org.springframework.data.mapping.model.AbstractPersistentProperty#isEntity ()
    */
   // @Override
 
@@ -123,7 +123,7 @@ class DynamoDBPersistentPropertyImpl
   /*
    * (non-Javadoc)
    *
-    @see org.springframework.data.mapping.model.AnnotationBasedPersistentProperty #isAssociation()
+   * @see org.springframework.data.mapping.model.AnnotationBasedPersistentProperty #isAssociation()
    */
   @Override
   public boolean isAssociation() {
@@ -143,7 +143,7 @@ class DynamoDBPersistentPropertyImpl
   /*
    * (non-Javadoc)
    *
-    @see org.springframework.data.mapping.model.AnnotationBasedPersistentProperty #isTransient()
+   * @see org.springframework.data.mapping.model.AnnotationBasedPersistentProperty #isTransient()
    */
   @Override
   public boolean isTransient() {
@@ -159,7 +159,7 @@ class DynamoDBPersistentPropertyImpl
   /*
    * (non-Javadoc)
    *
-    @see org.springframework.data.mapping.model.AbstractPersistentProperty# createAssociation()
+   * @see org.springframework.data.mapping.model.AbstractPersistentProperty# createAssociation()
    */
   @Override
   protected Association<DynamoDBPersistentProperty> createAssociation() {
