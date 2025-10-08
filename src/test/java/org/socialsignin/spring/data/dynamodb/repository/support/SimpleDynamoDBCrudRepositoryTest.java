@@ -142,8 +142,8 @@ public class SimpleDynamoDBCrudRepositoryTest {
 
   @Test
   public void deleteAll() {
-    when(dynamoDBOperations.scan(eq(User.class), any(DynamoDBScanExpression.class))).thenReturn(
-        findAllResultMock);
+    when(dynamoDBOperations.scan(eq(User.class), any(DynamoDBScanExpression.class)))
+        .thenReturn(findAllResultMock);
 
     repoForEntityWithOnlyHashKey.deleteAll();
     verify(dynamoDBOperations).batchDelete(findAllResultMock);
@@ -151,8 +151,8 @@ public class SimpleDynamoDBCrudRepositoryTest {
 
   @Test
   public void testFindAll() {
-    when(dynamoDBOperations.scan(eq(User.class), any(DynamoDBScanExpression.class))).thenReturn(
-        findAllResultMock);
+    when(dynamoDBOperations.scan(eq(User.class), any(DynamoDBScanExpression.class)))
+        .thenReturn(findAllResultMock);
 
     List<User> actual = repoForEntityWithOnlyHashKey.findAll();
 

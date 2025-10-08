@@ -65,8 +65,8 @@ public class DynamoDBRepositoryBeanTest {
   @Before
   public void setUp() {
     when(beanManager.createCreationalContext(amazonDynamoDBBean)).thenReturn(creationalContext);
-    when(beanManager.getReference(amazonDynamoDBBean, AmazonDynamoDB.class,
-        creationalContext)).thenReturn(amazonDynamoDB);
+    when(beanManager.getReference(amazonDynamoDBBean, AmazonDynamoDB.class, creationalContext))
+        .thenReturn(amazonDynamoDB);
   }
 
   @Test
