@@ -1,6 +1,7 @@
 ---
 layout: page
 title: About
+nav_order: 2
 permalink: /about/
 ---
 
@@ -79,7 +80,7 @@ implementation("io.github.naderfares:spring-data-dynamodb:6.0.11")
 
 Ready to dive in? Check out these resources:
 
-- [Getting Started Guide](/documentation/implementation/) - Step-by-step setup and examples
+- [Getting Started Guide](/documentation/getting-started/) - Step-by-step setup and examples
 - [Configuration](/documentation/api-reference/configuration.html) - Configure DynamoDB repositories
 - [Query Methods](/documentation/api-reference/query-methods.html) - Learn query method patterns
 - [Full Documentation](/documentation/) - Complete reference documentation
@@ -109,29 +110,45 @@ API changes follow SEMVER and align loosely with Spring Framework releases.
 `compile` and `runtime` dependencies are kept to a minimum to allow easy integration, especially in Spring Boot
 projects.
 
-## History
+## About the Project
 
-The code base has some history already in it - let's clarify it a bit:
+Spring Data DynamoDB brings the powerful Spring Data abstraction layer to AWS DynamoDB, enabling developers to build scalable, production-ready applications with minimal boilerplate code. The project provides repository-based data access, query method derivation, and advanced DynamoDB features while maintaining the familiar Spring programming model.
 
-* The code base was established
-  under [github.com/michaellavelle/spring-data-dynamodb)](https://github.com/michaellavelle/spring-data-dynamodb)
-* It was forked and further maintained
-  under [github.com/derjust/spring-data-dynamodb)](https://github.com/derjust/spring-data-dynamodb)
-    * Available in Maven Central under [
-      `com.github.derjust:spring-data-dynamodb`](http://central.maven.org/maven2/com/github/derjust/spring-data-dynamodb/)
-* It was forked and even further maintained
-  under [github.com/boostchicken/spring-data-dynamodb)](https://github.com/boostchicken/spring-data-dynamodb)
-    * Available in Maven Central under [
-      `io.github.boostchicken:spring-data-dynamodb`](https://repo1.maven.org/maven2/io/github/boostchicken/spring-data-dynamodb/)
-* It was forked and even further maintained
-  under [github.com/boostchicken/spring-data-dynamodb)](https://github.com/boostchicken/spring-data-dynamodb)
-    * Available in Maven Central under [
-      `io.github.boostchicken:spring-data-dynamodb`](https://repo1.maven.org/maven2/io/github/boostchicken/spring-data-dynamodb/)
-* It was forked and even further maintained
-  under [github.com/prasanna0586/spring-data-dynamodb)](https://github.com/prasanna0586/spring-data-dynamodb)
-    * Available in Maven Central under [
-      `io.github.prasanna0586:spring-data-dynamodb`](https://repo1.maven.org/maven2/io/github/prasanna0586/spring-data-dynamodb/)
-* It was forked and even further maintained
-  under [github.com/naderfares/spring-data-dynamodb)](https://github.com/naderfares/spring-data-dynamodb)
-    * Available in Maven Central under [
-      `io.github.naderfares:spring-data-dynamodb`](https://repo1.maven.org/maven2/io/github/naderfares/spring-data-dynamodb/)
+### Goals
+
+- **Developer Productivity** - Reduce boilerplate and accelerate development with repository abstractions
+- **Best Practices** - Encourage DynamoDB best practices through intuitive APIs and scan protection
+- **Spring Integration** - Seamless integration with Spring Boot, Spring Data, and the Spring ecosystem
+- **Production Ready** - Robust error handling, batch operations, and comprehensive testing
+
+## Community & Support
+
+- **GitHub Repository**: [naderfares/spring-data-dynamodb](https://github.com/naderfares/spring-data-dynamodb)
+- **Issue Tracker**: [Report bugs or request features](https://github.com/naderfares/spring-data-dynamodb/issues)
+- **Discussions**: [Community discussions and Q&A](https://github.com/naderfares/spring-data-dynamodb/discussions)
+- **Maven Central**: [Latest releases](https://search.maven.org/search?q=g:io.github.naderfares)
+
+### Contributing
+
+Contributions are welcome! Please see our [contributing guidelines](https://github.com/naderfares/spring-data-dynamodb/blob/develop/CONTRIBUTING.md) for details on:
+
+- Reporting bugs and requesting features
+- Submitting pull requests
+- Code style and testing requirements
+- Release process
+
+## Project History
+
+This project has evolved through community contributions across several forks:
+
+- **Original**: [michaellavelle/spring-data-dynamodb](https://github.com/michaellavelle/spring-data-dynamodb) - Initial implementation
+- **Fork**: [derjust/spring-data-dynamodb](https://github.com/derjust/spring-data-dynamodb) (`com.github.derjust:spring-data-dynamodb`)
+- **Fork**: [boostchicken/spring-data-dynamodb](https://github.com/boostchicken/spring-data-dynamodb) (`io.github.boostchicken:spring-data-dynamodb`)
+- **Fork**: [prasanna0586/spring-data-dynamodb](https://github.com/prasanna0586/spring-data-dynamodb) (`io.github.prasanna0586:spring-data-dynamodb`)
+- **Current**: [naderfares/spring-data-dynamodb](https://github.com/naderfares/spring-data-dynamodb) (`io.github.naderfares:spring-data-dynamodb`)
+
+Each fork has contributed improvements, bug fixes, and adaptations to newer Spring Framework versions, culminating in the current Spring Boot 3.x and Spring Framework 6.x support.
+
+## License
+
+Spring Data DynamoDB is Open Source software released under the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0.html).

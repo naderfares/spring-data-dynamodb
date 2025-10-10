@@ -1,6 +1,8 @@
 ---
 layout: home
-redirect_to: /about
+title: Home
+nav_order: 1
+permalink: /
 ---
 
 # Spring Data DynamoDB

@@ -49,7 +49,6 @@ logo: '/assets/images/logo.png'
 # Build settings
 theme: just-the-docs
 plugins:
-  - jekyll-feed
   - jekyll-redirect-from
 
 whitelist:
@@ -113,11 +112,11 @@ mermaid:
 
 # Aux links for the upper right navigation
 aux_links:
-  "Just the Docs on GitHub":
-    - "//github.com/just-the-docs/just-the-docs"
+  "Spring Data DynamoDB on GitHub":
+    - "https://github.com/naderfares/spring-data-dynamodb"
 
 # Makes Aux links open in a new tab. Default is false
-aux_links_new_tab: false
+aux_links_new_tab: true
 
 # Enable or disable the side/mobile menu globally
 # Nav menu can also be selectively enabled or disabled using page variables or the minimal layout
