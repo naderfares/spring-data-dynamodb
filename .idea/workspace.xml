@@ -4,20 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49cc0abd-cde6-4db3-ba3d-a0ad2efae6e2" name="Changes" comment="Add troubleshooting guide and API reference documentation; update .gitignore and Gemfile.lock">
-      <change afterPath="$PROJECT_DIR$/.claude-flow/metrics/agent-metrics.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.claude-flow/metrics/performance.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.claude-flow/metrics/task-metrics.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.swarm/memory.db" afterDir="false" />
+    <list default="true" id="49cc0abd-cde6-4db3-ba3d-a0ad2efae6e2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/assets/css/just-the-docs-dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/just-the-docs-dark.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/just-the-docs-default.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/just-the-docs-default.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/just-the-docs-head-nav.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/just-the-docs-head-nav.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/just-the-docs-light.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/just-the-docs-light.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +73,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "gh-pages",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/nader/workspace/personal/spring-data-dynamodb/docs/assets/images",
     "node.js.detected.package.eslint": "true",
