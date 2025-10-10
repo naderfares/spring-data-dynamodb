@@ -1,0 +1,535 @@
+<!DOCTYPE html> <html lang="en-US"> <head> <meta charset="UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=Edge"> <link rel="stylesheet" href="/spring-data-dynamodb/assets/css/just-the-docs-default.css"> <link rel="stylesheet" href="/spring-data-dynamodb/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet"> <style id="jtd-nav-activation"> .site-nav > ul.nav-list:first-child > li > a, .site-nav > ul.nav-list:first-child > li > ul > li > a, .site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(5)) > a, .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li a { background-image: none; } .site-nav > ul.nav-list:not(:first-child) a, .site-nav li.external a { background-image: none; } .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(6) > ul > li:nth-child(5) > a { font-weight: 600; text-decoration: none; }.site-nav > ul.nav-list:first-child > li:nth-child(3) > button svg, .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(6) > button svg, .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(6) > ul > li:nth-child(5) > button svg { transform: rotate(-90deg); }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list, .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(6) > ul.nav-list, .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(6) > ul.nav-list > li.nav-list-item:nth-child(5) > ul.nav-list { display: block; } </style> <script src="/spring-data-dynamodb/assets/js/vendor/lunr.min.js"></script> <script src="/spring-data-dynamodb/assets/js/just-the-docs.js"></script> <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Begin Jekyll SEO tag v2.8.0 --> <title>FAQ | Spring Data DynamoDB</title> <meta name="generator" content="Jekyll v3.10.0" /> <meta property="og:title" content="FAQ" /> <meta property="og:locale" content="en_US" /> <meta name="description" content="The Spring® Data project simplifies building Spring-powered applications by providing a consistent and intuitive programming model for various data access technologies. Spring Data DynamoDB integrates Spring with Amazon DynamoDB, a fully managed NoSQL database, enabling seamless data access with familiar Spring abstractions. It supports CRUD operations, declarative queries, and automatic object-to-table mapping, all while leveraging DynamoDB’s scalability and performance. This module makes working with DynamoDB straightforward, allowing developers to focus on building robust and scalable applications with minimal boilerplate code." /> <meta property="og:description" content="The Spring® Data project simplifies building Spring-powered applications by providing a consistent and intuitive programming model for various data access technologies. Spring Data DynamoDB integrates Spring with Amazon DynamoDB, a fully managed NoSQL database, enabling seamless data access with familiar Spring abstractions. It supports CRUD operations, declarative queries, and automatic object-to-table mapping, all while leveraging DynamoDB’s scalability and performance. This module makes working with DynamoDB straightforward, allowing developers to focus on building robust and scalable applications with minimal boilerplate code." /> <link rel="canonical" href="https://naderfares.github.io/spring-data-dynamodb/pages/documentation/troubleshooting/faq.html" /> <meta property="og:url" content="https://naderfares.github.io/spring-data-dynamodb/pages/documentation/troubleshooting/faq.html" /> <meta property="og:site_name" content="Spring Data DynamoDB" /> <meta property="og:type" content="website" /> <meta name="twitter:card" content="summary" /> <meta property="twitter:title" content="FAQ" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"WebPage","description":"The Spring® Data project simplifies building Spring-powered applications by providing a consistent and intuitive programming model for various data access technologies. Spring Data DynamoDB integrates Spring with Amazon DynamoDB, a fully managed NoSQL database, enabling seamless data access with familiar Spring abstractions. It supports CRUD operations, declarative queries, and automatic object-to-table mapping, all while leveraging DynamoDB’s scalability and performance. This module makes working with DynamoDB straightforward, allowing developers to focus on building robust and scalable applications with minimal boilerplate code.","headline":"FAQ","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://naderfares.github.io/spring-data-dynamodb/assets/images/logo.png"}},"url":"https://naderfares.github.io/spring-data-dynamodb/pages/documentation/troubleshooting/faq.html"}</script> <!-- End Jekyll SEO tag --> </head> <body> <a class="skip-to-main" href="#main-content">Skip to main content</a> <svg xmlns="http://www.w3.org/2000/svg" class="d-none"> <symbol id="svg-link" viewBox="0 0 24 24"> <title>Link</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"> <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-menu" viewBox="0 0 24 24"> <title>Menu</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"> <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewBox="0 0 24 24"> <title>Expand</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"> <polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE --> <symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"> <title id="svg-external-link-title">(external link)</title> <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line> </symbol> <symbol id="svg-doc" viewBox="0 0 24 24"> <title>Document</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"> <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> <symbol id="svg-search" viewBox="0 0 24 24"> <title>Search</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md --> <symbol id="svg-copy" viewBox="0 0 16 16"> <title>Copy</title> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"> <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/> <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/> </svg> </symbol> <symbol id="svg-copied" viewBox="0 0 16 16"> <title>Copied</title> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16"> <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/> <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/> </svg> </symbol> </svg> <div class="side-bar"> <div class="site-header" role="banner"> <a href="/spring-data-dynamodb/" class="site-title lh-tight"> <div class="site-logo" role="img" aria-label="Spring Data DynamoDB"></div> </a> <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false"> <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg> </button> </div> <nav aria-label="Main" id="site-nav" class="site-nav"> <ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/" class="nav-list-link">Home</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/about/" class="nav-list-link">About</a></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Documentation category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/documentation/" class="nav-list-link">Documentation</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/getting-started.html" class="nav-list-link">Getting Started</a></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Implementation category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/implementation/implementation.html" class="nav-list-link">Implementation</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Access-to-releases.html" class="nav-list-link">Access to releases</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Autocreate-Tables.html" class="nav-list-link">Autocreate Tables</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Composite-Primary-Keys-Kotlin-Example.html" class="nav-list-link">Composite Primary Keys Kotlin Example</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Custom-repository-implementations.html" class="nav-list-link">Custom repository implementations</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/DynamoDB-GSI-Example.html" class="nav-list-link">DynamoDB GSI Example</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/DynamoDB-Hash-Key-Example.html" class="nav-list-link">DynamoDB Hash Key Example</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Projections.html" class="nav-list-link">Projections</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Query-Size-Limits-and-Pageable.html" class="nav-list-link">Query Size Limits and Pageable</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Quick-Start---XML-based-configuration.html" class="nav-list-link">Quick Start - XML based configuration</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Conceptual category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/conceptual/conceptual.html" class="nav-list-link">Conceptual</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/conceptual/Supported-Spring-Data-Comparison-Operators.html" class="nav-list-link">Supported Spring Data Comparison Operators</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/conceptual/Use-Hash-Range-keys.html" class="nav-list-link">Use Hash-Range keys</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Architecture category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/architecture/architecture.html" class="nav-list-link">Architecture</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/architecture/core-components.html" class="nav-list-link">Core Components</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/architecture/repository-layer.html" class="nav-list-link">Repository Layer</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/architecture/query-execution.html" class="nav-list-link">Query Execution</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/architecture/entity-mapping.html" class="nav-list-link">Entity Mapping</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/architecture/design-patterns.html" class="nav-list-link">Design Patterns</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in API Reference category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/api-reference/api-reference.html" class="nav-list-link">API Reference</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/api-reference/dynamodb-template.html" class="nav-list-link">DynamoDBTemplate</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/api-reference/repository-interfaces.html" class="nav-list-link">Repository Interfaces</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/api-reference/annotations.html" class="nav-list-link">Annotations</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/api-reference/query-methods.html" class="nav-list-link">Query Methods</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/api-reference/configuration.html" class="nav-list-link">Configuration</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Troubleshooting category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/troubleshooting.html" class="nav-list-link">Troubleshooting</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/common-errors.html" class="nav-list-link">Common Errors</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/scan-exceptions.html" class="nav-list-link">Scan Exceptions</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/batch-operation-failures.html" class="nav-list-link">Batch Operation Failures</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/performance-tuning.html" class="nav-list-link">Performance Tuning</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/faq.html" class="nav-list-link">FAQ</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Operational category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/operational/operational.html" class="nav-list-link">Operational</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/operational/Alter-table-name-during-runtime.html" class="nav-list-link">Alter table name during runtime</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/operational/Amazon-DynamoDB-Accelerator-(DAX).html" class="nav-list-link">Amazon DynamoDB Accelerator (DAX)</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/operational/Multi-Repository-configuration.html" class="nav-list-link">Multi Repository configuration</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/operational/Spring-Data-REST.html" class="nav-list-link">Spring Data REST</a></li></ul></li></ul></li></ul> </nav> <footer class="site-footer"> This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll. </footer> </div> <div class="main" id="top"> <div id="main-header" class="main-header"> <div class="search" role="search"> <div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search Spring Data DynamoDB" aria-label="Search Spring Data DynamoDB" autocomplete="off"> <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label> </div> <div id="search-results" class="search-results"></div> </div> <nav aria-label="Auxiliary" class="aux-nav"> <ul class="aux-nav-list"> <li class="aux-nav-list-item"> <a href="https://github.com/naderfares/spring-data-dynamodb" class="site-button" target="_blank" rel="noopener noreferrer" > Spring Data DynamoDB on GitHub </a> </li> </ul> </nav> </div> <div class="main-content-wrap"> <nav aria-label="Breadcrumb" class="breadcrumb-nav"> <ol class="breadcrumb-nav-list"> <li class="breadcrumb-nav-list-item"><a href="/spring-data-dynamodb/documentation/">Documentation</a></li> <li class="breadcrumb-nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/troubleshooting.html">Troubleshooting</a></li> <li class="breadcrumb-nav-list-item"><span>FAQ</span></li> </ol> </nav> <div id="main-content" class="main-content"> <main> <h1 id="frequently-asked-questions"> <a href="#frequently-asked-questions" class="anchor-heading" aria-labelledby="frequently-asked-questions"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Frequently Asked Questions </h1> <p>Common questions about Spring Data DynamoDB and their answers.</p> <h2 id="table-of-contents"> <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of Contents </h2> <ol class="no_toc text-delta"> <li>TOC</li> </ol><hr /> <h2 id="general-questions"> <a href="#general-questions" class="anchor-heading" aria-labelledby="general-questions"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> General Questions </h2> <h3 id="q-what-version-of-aws-sdk-does-this-library-use"> <a href="#q-what-version-of-aws-sdk-does-this-library-use" class="anchor-heading" aria-labelledby="q-what-version-of-aws-sdk-does-this-library-use"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: What version of AWS SDK does this library use? </h3> <p><strong>A:</strong> Spring Data DynamoDB currently uses AWS SDK v1. Support for AWS SDK v2 is planned for future releases.</p> <h3 id="q-can-i-use-this-library-with-dynamodb-local-for-testing"> <a href="#q-can-i-use-this-library-with-dynamodb-local-for-testing" class="anchor-heading" aria-labelledby="q-can-i-use-this-library-with-dynamodb-local-for-testing"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: Can I use this library with DynamoDB Local for testing? </h3> <p><strong>A:</strong> Yes! Configure your DynamoDB client to point to localhost:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Bean</span>
+<span class="kd">public</span> <span class="nc">AmazonDynamoDB</span> <span class="nf">amazonDynamoDB</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="nc">AmazonDynamoDBClientBuilder</span><span class="o">.</span><span class="na">standard</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">withEndpointConfiguration</span><span class="o">(</span>
+            <span class="k">new</span> <span class="nc">AwsClientBuilder</span><span class="o">.</span><span class="na">EndpointConfiguration</span><span class="o">(</span>
+                <span class="s">"http://localhost:8000"</span><span class="o">,</span> <span class="s">"us-east-1"</span><span class="o">))</span>
+        <span class="o">.</span><span class="na">withCredentials</span><span class="o">(</span><span class="k">new</span> <span class="nc">AWSStaticCredentialsProvider</span><span class="o">(</span>
+            <span class="k">new</span> <span class="nf">BasicAWSCredentials</span><span class="o">(</span><span class="s">"dummy"</span><span class="o">,</span> <span class="s">"dummy"</span><span class="o">)))</span>
+        <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="q-is-this-library-compatible-with-spring-boot-3x"> <a href="#q-is-this-library-compatible-with-spring-boot-3x" class="anchor-heading" aria-labelledby="q-is-this-library-compatible-with-spring-boot-3x"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: Is this library compatible with Spring Boot 3.x? </h3> <p><strong>A:</strong> Check the <a href="../getting-started/compatibility">compatibility matrix</a> for supported Spring Boot versions. The library is actively maintained to support recent Spring Boot releases.</p> <h3 id="q-how-do-i-enable-debug-logging"> <a href="#q-how-do-i-enable-debug-logging" class="anchor-heading" aria-labelledby="q-how-do-i-enable-debug-logging"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: How do I enable debug logging? </h3> <p><strong>A:</strong> Add to your <code class="language-plaintext highlighter-rouge">application.properties</code>:</p> <div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">logging.level.org.socialsignin.spring.data.dynamodb</span><span class="p">=</span><span class="s">DEBUG</span>
+<span class="py">logging.level.com.amazonaws.request</span><span class="p">=</span><span class="s">DEBUG</span>
+</code></pre></div></div><hr /> <h2 id="configuration-questions"> <a href="#configuration-questions" class="anchor-heading" aria-labelledby="configuration-questions"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Configuration Questions </h2> <h3 id="q-how-do-i-configure-multiple-dynamodb-clients"> <a href="#q-how-do-i-configure-multiple-dynamodb-clients" class="anchor-heading" aria-labelledby="q-how-do-i-configure-multiple-dynamodb-clients"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: How do I configure multiple DynamoDB clients? </h3> <p><strong>A:</strong> Use <code class="language-plaintext highlighter-rouge">@Qualifier</code> annotations:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Configuration</span>
+<span class="nd">@EnableDynamoDBRepositories</span><span class="o">(</span>
+    <span class="n">basePackages</span> <span class="o">=</span> <span class="s">"com.example.repo.primary"</span><span class="o">,</span>
+    <span class="n">dynamoDBMapperRef</span> <span class="o">=</span> <span class="s">"primaryDynamoDBMapper"</span>
+<span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PrimaryDynamoDBConfig</span> <span class="o">{</span>
+
+    <span class="nd">@Bean</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"primaryDynamoDB"</span><span class="o">)</span>
+    <span class="nd">@Primary</span>
+    <span class="kd">public</span> <span class="nc">AmazonDynamoDB</span> <span class="nf">primaryDynamoDB</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">AmazonDynamoDBClientBuilder</span><span class="o">.</span><span class="na">standard</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">withRegion</span><span class="o">(</span><span class="nc">Regions</span><span class="o">.</span><span class="na">US_EAST_1</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Bean</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"primaryDynamoDBMapper"</span><span class="o">)</span>
+    <span class="nd">@Primary</span>
+    <span class="kd">public</span> <span class="nc">DynamoDBMapper</span> <span class="nf">primaryDynamoDBMapper</span><span class="o">(</span>
+            <span class="nd">@Qualifier</span><span class="o">(</span><span class="s">"primaryDynamoDB"</span><span class="o">)</span> <span class="nc">AmazonDynamoDB</span> <span class="n">amazonDynamoDB</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">DynamoDBMapper</span><span class="o">(</span><span class="n">amazonDynamoDB</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="nd">@Configuration</span>
+<span class="nd">@EnableDynamoDBRepositories</span><span class="o">(</span>
+    <span class="n">basePackages</span> <span class="o">=</span> <span class="s">"com.example.repo.secondary"</span><span class="o">,</span>
+    <span class="n">dynamoDBMapperRef</span> <span class="o">=</span> <span class="s">"secondaryDynamoDBMapper"</span>
+<span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SecondaryDynamoDBConfig</span> <span class="o">{</span>
+
+    <span class="nd">@Bean</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"secondaryDynamoDB"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">AmazonDynamoDB</span> <span class="nf">secondaryDynamoDB</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">AmazonDynamoDBClientBuilder</span><span class="o">.</span><span class="na">standard</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">withRegion</span><span class="o">(</span><span class="nc">Regions</span><span class="o">.</span><span class="na">EU_WEST_1</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Bean</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"secondaryDynamoDBMapper"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">DynamoDBMapper</span> <span class="nf">secondaryDynamoDBMapper</span><span class="o">(</span>
+            <span class="nd">@Qualifier</span><span class="o">(</span><span class="s">"secondaryDynamoDB"</span><span class="o">)</span> <span class="nc">AmazonDynamoDB</span> <span class="n">amazonDynamoDB</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">DynamoDBMapper</span><span class="o">(</span><span class="n">amazonDynamoDB</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="q-can-i-use-a-custom-table-name-prefix"> <a href="#q-can-i-use-a-custom-table-name-prefix" class="anchor-heading" aria-labelledby="q-can-i-use-a-custom-table-name-prefix"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: Can I use a custom table name prefix? </h3> <p><strong>A:</strong> Yes, configure <code class="language-plaintext highlighter-rouge">DynamoDBMapperConfig</code>:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Bean</span>
+<span class="kd">public</span> <span class="nc">DynamoDBMapperConfig</span> <span class="nf">dynamoDBMapperConfig</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="nc">DynamoDBMapperConfig</span><span class="o">.</span><span class="na">builder</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">withTableNameOverride</span><span class="o">(</span>
+            <span class="nc">DynamoDBMapperConfig</span><span class="o">.</span><span class="na">TableNameOverride</span>
+                <span class="o">.</span><span class="na">withTableNamePrefix</span><span class="o">(</span><span class="s">"dev_"</span><span class="o">))</span>
+        <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div> <p>Now <code class="language-plaintext highlighter-rouge">@DynamoDBTable(tableName = "User")</code> will use table <code class="language-plaintext highlighter-rouge">dev_User</code>.</p> <h3 id="q-how-do-i-configure-consistent-reads"> <a href="#q-how-do-i-configure-consistent-reads" class="anchor-heading" aria-labelledby="q-how-do-i-configure-consistent-reads"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: How do I configure consistent reads? </h3> <p><strong>A:</strong> Use the <code class="language-plaintext highlighter-rouge">@ConsistentRead</code> annotation:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserRepository</span> <span class="kd">extends</span> <span class="nc">CrudRepository</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="nd">@ConsistentRead</span>
+    <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">findById</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">);</span>
+
+    <span class="nd">@ConsistentRead</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">findByEmail</span><span class="o">(</span><span class="nc">String</span> <span class="n">email</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div> <p>Or configure globally:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Bean</span>
+<span class="kd">public</span> <span class="nc">DynamoDBMapperConfig</span> <span class="nf">dynamoDBMapperConfig</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="nc">DynamoDBMapperConfig</span><span class="o">.</span><span class="na">builder</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">withConsistentReads</span><span class="o">(</span><span class="nc">ConsistentReads</span><span class="o">.</span><span class="na">CONSISTENT</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div><hr /> <h2 id="entity-mapping-questions"> <a href="#entity-mapping-questions" class="anchor-heading" aria-labelledby="entity-mapping-questions"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Entity Mapping Questions </h2> <h3 id="q-how-do-i-map-java-8-datetime-types"> <a href="#q-how-do-i-map-java-8-datetime-types" class="anchor-heading" aria-labelledby="q-how-do-i-map-java-8-datetime-types"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: How do I map Java 8 date/time types? </h3> <p><strong>A:</strong> Spring Data DynamoDB includes converters for Java 8 date/time types:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@DynamoDBTable</span><span class="o">(</span><span class="n">tableName</span> <span class="o">=</span> <span class="s">"Event"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Event</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Instant</span> <span class="n">createdAt</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">LocalDate</span> <span class="n">eventDate</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">LocalDateTime</span> <span class="n">startTime</span><span class="o">;</span>
+
+    <span class="nd">@DynamoDBHashKey</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@DynamoDBTypeConverted</span><span class="o">(</span><span class="n">converter</span> <span class="o">=</span> <span class="nc">InstantConverter</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">Instant</span> <span class="nf">getCreatedAt</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">createdAt</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@DynamoDBTypeConverted</span><span class="o">(</span><span class="n">converter</span> <span class="o">=</span> <span class="nc">LocalDateConverter</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">LocalDate</span> <span class="nf">getEventDate</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">eventDate</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@DynamoDBTypeConverted</span><span class="o">(</span><span class="n">converter</span> <span class="o">=</span> <span class="nc">LocalDateTimeConverter</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">LocalDateTime</span> <span class="nf">getStartTime</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">startTime</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// setters...</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="q-how-do-i-store-nested-objects"> <a href="#q-how-do-i-store-nested-objects" class="anchor-heading" aria-labelledby="q-how-do-i-store-nested-objects"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: How do I store nested objects? </h3> <p><strong>A:</strong> Use <code class="language-plaintext highlighter-rouge">@DynamoDBDocument</code>:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@DynamoDBTable</span><span class="o">(</span><span class="n">tableName</span> <span class="o">=</span> <span class="s">"User"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Address</span> <span class="n">address</span><span class="o">;</span>
+
+    <span class="nd">@DynamoDBHashKey</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@DynamoDBAttribute</span>
+    <span class="kd">public</span> <span class="nc">Address</span> <span class="nf">getAddress</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">address</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// setters...</span>
+<span class="o">}</span>
+
+<span class="nd">@DynamoDBDocument</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Address</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">street</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">city</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">zipCode</span><span class="o">;</span>
+
+    <span class="nd">@DynamoDBAttribute</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getStreet</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">street</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@DynamoDBAttribute</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getCity</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">city</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@DynamoDBAttribute</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getZipCode</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">zipCode</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// setters...</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="q-how-do-i-store-collections"> <a href="#q-how-do-i-store-collections" class="anchor-heading" aria-labelledby="q-how-do-i-store-collections"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: How do I store collections? </h3> <p><strong>A:</strong> DynamoDB supports Lists, Sets, and Maps:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@DynamoDBTable</span><span class="o">(</span><span class="n">tableName</span> <span class="o">=</span> <span class="s">"User"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">tags</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">permissions</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">metadata</span><span class="o">;</span>
+
+    <span class="nd">@DynamoDBHashKey</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@DynamoDBAttribute</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">getTags</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">tags</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@DynamoDBAttribute</span>
+    <span class="kd">public</span> <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">getPermissions</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">permissions</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@DynamoDBAttribute</span>
+    <span class="kd">public</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="nf">getMetadata</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">metadata</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// setters...</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="q-can-i-use-enums"> <a href="#q-can-i-use-enums" class="anchor-heading" aria-labelledby="q-can-i-use-enums"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: Can I use enums? </h3> <p><strong>A:</strong> Yes, enums are automatically converted to strings:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="nc">UserStatus</span> <span class="o">{</span>
+    <span class="no">ACTIVE</span><span class="o">,</span> <span class="no">INACTIVE</span><span class="o">,</span> <span class="no">SUSPENDED</span>
+<span class="o">}</span>
+
+<span class="nd">@DynamoDBTable</span><span class="o">(</span><span class="n">tableName</span> <span class="o">=</span> <span class="s">"User"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">UserStatus</span> <span class="n">status</span><span class="o">;</span>
+
+    <span class="nd">@DynamoDBHashKey</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@DynamoDBTypeConvertedEnum</span>
+    <span class="nd">@DynamoDBAttribute</span>
+    <span class="kd">public</span> <span class="nc">UserStatus</span> <span class="nf">getStatus</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">status</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// setters...</span>
+<span class="o">}</span>
+</code></pre></div></div><hr /> <h2 id="query-questions"> <a href="#query-questions" class="anchor-heading" aria-labelledby="query-questions"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Query Questions </h2> <h3 id="q-can-i-use-or-conditions-in-queries"> <a href="#q-can-i-use-or-conditions-in-queries" class="anchor-heading" aria-labelledby="q-can-i-use-or-conditions-in-queries"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: Can I use OR conditions in queries? </h3> <p><strong>A:</strong> OR conditions require scan operations:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserRepository</span> <span class="kd">extends</span> <span class="nc">CrudRepository</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="c1">// ❌ Not supported in query methods</span>
+    <span class="c1">// List&lt;User&gt; findByNameOrEmail(String name, String email);</span>
+
+    <span class="c1">// ✅ Use scan with @EnableScan</span>
+    <span class="nd">@EnableScan</span>
+    <span class="nd">@Query</span><span class="o">(</span><span class="n">scanExpression</span> <span class="o">=</span> <span class="s">"#n = :name OR email = :email"</span><span class="o">)</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">findByNameOrEmail</span><span class="o">(</span>
+        <span class="nd">@Param</span><span class="o">(</span><span class="s">"name"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">name</span><span class="o">,</span>
+        <span class="nd">@Param</span><span class="o">(</span><span class="s">"email"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">email</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="q-how-do-i-query-with-between"> <a href="#q-how-do-i-query-with-between" class="anchor-heading" aria-labelledby="q-how-do-i-query-with-between"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: How do I query with BETWEEN? </h3> <p><strong>A:</strong> Use the <code class="language-plaintext highlighter-rouge">Between</code> keyword:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">OrderRepository</span> <span class="kd">extends</span> <span class="nc">CrudRepository</span><span class="o">&lt;</span><span class="nc">Order</span><span class="o">,</span> <span class="nc">OrderId</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="c1">// Query with range key between dates</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Order</span><span class="o">&gt;</span> <span class="nf">findByCustomerIdAndOrderDateBetween</span><span class="o">(</span>
+        <span class="nc">String</span> <span class="n">customerId</span><span class="o">,</span> <span class="nc">String</span> <span class="n">startDate</span><span class="o">,</span> <span class="nc">String</span> <span class="n">endDate</span><span class="o">);</span>
+
+    <span class="c1">// Query with non-key attribute (requires scan)</span>
+    <span class="nd">@EnableScan</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Order</span><span class="o">&gt;</span> <span class="nf">findByAmountBetween</span><span class="o">(</span><span class="nc">Double</span> <span class="n">minAmount</span><span class="o">,</span> <span class="nc">Double</span> <span class="n">maxAmount</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="q-can-i-use-like-queries"> <a href="#q-can-i-use-like-queries" class="anchor-heading" aria-labelledby="q-can-i-use-like-queries"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: Can I use LIKE queries? </h3> <p><strong>A:</strong> Use <code class="language-plaintext highlighter-rouge">StartingWith</code> or <code class="language-plaintext highlighter-rouge">Containing</code>:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserRepository</span> <span class="kd">extends</span> <span class="nc">CrudRepository</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="c1">// Range key prefix match</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">findByIdAndNameStartingWith</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">,</span> <span class="nc">String</span> <span class="n">namePrefix</span><span class="o">);</span>
+
+    <span class="c1">// Requires scan for non-key attributes</span>
+    <span class="nd">@EnableScan</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">findByNameStartingWith</span><span class="o">(</span><span class="nc">String</span> <span class="n">namePrefix</span><span class="o">);</span>
+
+    <span class="c1">// Contains requires scan</span>
+    <span class="nd">@EnableScan</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">findByNameContaining</span><span class="o">(</span><span class="nc">String</span> <span class="n">substring</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="q-how-do-i-query-with-in"> <a href="#q-how-do-i-query-with-in" class="anchor-heading" aria-labelledby="q-how-do-i-query-with-in"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: How do I query with IN? </h3> <p><strong>A:</strong> Use the <code class="language-plaintext highlighter-rouge">In</code> keyword:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserRepository</span> <span class="kd">extends</span> <span class="nc">CrudRepository</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="c1">// Batch get by IDs</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">findByIdIn</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">ids</span><span class="o">);</span>
+
+    <span class="c1">// Scan for non-key attributes</span>
+    <span class="nd">@EnableScan</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">findByStatusIn</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">statuses</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="q-can-i-use-count-queries"> <a href="#q-can-i-use-count-queries" class="anchor-heading" aria-labelledby="q-can-i-use-count-queries"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: Can I use COUNT queries? </h3> <p><strong>A:</strong> Yes, but count requires scanning:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserRepository</span> <span class="kd">extends</span> <span class="nc">CrudRepository</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="nd">@EnableScan</span>
+    <span class="kt">long</span> <span class="nf">count</span><span class="o">();</span>
+
+    <span class="nd">@EnableScan</span>
+    <span class="kt">long</span> <span class="nf">countByStatus</span><span class="o">(</span><span class="nc">String</span> <span class="n">status</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div><hr /> <h2 id="performance-questions"> <a href="#performance-questions" class="anchor-heading" aria-labelledby="performance-questions"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Performance Questions </h2> <h3 id="q-whats-the-difference-between-query-and-scan"> <a href="#q-whats-the-difference-between-query-and-scan" class="anchor-heading" aria-labelledby="q-whats-the-difference-between-query-and-scan"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: What’s the difference between Query and Scan? </h3> <p><strong>A:</strong></p> <div class="table-wrapper"><table> <thead> <tr> <th>Operation</th> <th>Query</th> <th>Scan</th> </tr> </thead> <tbody> <tr> <td><strong>Uses</strong></td> <td>Hash key (+ optional range key)</td> <td>Filter expression</td> </tr> <tr> <td><strong>Performance</strong></td> <td>Fast, efficient</td> <td>Slow, expensive</td> </tr> <tr> <td><strong>Cost</strong></td> <td>Reads only matching items</td> <td>Reads entire table</td> </tr> <tr> <td><strong>When to use</strong></td> <td>Key-based lookups</td> <td>Non-key attribute filtering</td> </tr> </tbody> </table></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✅ Query - Fast</span>
+<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Order</span><span class="o">&gt;</span> <span class="nf">findByCustomerId</span><span class="o">(</span><span class="nc">String</span> <span class="n">customerId</span><span class="o">);</span>
+
+<span class="c1">// ❌ Scan - Slow</span>
+<span class="nd">@EnableScan</span>
+<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Order</span><span class="o">&gt;</span> <span class="nf">findByStatus</span><span class="o">(</span><span class="nc">String</span> <span class="n">status</span><span class="o">);</span>
+</code></pre></div></div> <h3 id="q-should-i-use-page-or-slice"> <a href="#q-should-i-use-page-or-slice" class="anchor-heading" aria-labelledby="q-should-i-use-page-or-slice"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: Should I use Page or Slice? </h3> <p><strong>A:</strong> Use <code class="language-plaintext highlighter-rouge">Slice</code> to avoid expensive count queries:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ Page requires additional count query</span>
+<span class="nc">Page</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">findAll</span><span class="o">(</span><span class="nc">Pageable</span> <span class="n">pageable</span><span class="o">);</span>
+
+<span class="c1">// ✅ Slice doesn't perform count</span>
+<span class="nc">Slice</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">findAll</span><span class="o">(</span><span class="nc">Pageable</span> <span class="n">pageable</span><span class="o">);</span>
+</code></pre></div></div> <h3 id="q-how-do-i-optimize-large-result-sets"> <a href="#q-how-do-i-optimize-large-result-sets" class="anchor-heading" aria-labelledby="q-how-do-i-optimize-large-result-sets"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: How do I optimize large result sets? </h3> <p><strong>A:</strong> Use pagination:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserService</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">UserRepository</span> <span class="n">repository</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">processAllUsers</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">Pageable</span> <span class="n">pageable</span> <span class="o">=</span> <span class="nc">PageRequest</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
+        <span class="nc">Slice</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">slice</span><span class="o">;</span>
+
+        <span class="k">do</span> <span class="o">{</span>
+            <span class="n">slice</span> <span class="o">=</span> <span class="n">repository</span><span class="o">.</span><span class="na">findAll</span><span class="o">(</span><span class="n">pageable</span><span class="o">);</span>
+
+            <span class="c1">// Process current page</span>
+            <span class="n">slice</span><span class="o">.</span><span class="na">getContent</span><span class="o">().</span><span class="na">forEach</span><span class="o">(</span><span class="k">this</span><span class="o">::</span><span class="n">processUser</span><span class="o">);</span>
+
+            <span class="n">pageable</span> <span class="o">=</span> <span class="n">slice</span><span class="o">.</span><span class="na">nextPageable</span><span class="o">();</span>
+
+        <span class="o">}</span> <span class="k">while</span> <span class="o">(</span><span class="n">slice</span><span class="o">.</span><span class="na">hasNext</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="q-whats-the-maximum-item-size"> <a href="#q-whats-the-maximum-item-size" class="anchor-heading" aria-labelledby="q-whats-the-maximum-item-size"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: What’s the maximum item size? </h3> <p><strong>A:</strong> DynamoDB has a 400KB item size limit. For larger data:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Store large data in S3, reference in DynamoDB</span>
+<span class="nd">@DynamoDBTable</span><span class="o">(</span><span class="n">tableName</span> <span class="o">=</span> <span class="s">"Document"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Document</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">s3Bucket</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">s3Key</span><span class="o">;</span>
+
+    <span class="nd">@DynamoDBHashKey</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@DynamoDBAttribute</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getS3Bucket</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">s3Bucket</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@DynamoDBAttribute</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getS3Key</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">s3Key</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// setters...</span>
+<span class="o">}</span>
+</code></pre></div></div><hr /> <h2 id="transaction-questions"> <a href="#transaction-questions" class="anchor-heading" aria-labelledby="transaction-questions"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Transaction Questions </h2> <h3 id="q-does-spring-data-dynamodb-support-transactions"> <a href="#q-does-spring-data-dynamodb-support-transactions" class="anchor-heading" aria-labelledby="q-does-spring-data-dynamodb-support-transactions"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: Does Spring Data DynamoDB support transactions? </h3> <p><strong>A:</strong> Yes, using <code class="language-plaintext highlighter-rouge">DynamoDBTransactionMapper</code>:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TransactionalService</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">AmazonDynamoDB</span> <span class="n">amazonDynamoDB</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">transferFunds</span><span class="o">(</span><span class="nc">String</span> <span class="n">fromAccount</span><span class="o">,</span> <span class="nc">String</span> <span class="n">toAccount</span><span class="o">,</span> <span class="kt">double</span> <span class="n">amount</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">TransactionWriteRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TransactionWriteRequest</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">addUpdate</span><span class="o">(</span>
+                <span class="k">new</span> <span class="nf">Update</span><span class="o">()</span>
+                    <span class="o">.</span><span class="na">withTableName</span><span class="o">(</span><span class="s">"Account"</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">withKey</span><span class="o">(</span><span class="nc">Collections</span><span class="o">.</span><span class="na">singletonMap</span><span class="o">(</span>
+                        <span class="s">"id"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">AttributeValue</span><span class="o">(</span><span class="n">fromAccount</span><span class="o">)))</span>
+                    <span class="o">.</span><span class="na">withUpdateExpression</span><span class="o">(</span><span class="s">"SET balance = balance - :amount"</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">withExpressionAttributeValues</span><span class="o">(</span><span class="nc">Collections</span><span class="o">.</span><span class="na">singletonMap</span><span class="o">(</span>
+                        <span class="s">":amount"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">AttributeValue</span><span class="o">().</span><span class="na">withN</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">amount</span><span class="o">)))))</span>
+            <span class="o">.</span><span class="na">addUpdate</span><span class="o">(</span>
+                <span class="k">new</span> <span class="nf">Update</span><span class="o">()</span>
+                    <span class="o">.</span><span class="na">withTableName</span><span class="o">(</span><span class="s">"Account"</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">withKey</span><span class="o">(</span><span class="nc">Collections</span><span class="o">.</span><span class="na">singletonMap</span><span class="o">(</span>
+                        <span class="s">"id"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">AttributeValue</span><span class="o">(</span><span class="n">toAccount</span><span class="o">)))</span>
+                    <span class="o">.</span><span class="na">withUpdateExpression</span><span class="o">(</span><span class="s">"SET balance = balance + :amount"</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">withExpressionAttributeValues</span><span class="o">(</span><span class="nc">Collections</span><span class="o">.</span><span class="na">singletonMap</span><span class="o">(</span>
+                        <span class="s">":amount"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">AttributeValue</span><span class="o">().</span><span class="na">withN</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">amount</span><span class="o">)))));</span>
+
+        <span class="n">amazonDynamoDB</span><span class="o">.</span><span class="na">transactWriteItems</span><span class="o">(</span><span class="n">request</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="q-can-i-use-transactional-with-dynamodb"> <a href="#q-can-i-use-transactional-with-dynamodb" class="anchor-heading" aria-labelledby="q-can-i-use-transactional-with-dynamodb"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: Can I use @Transactional with DynamoDB? </h3> <p><strong>A:</strong> <code class="language-plaintext highlighter-rouge">@Transactional</code> is for relational databases. Use DynamoDB transactions directly:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ @Transactional doesn't work with DynamoDB</span>
+<span class="nd">@Transactional</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">saveUser</span><span class="o">(</span><span class="nc">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">repository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="c1">// ✅ Use DynamoDB transactions</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">saveUserAndOrder</span><span class="o">(</span><span class="nc">User</span> <span class="n">user</span><span class="o">,</span> <span class="nc">Order</span> <span class="n">order</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">TransactionWriteRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TransactionWriteRequest</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">addPut</span><span class="o">(</span><span class="n">createPut</span><span class="o">(</span><span class="n">user</span><span class="o">))</span>
+        <span class="o">.</span><span class="na">addPut</span><span class="o">(</span><span class="n">createPut</span><span class="o">(</span><span class="n">order</span><span class="o">));</span>
+
+    <span class="n">amazonDynamoDB</span><span class="o">.</span><span class="na">transactWriteItems</span><span class="o">(</span><span class="n">request</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div><hr /> <h2 id="testing-questions"> <a href="#testing-questions" class="anchor-heading" aria-labelledby="testing-questions"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Testing Questions </h2> <h3 id="q-how-do-i-set-up-integration-tests"> <a href="#q-how-do-i-set-up-integration-tests" class="anchor-heading" aria-labelledby="q-how-do-i-set-up-integration-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: How do I set up integration tests? </h3> <p><strong>A:</strong> Use DynamoDB Local:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@SpringBootTest</span>
+<span class="nd">@TestInstance</span><span class="o">(</span><span class="nc">TestInstance</span><span class="o">.</span><span class="na">Lifecycle</span><span class="o">.</span><span class="na">PER_CLASS</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserRepositoryIT</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">UserRepository</span> <span class="n">repository</span><span class="o">;</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">AmazonDynamoDB</span> <span class="n">amazonDynamoDB</span><span class="o">;</span>
+
+    <span class="nd">@BeforeAll</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setup</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">"sqlite4java.library.path"</span><span class="o">,</span> <span class="s">"target/lib"</span><span class="o">);</span>
+        <span class="n">createTable</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">createTable</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">DynamoDBMapper</span> <span class="n">mapper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DynamoDBMapper</span><span class="o">(</span><span class="n">amazonDynamoDB</span><span class="o">);</span>
+        <span class="nc">CreateTableRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="na">generateCreateTableRequest</span><span class="o">(</span><span class="nc">User</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setProvisionedThroughput</span><span class="o">(</span><span class="k">new</span> <span class="nc">ProvisionedThroughput</span><span class="o">(</span><span class="mi">5L</span><span class="o">,</span> <span class="mi">5L</span><span class="o">));</span>
+
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">amazonDynamoDB</span><span class="o">.</span><span class="na">createTable</span><span class="o">(</span><span class="n">request</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">ResourceInUseException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// Table already exists</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="nd">@BeforeEach</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">cleanup</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">repository</span><span class="o">.</span><span class="na">deleteAll</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testSaveAndFind</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">User</span><span class="o">();</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="s">"123"</span><span class="o">);</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"John"</span><span class="o">);</span>
+
+        <span class="n">repository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+
+        <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">found</span> <span class="o">=</span> <span class="n">repository</span><span class="o">.</span><span class="na">findById</span><span class="o">(</span><span class="s">"123"</span><span class="o">);</span>
+        <span class="n">assertTrue</span><span class="o">(</span><span class="n">found</span><span class="o">.</span><span class="na">isPresent</span><span class="o">());</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="s">"John"</span><span class="o">,</span> <span class="n">found</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="q-how-do-i-mock-dynamodb-in-unit-tests"> <a href="#q-how-do-i-mock-dynamodb-in-unit-tests" class="anchor-heading" aria-labelledby="q-how-do-i-mock-dynamodb-in-unit-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: How do I mock DynamoDB in unit tests? </h3> <p><strong>A:</strong> Use Mockito:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@ExtendWith</span><span class="o">(</span><span class="nc">MockitoExtension</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserServiceTest</span> <span class="o">{</span>
+
+    <span class="nd">@Mock</span>
+    <span class="kd">private</span> <span class="nc">UserRepository</span> <span class="n">repository</span><span class="o">;</span>
+
+    <span class="nd">@InjectMocks</span>
+    <span class="kd">private</span> <span class="nc">UserService</span> <span class="n">service</span><span class="o">;</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testFindUser</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">User</span><span class="o">();</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="s">"123"</span><span class="o">);</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"John"</span><span class="o">);</span>
+
+        <span class="n">when</span><span class="o">(</span><span class="n">repository</span><span class="o">.</span><span class="na">findById</span><span class="o">(</span><span class="s">"123"</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">thenReturn</span><span class="o">(</span><span class="nc">Optional</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">user</span><span class="o">));</span>
+
+        <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="na">findUser</span><span class="o">(</span><span class="s">"123"</span><span class="o">);</span>
+
+        <span class="n">assertTrue</span><span class="o">(</span><span class="n">result</span><span class="o">.</span><span class="na">isPresent</span><span class="o">());</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="s">"John"</span><span class="o">,</span> <span class="n">result</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span>
+        <span class="n">verify</span><span class="o">(</span><span class="n">repository</span><span class="o">).</span><span class="na">findById</span><span class="o">(</span><span class="s">"123"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><hr /> <h2 id="migration-questions"> <a href="#migration-questions" class="anchor-heading" aria-labelledby="migration-questions"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Migration Questions </h2> <h3 id="q-how-do-i-migrate-from-jpa-to-dynamodb"> <a href="#q-how-do-i-migrate-from-jpa-to-dynamodb" class="anchor-heading" aria-labelledby="q-how-do-i-migrate-from-jpa-to-dynamodb"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: How do I migrate from JPA to DynamoDB? </h3> <p><strong>A:</strong> Key differences to consider:</p> <div class="table-wrapper"><table> <thead> <tr> <th>JPA</th> <th>DynamoDB</th> </tr> </thead> <tbody> <tr> <td><code class="language-plaintext highlighter-rouge">@Entity</code></td> <td><code class="language-plaintext highlighter-rouge">@DynamoDBTable</code></td> </tr> <tr> <td><code class="language-plaintext highlighter-rouge">@Id</code></td> <td><code class="language-plaintext highlighter-rouge">@DynamoDBHashKey</code></td> </tr> <tr> <td><code class="language-plaintext highlighter-rouge">@Column</code></td> <td><code class="language-plaintext highlighter-rouge">@DynamoDBAttribute</code></td> </tr> <tr> <td><code class="language-plaintext highlighter-rouge">@OneToMany</code></td> <td>Denormalize or use references</td> </tr> <tr> <td><code class="language-plaintext highlighter-rouge">JOIN</code></td> <td>Not supported - denormalize</td> </tr> <tr> <td>Transactions</td> <td>Limited - use DynamoDB transactions</td> </tr> </tbody> </table></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// JPA</span>
+<span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"users"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"user_name"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// DynamoDB</span>
+<span class="nd">@DynamoDBTable</span><span class="o">(</span><span class="n">tableName</span> <span class="o">=</span> <span class="s">"User"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="nd">@DynamoDBHashKey</span>
+    <span class="nd">@DynamoDBAutoGeneratedKey</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="nd">@DynamoDBAttribute</span><span class="o">(</span><span class="n">attributeName</span> <span class="o">=</span> <span class="s">"user_name"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="q-how-do-i-handle-schema-changes"> <a href="#q-how-do-i-handle-schema-changes" class="anchor-heading" aria-labelledby="q-how-do-i-handle-schema-changes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: How do I handle schema changes? </h3> <p><strong>A:</strong> DynamoDB is schemaless - update your entity classes:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Old version</span>
+<span class="nd">@DynamoDBTable</span><span class="o">(</span><span class="n">tableName</span> <span class="o">=</span> <span class="s">"User"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="c1">// ...</span>
+<span class="o">}</span>
+
+<span class="c1">// New version - just add fields</span>
+<span class="nd">@DynamoDBTable</span><span class="o">(</span><span class="n">tableName</span> <span class="o">=</span> <span class="s">"User"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">email</span><span class="o">;</span>  <span class="c1">// New field</span>
+    <span class="kd">private</span> <span class="nc">Instant</span> <span class="n">createdAt</span><span class="o">;</span>  <span class="c1">// New field</span>
+    <span class="c1">// ...</span>
+<span class="o">}</span>
+</code></pre></div></div> <p>Old items will have null values for new fields until updated.</p><hr /> <h2 id="error-handling-questions"> <a href="#error-handling-questions" class="anchor-heading" aria-labelledby="error-handling-questions"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Error Handling Questions </h2> <h3 id="q-how-do-i-handle-optimistic-locking"> <a href="#q-how-do-i-handle-optimistic-locking" class="anchor-heading" aria-labelledby="q-how-do-i-handle-optimistic-locking"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: How do I handle optimistic locking? </h3> <p><strong>A:</strong> Use <code class="language-plaintext highlighter-rouge">@DynamoDBVersionAttribute</code>:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@DynamoDBTable</span><span class="o">(</span><span class="n">tableName</span> <span class="o">=</span> <span class="s">"User"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">version</span><span class="o">;</span>
+
+    <span class="nd">@DynamoDBHashKey</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@DynamoDBAttribute</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@DynamoDBVersionAttribute</span>
+    <span class="kd">public</span> <span class="nc">Long</span> <span class="nf">getVersion</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">version</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// setters...</span>
+<span class="o">}</span>
+
+<span class="c1">// Usage</span>
+<span class="k">try</span> <span class="o">{</span>
+    <span class="n">repository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">ConditionalCheckFailedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// Version conflict - item was modified by another process</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nf">OptimisticLockingException</span><span class="o">(</span><span class="s">"User was modified"</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="q-how-do-i-handle-validation-errors"> <a href="#q-how-do-i-handle-validation-errors" class="anchor-heading" aria-labelledby="q-how-do-i-handle-validation-errors"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Q: How do I handle validation errors? </h3> <p><strong>A:</strong> Use Bean Validation:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@DynamoDBTable</span><span class="o">(</span><span class="n">tableName</span> <span class="o">=</span> <span class="s">"User"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="nd">@NotBlank</span>
+    <span class="nd">@Size</span><span class="o">(</span><span class="n">min</span> <span class="o">=</span> <span class="mi">2</span><span class="o">,</span> <span class="n">max</span> <span class="o">=</span> <span class="mi">100</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="nd">@Email</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">email</span><span class="o">;</span>
+
+    <span class="nd">@Min</span><span class="o">(</span><span class="mi">18</span><span class="o">)</span>
+    <span class="nd">@Max</span><span class="o">(</span><span class="mi">120</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Integer</span> <span class="n">age</span><span class="o">;</span>
+
+    <span class="c1">// getters/setters...</span>
+<span class="o">}</span>
+
+<span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserService</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">Validator</span> <span class="n">validator</span><span class="o">;</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">UserRepository</span> <span class="n">repository</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nc">User</span> <span class="nf">saveUser</span><span class="o">(</span><span class="nc">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">ConstraintViolation</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;&gt;</span> <span class="n">violations</span> <span class="o">=</span> <span class="n">validator</span><span class="o">.</span><span class="na">validate</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+
+        <span class="k">if</span> <span class="o">(!</span><span class="n">violations</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">ConstraintViolationException</span><span class="o">(</span><span class="n">violations</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">repository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><hr /> <h2 id="next-steps"> <a href="#next-steps" class="anchor-heading" aria-labelledby="next-steps"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Next Steps </h2> <ul> <li>Review <a href="common-errors">Common Errors</a> for specific error solutions</li> <li>Check <a href="performance-tuning">Performance Tuning</a> for optimization tips</li> <li>See <a href="scan-exceptions">Scan Exceptions</a> for scan-related questions</li> <li>Read <a href="batch-operation-failures">Batch Operation Failures</a> for batch handling</li> </ul> </main> <hr> <footer> <div class="d-flex mt-2"> <p class="text-small text-grey-dk-000 mb-0"> <a href="https://github.com/naderfares/spring-data-dynamodb/tree/develop/docs/pages/documentation/troubleshooting/faq.md" id="edit-this-page">Edit this page on GitHub.</a> </p> </div> </footer> </div> </div> <div class="search-overlay"></div> </div> <script src="https://cdn.jsdelivr.net/npm/mermaid@9.1.3/dist/mermaid.min.js"></script> <script> var config = {} ; mermaid.initialize(config); window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid')); </script> </body> </html>

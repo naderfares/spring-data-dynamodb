@@ -1,0 +1,568 @@
+<!DOCTYPE html> <html lang="en-US"> <head> <meta charset="UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=Edge"> <link rel="stylesheet" href="/spring-data-dynamodb/assets/css/just-the-docs-default.css"> <link rel="stylesheet" href="/spring-data-dynamodb/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet"> <style id="jtd-nav-activation"> .site-nav > ul.nav-list:first-child > li > a, .site-nav > ul.nav-list:first-child > li > ul > li > a, .site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(5)) > a, .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li a { background-image: none; } .site-nav > ul.nav-list:not(:first-child) a, .site-nav li.external a { background-image: none; } .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(4) > ul > li:nth-child(5) > a { font-weight: 600; text-decoration: none; }.site-nav > ul.nav-list:first-child > li:nth-child(3) > button svg, .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(4) > button svg, .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(4) > ul > li:nth-child(5) > button svg { transform: rotate(-90deg); }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list, .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(4) > ul.nav-list, .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(4) > ul.nav-list > li.nav-list-item:nth-child(5) > ul.nav-list { display: block; } </style> <script src="/spring-data-dynamodb/assets/js/vendor/lunr.min.js"></script> <script src="/spring-data-dynamodb/assets/js/just-the-docs.js"></script> <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Begin Jekyll SEO tag v2.8.0 --> <title>Design Patterns | Spring Data DynamoDB</title> <meta name="generator" content="Jekyll v3.10.0" /> <meta property="og:title" content="Design Patterns" /> <meta property="og:locale" content="en_US" /> <meta name="description" content="The Spring® Data project simplifies building Spring-powered applications by providing a consistent and intuitive programming model for various data access technologies. Spring Data DynamoDB integrates Spring with Amazon DynamoDB, a fully managed NoSQL database, enabling seamless data access with familiar Spring abstractions. It supports CRUD operations, declarative queries, and automatic object-to-table mapping, all while leveraging DynamoDB’s scalability and performance. This module makes working with DynamoDB straightforward, allowing developers to focus on building robust and scalable applications with minimal boilerplate code." /> <meta property="og:description" content="The Spring® Data project simplifies building Spring-powered applications by providing a consistent and intuitive programming model for various data access technologies. Spring Data DynamoDB integrates Spring with Amazon DynamoDB, a fully managed NoSQL database, enabling seamless data access with familiar Spring abstractions. It supports CRUD operations, declarative queries, and automatic object-to-table mapping, all while leveraging DynamoDB’s scalability and performance. This module makes working with DynamoDB straightforward, allowing developers to focus on building robust and scalable applications with minimal boilerplate code." /> <link rel="canonical" href="https://naderfares.github.io/spring-data-dynamodb/pages/documentation/architecture/design-patterns.html" /> <meta property="og:url" content="https://naderfares.github.io/spring-data-dynamodb/pages/documentation/architecture/design-patterns.html" /> <meta property="og:site_name" content="Spring Data DynamoDB" /> <meta property="og:type" content="website" /> <meta name="twitter:card" content="summary" /> <meta property="twitter:title" content="Design Patterns" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"WebPage","description":"The Spring® Data project simplifies building Spring-powered applications by providing a consistent and intuitive programming model for various data access technologies. Spring Data DynamoDB integrates Spring with Amazon DynamoDB, a fully managed NoSQL database, enabling seamless data access with familiar Spring abstractions. It supports CRUD operations, declarative queries, and automatic object-to-table mapping, all while leveraging DynamoDB’s scalability and performance. This module makes working with DynamoDB straightforward, allowing developers to focus on building robust and scalable applications with minimal boilerplate code.","headline":"Design Patterns","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://naderfares.github.io/spring-data-dynamodb/assets/images/logo.png"}},"url":"https://naderfares.github.io/spring-data-dynamodb/pages/documentation/architecture/design-patterns.html"}</script> <!-- End Jekyll SEO tag --> </head> <body> <a class="skip-to-main" href="#main-content">Skip to main content</a> <svg xmlns="http://www.w3.org/2000/svg" class="d-none"> <symbol id="svg-link" viewBox="0 0 24 24"> <title>Link</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"> <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-menu" viewBox="0 0 24 24"> <title>Menu</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"> <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewBox="0 0 24 24"> <title>Expand</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"> <polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE --> <symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"> <title id="svg-external-link-title">(external link)</title> <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line> </symbol> <symbol id="svg-doc" viewBox="0 0 24 24"> <title>Document</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"> <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> <symbol id="svg-search" viewBox="0 0 24 24"> <title>Search</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md --> <symbol id="svg-copy" viewBox="0 0 16 16"> <title>Copy</title> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"> <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/> <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/> </svg> </symbol> <symbol id="svg-copied" viewBox="0 0 16 16"> <title>Copied</title> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16"> <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/> <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/> </svg> </symbol> </svg> <div class="side-bar"> <div class="site-header" role="banner"> <a href="/spring-data-dynamodb/" class="site-title lh-tight"> <div class="site-logo" role="img" aria-label="Spring Data DynamoDB"></div> </a> <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false"> <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg> </button> </div> <nav aria-label="Main" id="site-nav" class="site-nav"> <ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/" class="nav-list-link">Home</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/about/" class="nav-list-link">About</a></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Documentation category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/documentation/" class="nav-list-link">Documentation</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/getting-started.html" class="nav-list-link">Getting Started</a></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Implementation category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/implementation/implementation.html" class="nav-list-link">Implementation</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Access-to-releases.html" class="nav-list-link">Access to releases</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Autocreate-Tables.html" class="nav-list-link">Autocreate Tables</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Composite-Primary-Keys-Kotlin-Example.html" class="nav-list-link">Composite Primary Keys Kotlin Example</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Custom-repository-implementations.html" class="nav-list-link">Custom repository implementations</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/DynamoDB-GSI-Example.html" class="nav-list-link">DynamoDB GSI Example</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/DynamoDB-Hash-Key-Example.html" class="nav-list-link">DynamoDB Hash Key Example</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Projections.html" class="nav-list-link">Projections</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Query-Size-Limits-and-Pageable.html" class="nav-list-link">Query Size Limits and Pageable</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Quick-Start---XML-based-configuration.html" class="nav-list-link">Quick Start - XML based configuration</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Conceptual category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/conceptual/conceptual.html" class="nav-list-link">Conceptual</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/conceptual/Supported-Spring-Data-Comparison-Operators.html" class="nav-list-link">Supported Spring Data Comparison Operators</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/conceptual/Use-Hash-Range-keys.html" class="nav-list-link">Use Hash-Range keys</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Architecture category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/architecture/architecture.html" class="nav-list-link">Architecture</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/architecture/core-components.html" class="nav-list-link">Core Components</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/architecture/repository-layer.html" class="nav-list-link">Repository Layer</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/architecture/query-execution.html" class="nav-list-link">Query Execution</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/architecture/entity-mapping.html" class="nav-list-link">Entity Mapping</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/architecture/design-patterns.html" class="nav-list-link">Design Patterns</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in API Reference category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/api-reference/api-reference.html" class="nav-list-link">API Reference</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/api-reference/dynamodb-template.html" class="nav-list-link">DynamoDBTemplate</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/api-reference/repository-interfaces.html" class="nav-list-link">Repository Interfaces</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/api-reference/annotations.html" class="nav-list-link">Annotations</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/api-reference/query-methods.html" class="nav-list-link">Query Methods</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/api-reference/configuration.html" class="nav-list-link">Configuration</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Troubleshooting category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/troubleshooting.html" class="nav-list-link">Troubleshooting</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/common-errors.html" class="nav-list-link">Common Errors</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/scan-exceptions.html" class="nav-list-link">Scan Exceptions</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/batch-operation-failures.html" class="nav-list-link">Batch Operation Failures</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/performance-tuning.html" class="nav-list-link">Performance Tuning</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/faq.html" class="nav-list-link">FAQ</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Operational category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/operational/operational.html" class="nav-list-link">Operational</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/operational/Alter-table-name-during-runtime.html" class="nav-list-link">Alter table name during runtime</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/operational/Amazon-DynamoDB-Accelerator-(DAX).html" class="nav-list-link">Amazon DynamoDB Accelerator (DAX)</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/operational/Multi-Repository-configuration.html" class="nav-list-link">Multi Repository configuration</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/operational/Spring-Data-REST.html" class="nav-list-link">Spring Data REST</a></li></ul></li></ul></li></ul> </nav> <footer class="site-footer"> This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll. </footer> </div> <div class="main" id="top"> <div id="main-header" class="main-header"> <div class="search" role="search"> <div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search Spring Data DynamoDB" aria-label="Search Spring Data DynamoDB" autocomplete="off"> <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label> </div> <div id="search-results" class="search-results"></div> </div> <nav aria-label="Auxiliary" class="aux-nav"> <ul class="aux-nav-list"> <li class="aux-nav-list-item"> <a href="https://github.com/naderfares/spring-data-dynamodb" class="site-button" target="_blank" rel="noopener noreferrer" > Spring Data DynamoDB on GitHub </a> </li> </ul> </nav> </div> <div class="main-content-wrap"> <nav aria-label="Breadcrumb" class="breadcrumb-nav"> <ol class="breadcrumb-nav-list"> <li class="breadcrumb-nav-list-item"><a href="/spring-data-dynamodb/documentation/">Documentation</a></li> <li class="breadcrumb-nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/architecture/architecture.html">Architecture</a></li> <li class="breadcrumb-nav-list-item"><span>Design Patterns</span></li> </ol> </nav> <div id="main-content" class="main-content"> <main> <h1 id="design-patterns"> <a href="#design-patterns" class="anchor-heading" aria-labelledby="design-patterns"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Design Patterns </h1> <p>Spring Data DynamoDB employs several well-established design patterns and introduces DynamoDB-specific patterns to provide a robust, efficient, and safe data access layer.</p> <h2 id="table-of-contents"> <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of Contents </h2> <ol class="no_toc text-delta"> <li>TOC</li> </ol> <h2 id="template-pattern"> <a href="#template-pattern" class="anchor-heading" aria-labelledby="template-pattern"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Template Pattern </h2> <h3 id="overview"> <a href="#overview" class="anchor-heading" aria-labelledby="overview"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Overview </h3> <p>The Template Pattern is the foundation of DynamoDBTemplate, providing a consistent approach to DynamoDB operations while handling cross-cutting concerns.</p> <h3 id="implementation"> <a href="#implementation" class="anchor-heading" aria-labelledby="implementation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Implementation </h3><pre><code class="language-mermaid">classDiagram
+    class DynamoDBOperations {
+        &lt;&lt;interface&gt;&gt;
+        +save(T) T
+        +load(Class, Object, Object) T
+        +delete(T) T
+    }
+
+    class DynamoDBTemplate {
+        -DynamoDBMapper mapper
+        -ApplicationEventPublisher publisher
+        +save(T) T
+        +load(Class, Object, Object) T
+        +delete(T) T
+        -maybeEmitEvent(T, Function)
+    }
+
+    DynamoDBTemplate ..|&gt; DynamoDBOperations
+    DynamoDBTemplate --&gt; DynamoDBMapper : delegates to
+</code></pre><h3 id="benefits"> <a href="#benefits" class="anchor-heading" aria-labelledby="benefits"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Benefits </h3> <p><strong>Consistent Error Handling:</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DynamoDBTemplate</span> <span class="kd">implements</span> <span class="nc">DynamoDBOperations</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="no">T</span> <span class="nf">save</span><span class="o">(</span><span class="no">T</span> <span class="n">entity</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">maybeEmitEvent</span><span class="o">(</span><span class="n">entity</span><span class="o">,</span> <span class="nl">BeforeSaveEvent:</span><span class="o">:</span><span class="k">new</span><span class="o">);</span>
+            <span class="n">dynamoDBMapper</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">entity</span><span class="o">);</span>
+            <span class="n">maybeEmitEvent</span><span class="o">(</span><span class="n">entity</span><span class="o">,</span> <span class="nl">AfterSaveEvent:</span><span class="o">:</span><span class="k">new</span><span class="o">);</span>
+            <span class="k">return</span> <span class="n">entity</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">AmazonDynamoDBException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// Consistent exception translation</span>
+            <span class="k">throw</span> <span class="nf">translateException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <p><strong>Cross-Cutting Concerns:</strong></p> <ul> <li>Event publishing (auditing, logging)</li> <li>Exception translation</li> <li>Transaction management (future)</li> <li>Metrics collection (future)</li> </ul> <p><strong>Testability:</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Mock the interface, not the implementation</span>
+<span class="nd">@Mock</span>
+<span class="kd">private</span> <span class="nc">DynamoDBOperations</span> <span class="n">operations</span><span class="o">;</span>
+
+<span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">testSave</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">User</span><span class="o">(</span><span class="s">"123"</span><span class="o">,</span> <span class="s">"john"</span><span class="o">);</span>
+    <span class="n">when</span><span class="o">(</span><span class="n">operations</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">any</span><span class="o">(</span><span class="nc">User</span><span class="o">.</span><span class="na">class</span><span class="o">))).</span><span class="na">thenReturn</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+
+    <span class="nc">User</span> <span class="n">saved</span> <span class="o">=</span> <span class="n">operations</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">saved</span><span class="o">).</span><span class="na">isNotNull</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div> <h2 id="factory-pattern"> <a href="#factory-pattern" class="anchor-heading" aria-labelledby="factory-pattern"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Factory Pattern </h2> <h3 id="repository-factory"> <a href="#repository-factory" class="anchor-heading" aria-labelledby="repository-factory"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Repository Factory </h3> <p>Creates repository instances with appropriate configuration based on entity metadata.</p><pre><code class="language-mermaid">flowchart TD
+    A[Repository Interface] --&gt; B[DynamoDBRepositoryFactory]
+    B --&gt; C{Extract Entity Metadata}
+    C --&gt; D{Range Key?}
+    D --&gt;|Yes| E[Create Hash+Range Repository]
+    D --&gt;|No| F[Create Hash-Only Repository]
+    E --&gt; G[Repository Instance]
+    F --&gt; G
+    G --&gt; H[Apply Custom Implementation]
+    H --&gt; I[Return Repository Proxy]
+</code></pre><h3 id="dynamic-repository-creation"> <a href="#dynamic-repository-creation" class="anchor-heading" aria-labelledby="dynamic-repository-creation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Dynamic Repository Creation </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DynamoDBRepositoryFactory</span> <span class="kd">extends</span> <span class="nc">RepositoryFactorySupport</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="nc">Object</span> <span class="nf">getTargetRepository</span><span class="o">(</span><span class="nc">RepositoryInformation</span> <span class="n">metadata</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">DynamoDBEntityInformation</span><span class="o">&lt;?,</span> <span class="o">?&gt;</span> <span class="n">entityInformation</span> <span class="o">=</span>
+            <span class="n">getEntityInformation</span><span class="o">(</span><span class="n">metadata</span><span class="o">.</span><span class="na">getDomainType</span><span class="o">());</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">entityInformation</span><span class="o">.</span><span class="na">isRangeKeyAware</span><span class="o">())</span> <span class="o">{</span>
+            <span class="c1">// Factory creates appropriate implementation based on entity structure</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nf">SimpleDynamoDBPagingAndSortingRepository</span><span class="o">(</span>
+                <span class="n">entityInformation</span><span class="o">,</span>
+                <span class="n">dynamoDBOperations</span><span class="o">,</span>
+                <span class="n">getEnableScanPermissions</span><span class="o">(</span><span class="n">metadata</span><span class="o">)</span>
+            <span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nf">SimpleDynamoDBCrudRepository</span><span class="o">(</span>
+                <span class="n">entityInformation</span><span class="o">,</span>
+                <span class="n">dynamoDBOperations</span><span class="o">,</span>
+                <span class="n">getEnableScanPermissions</span><span class="o">(</span><span class="n">metadata</span><span class="o">)</span>
+            <span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="benefits-1"> <a href="#benefits-1" class="anchor-heading" aria-labelledby="benefits-1"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Benefits </h3> <ul> <li><strong>Decoupling</strong>: Clients don’t know concrete repository classes</li> <li><strong>Flexibility</strong>: Easy to add new repository types</li> <li><strong>Configuration</strong>: Centralized repository configuration</li> <li><strong>Type Safety</strong>: Compile-time type checking</li> </ul> <h2 id="strategy-pattern"> <a href="#strategy-pattern" class="anchor-heading" aria-labelledby="strategy-pattern"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Strategy Pattern </h2> <h3 id="query-execution-strategies"> <a href="#query-execution-strategies" class="anchor-heading" aria-labelledby="query-execution-strategies"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Query Execution Strategies </h3> <p>Different execution strategies for different return types.</p><pre><code class="language-mermaid">classDiagram
+    class QueryExecution~T, ID~ {
+        &lt;&lt;interface&gt;&gt;
+        +execute(AbstractDynamoDBQuery, Object[]) Object
+    }
+
+    class CollectionExecution {
+        +execute() List~T~
+    }
+
+    class PagedExecution {
+        +execute() Page~T~
+    }
+
+    class SlicedExecution {
+        +execute() Slice~T~
+    }
+
+    class SingleEntityExecution {
+        +execute() T
+    }
+
+    class DeleteExecution {
+        +execute() List~T~
+    }
+
+    QueryExecution &lt;|.. CollectionExecution
+    QueryExecution &lt;|.. PagedExecution
+    QueryExecution &lt;|.. SlicedExecution
+    QueryExecution &lt;|.. SingleEntityExecution
+    QueryExecution &lt;|.. DeleteExecution
+</code></pre><h3 id="strategy-selection"> <a href="#strategy-selection" class="anchor-heading" aria-labelledby="strategy-selection"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Strategy Selection </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protected</span> <span class="nc">QueryExecution</span><span class="o">&lt;</span><span class="no">T</span><span class="o">,</span> <span class="no">ID</span><span class="o">&gt;</span> <span class="nf">getExecution</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">method</span><span class="o">.</span><span class="na">isCollectionQuery</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">isSingleEntityResultsRestriction</span><span class="o">())</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">CollectionExecution</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">method</span><span class="o">.</span><span class="na">isSliceQuery</span><span class="o">())</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">SlicedExecution</span><span class="o">(</span><span class="n">method</span><span class="o">.</span><span class="na">getParameters</span><span class="o">());</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">method</span><span class="o">.</span><span class="na">isPageQuery</span><span class="o">())</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">PagedExecution</span><span class="o">(</span><span class="n">method</span><span class="o">.</span><span class="na">getParameters</span><span class="o">());</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">isDeleteQuery</span><span class="o">())</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">DeleteExecution</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">SingleEntityExecution</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="example-paged-vs-sliced-execution"> <a href="#example-paged-vs-sliced-execution" class="anchor-heading" aria-labelledby="example-paged-vs-sliced-execution"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Example: Paged vs Sliced Execution </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// PagedExecution: Executes count query for total</span>
+<span class="kd">class</span> <span class="nc">PagedExecution</span> <span class="kd">implements</span> <span class="nc">QueryExecution</span><span class="o">&lt;</span><span class="no">T</span><span class="o">,</span> <span class="no">ID</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">AbstractDynamoDBQuery</span><span class="o">&lt;</span><span class="no">T</span><span class="o">,</span> <span class="no">ID</span><span class="o">&gt;</span> <span class="n">query</span><span class="o">,</span> <span class="nc">Object</span><span class="o">[]</span> <span class="n">values</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">results</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="na">doCreateQuery</span><span class="o">(</span><span class="n">values</span><span class="o">).</span><span class="na">getResultList</span><span class="o">();</span>
+        <span class="nc">Long</span> <span class="n">count</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="na">doCreateCountQuery</span><span class="o">(</span><span class="n">values</span><span class="o">,</span> <span class="kc">true</span><span class="o">).</span><span class="na">getSingleResult</span><span class="o">();</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nc">PageImpl</span><span class="o">&lt;&gt;(</span><span class="n">readPage</span><span class="o">(</span><span class="n">results</span><span class="o">),</span> <span class="n">pageable</span><span class="o">,</span> <span class="n">count</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// SlicedExecution: Peeks ahead instead of counting</span>
+<span class="kd">class</span> <span class="nc">SlicedExecution</span> <span class="kd">implements</span> <span class="nc">QueryExecution</span><span class="o">&lt;</span><span class="no">T</span><span class="o">,</span> <span class="no">ID</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">AbstractDynamoDBQuery</span><span class="o">&lt;</span><span class="no">T</span><span class="o">,</span> <span class="no">ID</span><span class="o">&gt;</span> <span class="n">query</span><span class="o">,</span> <span class="nc">Object</span><span class="o">[]</span> <span class="n">values</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">results</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="na">doCreateQuery</span><span class="o">(</span><span class="n">values</span><span class="o">).</span><span class="na">getResultList</span><span class="o">();</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">page</span> <span class="o">=</span> <span class="n">readPage</span><span class="o">(</span><span class="n">results</span><span class="o">);</span>
+        <span class="kt">boolean</span> <span class="n">hasNext</span> <span class="o">=</span> <span class="n">hasMoreResults</span><span class="o">(</span><span class="n">results</span><span class="o">,</span> <span class="n">page</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nc">SliceImpl</span><span class="o">&lt;&gt;(</span><span class="n">page</span><span class="o">,</span> <span class="n">pageable</span><span class="o">,</span> <span class="n">hasNext</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="benefits-2"> <a href="#benefits-2" class="anchor-heading" aria-labelledby="benefits-2"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Benefits </h3> <ul> <li><strong>Flexibility</strong>: Easy to add new execution strategies</li> <li><strong>Single Responsibility</strong>: Each strategy handles one return type</li> <li><strong>Optimized</strong>: Different strategies optimized for their use case</li> <li><strong>Maintainability</strong>: Changes to one strategy don’t affect others</li> </ul> <h2 id="observer-pattern-event-publishing"> <a href="#observer-pattern-event-publishing" class="anchor-heading" aria-labelledby="observer-pattern-event-publishing"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Observer Pattern (Event Publishing) </h2> <h3 id="event-driven-architecture"> <a href="#event-driven-architecture" class="anchor-heading" aria-labelledby="event-driven-architecture"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Event-Driven Architecture </h3><pre><code class="language-mermaid">sequenceDiagram
+    participant Client
+    participant Template as DynamoDBTemplate
+    participant Publisher as EventPublisher
+    participant Listener1 as AuditListener
+    participant Listener2 as CacheListener
+
+    Client-&gt;&gt;Template: save(entity)
+    Template-&gt;&gt;Publisher: publish(BeforeSaveEvent)
+    Publisher-&gt;&gt;Listener1: onBeforeSave()
+    Publisher-&gt;&gt;Listener2: onBeforeSave()
+    Template-&gt;&gt;Template: execute save
+    Template-&gt;&gt;Publisher: publish(AfterSaveEvent)
+    Publisher-&gt;&gt;Listener1: onAfterSave()
+    Publisher-&gt;&gt;Listener2: onAfterSave()
+    Template--&gt;&gt;Client: return entity
+</code></pre><h3 id="event-hierarchy"> <a href="#event-hierarchy" class="anchor-heading" aria-labelledby="event-hierarchy"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Event Hierarchy </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Base event</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">DynamoDBMappingEvent</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="nc">ApplicationEvent</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="no">T</span> <span class="n">source</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">DynamoDBMappingEvent</span><span class="o">(</span><span class="no">T</span> <span class="n">source</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">source</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">source</span> <span class="o">=</span> <span class="n">source</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="no">T</span> <span class="nf">getSource</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">source</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// Lifecycle events</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BeforeSaveEvent</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="nc">DynamoDBMappingEvent</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">BeforeSaveEvent</span><span class="o">(</span><span class="no">T</span> <span class="n">source</span><span class="o">)</span> <span class="o">{</span> <span class="kd">super</span><span class="o">(</span><span class="n">source</span><span class="o">);</span> <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AfterSaveEvent</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="nc">DynamoDBMappingEvent</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">AfterSaveEvent</span><span class="o">(</span><span class="no">T</span> <span class="n">source</span><span class="o">)</span> <span class="o">{</span> <span class="kd">super</span><span class="o">(</span><span class="n">source</span><span class="o">);</span> <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AfterLoadEvent</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="nc">DynamoDBMappingEvent</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">AfterLoadEvent</span><span class="o">(</span><span class="no">T</span> <span class="n">source</span><span class="o">)</span> <span class="o">{</span> <span class="kd">super</span><span class="o">(</span><span class="n">source</span><span class="o">);</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="event-listener-implementation"> <a href="#event-listener-implementation" class="anchor-heading" aria-labelledby="event-listener-implementation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Event Listener Implementation </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AuditingEventListener</span> <span class="kd">extends</span> <span class="nc">AbstractDynamoDBEventListener</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onBeforeSave</span><span class="o">(</span><span class="nc">BeforeSaveEvent</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">User</span> <span class="n">user</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getSource</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">user</span><span class="o">.</span><span class="na">getCreatedAt</span><span class="o">()</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">user</span><span class="o">.</span><span class="na">setCreatedAt</span><span class="o">(</span><span class="k">new</span> <span class="nc">Date</span><span class="o">());</span>
+        <span class="o">}</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setModifiedAt</span><span class="o">(</span><span class="k">new</span> <span class="nc">Date</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onAfterSave</span><span class="o">(</span><span class="nc">AfterSaveEvent</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">User</span> <span class="n">user</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getSource</span><span class="o">();</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"User saved: id={}, username={}"</span><span class="o">,</span> <span class="n">user</span><span class="o">.</span><span class="na">getUserId</span><span class="o">(),</span> <span class="n">user</span><span class="o">.</span><span class="na">getUsername</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onAfterLoad</span><span class="o">(</span><span class="nc">AfterLoadEvent</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">User</span> <span class="n">user</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getSource</span><span class="o">();</span>
+        <span class="c1">// Decrypt sensitive data</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setEmail</span><span class="o">(</span><span class="n">decrypt</span><span class="o">(</span><span class="n">user</span><span class="o">.</span><span class="na">getEmail</span><span class="o">()));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="common-use-cases"> <a href="#common-use-cases" class="anchor-heading" aria-labelledby="common-use-cases"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Common Use Cases </h3> <p><strong>Auditing:</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AuditListener</span> <span class="kd">extends</span> <span class="nc">AbstractDynamoDBEventListener</span><span class="o">&lt;</span><span class="nc">AuditableEntity</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onBeforeSave</span><span class="o">(</span><span class="nc">BeforeSaveEvent</span><span class="o">&lt;</span><span class="nc">AuditableEntity</span><span class="o">&gt;</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">AuditableEntity</span> <span class="n">entity</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getSource</span><span class="o">();</span>
+        <span class="nc">String</span> <span class="n">currentUser</span> <span class="o">=</span> <span class="nc">SecurityContextHolder</span><span class="o">.</span><span class="na">getContext</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">getAuthentication</span><span class="o">().</span><span class="na">getName</span><span class="o">();</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">entity</span><span class="o">.</span><span class="na">getCreatedBy</span><span class="o">()</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">entity</span><span class="o">.</span><span class="na">setCreatedBy</span><span class="o">(</span><span class="n">currentUser</span><span class="o">);</span>
+            <span class="n">entity</span><span class="o">.</span><span class="na">setCreatedDate</span><span class="o">(</span><span class="nc">Instant</span><span class="o">.</span><span class="na">now</span><span class="o">());</span>
+        <span class="o">}</span>
+        <span class="n">entity</span><span class="o">.</span><span class="na">setLastModifiedBy</span><span class="o">(</span><span class="n">currentUser</span><span class="o">);</span>
+        <span class="n">entity</span><span class="o">.</span><span class="na">setLastModifiedDate</span><span class="o">(</span><span class="nc">Instant</span><span class="o">.</span><span class="na">now</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <p><strong>Caching:</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CacheEventListener</span> <span class="kd">extends</span> <span class="nc">AbstractDynamoDBEventListener</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">CacheManager</span> <span class="n">cacheManager</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onAfterSave</span><span class="o">(</span><span class="nc">AfterSaveEvent</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">&gt;</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Invalidate cache</span>
+        <span class="nc">String</span> <span class="n">cacheKey</span> <span class="o">=</span> <span class="n">extractCacheKey</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getSource</span><span class="o">());</span>
+        <span class="n">cacheManager</span><span class="o">.</span><span class="na">getCache</span><span class="o">(</span><span class="s">"entities"</span><span class="o">).</span><span class="na">evict</span><span class="o">(</span><span class="n">cacheKey</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onAfterLoad</span><span class="o">(</span><span class="nc">AfterLoadEvent</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">&gt;</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Populate cache</span>
+        <span class="nc">String</span> <span class="n">cacheKey</span> <span class="o">=</span> <span class="n">extractCacheKey</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getSource</span><span class="o">());</span>
+        <span class="n">cacheManager</span><span class="o">.</span><span class="na">getCache</span><span class="o">(</span><span class="s">"entities"</span><span class="o">).</span><span class="na">put</span><span class="o">(</span><span class="n">cacheKey</span><span class="o">,</span> <span class="n">event</span><span class="o">.</span><span class="na">getSource</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <p><strong>Validation:</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ValidatingListener</span> <span class="kd">extends</span> <span class="nc">AbstractDynamoDBEventListener</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">Validator</span> <span class="n">validator</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onBeforeSave</span><span class="o">(</span><span class="nc">BeforeSaveEvent</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">&gt;</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">ConstraintViolation</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">&gt;&gt;</span> <span class="n">violations</span> <span class="o">=</span>
+            <span class="n">validator</span><span class="o">.</span><span class="na">validate</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getSource</span><span class="o">());</span>
+
+        <span class="k">if</span> <span class="o">(!</span><span class="n">violations</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">ConstraintViolationException</span><span class="o">(</span><span class="n">violations</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="benefits-3"> <a href="#benefits-3" class="anchor-heading" aria-labelledby="benefits-3"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Benefits </h3> <ul> <li><strong>Decoupling</strong>: Business logic separated from persistence</li> <li><strong>Extensibility</strong>: Easy to add new listeners</li> <li><strong>Cross-Cutting Concerns</strong>: Auditing, validation, caching</li> <li><strong>Non-Invasive</strong>: No changes to entity or repository code</li> </ul> <h2 id="lazy-loading-pattern"> <a href="#lazy-loading-pattern" class="anchor-heading" aria-labelledby="lazy-loading-pattern"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Lazy Loading Pattern </h2> <h3 id="paginated-result-lists"> <a href="#paginated-result-lists" class="anchor-heading" aria-labelledby="paginated-result-lists"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Paginated Result Lists </h3> <p>DynamoDB returns paginated results that are loaded lazily.</p><pre><code class="language-mermaid">sequenceDiagram
+    participant Client
+    participant PaginatedList as PaginatedQueryList
+    participant Iterator
+    participant DynamoDB
+
+    Client-&gt;&gt;PaginatedList: iterator()
+    Client-&gt;&gt;Iterator: hasNext()
+    Iterator--&gt;&gt;Client: true
+    Client-&gt;&gt;Iterator: next()
+    Iterator-&gt;&gt;Iterator: Check current page
+    Note over Iterator: Has items in current page
+    Iterator--&gt;&gt;Client: return item
+
+    Client-&gt;&gt;Iterator: next()
+    Iterator-&gt;&gt;Iterator: Check current page
+    Note over Iterator: Current page exhausted
+    Iterator-&gt;&gt;DynamoDB: Query next page
+    DynamoDB--&gt;&gt;Iterator: Next page results
+    Iterator--&gt;&gt;Client: return item
+</code></pre><h3 id="implementation-1"> <a href="#implementation-1" class="anchor-heading" aria-labelledby="implementation-1"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Implementation </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PaginatedQueryList</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="nc">AbstractList</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">DynamoDBMapper</span> <span class="n">mapper</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">List</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">currentPage</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">AttributeValue</span><span class="o">&gt;</span> <span class="n">lastEvaluatedKey</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Iterator</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="nf">iterator</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">PaginatedIterator</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">class</span> <span class="nc">PaginatedIterator</span> <span class="kd">implements</span> <span class="nc">Iterator</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="o">{</span>
+        <span class="kd">private</span> <span class="nc">Iterator</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">currentPageIterator</span> <span class="o">=</span> <span class="n">currentPage</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">hasNext</span><span class="o">()</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">currentPageIterator</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+
+            <span class="c1">// Check if more pages available</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">lastEvaluatedKey</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">loadNextPage</span><span class="o">();</span>
+                <span class="k">return</span> <span class="n">currentPageIterator</span><span class="o">.</span><span class="na">hasNext</span><span class="o">();</span>
+            <span class="o">}</span>
+
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="no">T</span> <span class="nf">next</span><span class="o">()</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">hasNext</span><span class="o">())</span> <span class="o">{</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nf">NoSuchElementException</span><span class="o">();</span>
+            <span class="o">}</span>
+            <span class="k">return</span> <span class="n">currentPageIterator</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="kd">private</span> <span class="kt">void</span> <span class="nf">loadNextPage</span><span class="o">()</span> <span class="o">{</span>
+            <span class="c1">// Execute query for next page</span>
+            <span class="nc">QueryRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="n">createQueryRequest</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">withExclusiveStartKey</span><span class="o">(</span><span class="n">lastEvaluatedKey</span><span class="o">);</span>
+
+            <span class="nc">QueryResult</span> <span class="n">result</span> <span class="o">=</span> <span class="n">amazonDynamoDB</span><span class="o">.</span><span class="na">query</span><span class="o">(</span><span class="n">request</span><span class="o">);</span>
+
+            <span class="c1">// Update state</span>
+            <span class="n">currentPage</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+            <span class="n">currentPage</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">mapper</span><span class="o">.</span><span class="na">marshallIntoObjects</span><span class="o">(</span><span class="n">clazz</span><span class="o">,</span> <span class="n">result</span><span class="o">.</span><span class="na">getItems</span><span class="o">()));</span>
+            <span class="n">currentPageIterator</span> <span class="o">=</span> <span class="n">currentPage</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
+            <span class="n">lastEvaluatedKey</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="na">getLastEvaluatedKey</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="benefits-4"> <a href="#benefits-4" class="anchor-heading" aria-labelledby="benefits-4"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Benefits </h3> <p><strong>Memory Efficiency:</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Only loads pages as needed</span>
+<span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">users</span> <span class="o">=</span> <span class="n">userRepository</span><span class="o">.</span><span class="na">findByStatus</span><span class="o">(</span><span class="s">"ACTIVE"</span><span class="o">);</span>
+
+<span class="k">for</span> <span class="o">(</span><span class="nc">User</span> <span class="n">user</span> <span class="o">:</span> <span class="n">users</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">processUser</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>  <span class="c1">// Pages loaded on-demand</span>
+<span class="o">}</span>
+<span class="c1">// No need to load all users into memory at once</span>
+</code></pre></div></div> <p><strong>Early Termination:</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Can stop iterating early without loading entire result set</span>
+<span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">users</span> <span class="o">=</span> <span class="n">userRepository</span><span class="o">.</span><span class="na">findByStatus</span><span class="o">(</span><span class="s">"ACTIVE"</span><span class="o">);</span>
+
+<span class="k">for</span> <span class="o">(</span><span class="nc">User</span> <span class="n">user</span> <span class="o">:</span> <span class="n">users</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">user</span><span class="o">.</span><span class="na">getUsername</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"admin"</span><span class="o">))</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">user</span><span class="o">;</span>  <span class="c1">// Stops here, doesn't load remaining pages</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="configuration"> <a href="#configuration" class="anchor-heading" aria-labelledby="configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Configuration </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">DynamoDBMapperConfig</span> <span class="n">config</span> <span class="o">=</span> <span class="nc">DynamoDBMapperConfig</span><span class="o">.</span><span class="na">builder</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">withPaginationLoadingStrategy</span><span class="o">(</span>
+        <span class="nc">PaginationLoadingStrategy</span><span class="o">.</span><span class="na">LAZY_LOADING</span>  <span class="c1">// or EAGER_LOADING</span>
+    <span class="o">)</span>
+    <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+</code></pre></div></div> <h2 id="scan-protection-pattern"> <a href="#scan-protection-pattern" class="anchor-heading" aria-labelledby="scan-protection-pattern"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Scan Protection Pattern </h2> <h3 id="the-problem"> <a href="#the-problem" class="anchor-heading" aria-labelledby="the-problem"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> The Problem </h3> <p>Accidental table scans can be expensive in DynamoDB:</p> <ul> <li>High cost (consumed capacity)</li> <li>Poor performance on large tables</li> <li>Potential throttling</li> </ul> <h3 id="solution-explicit-opt-in"> <a href="#solution-explicit-opt-in" class="anchor-heading" aria-labelledby="solution-explicit-opt-in"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Solution: Explicit Opt-In </h3><pre><code class="language-mermaid">flowchart TD
+    A[Method Call] --&gt; B{Requires Scan?}
+    B --&gt;|No| C[Execute Query]
+    B --&gt;|Yes| D{@EnableScan Present?}
+    D --&gt;|Yes| E[Execute Scan]
+    D --&gt;|No| F[Throw Exception]
+    C --&gt; G[Return Results]
+    E --&gt; G
+    F --&gt; H[Error Message]
+</code></pre><h3 id="implementation-2"> <a href="#implementation-2" class="anchor-heading" aria-labelledby="implementation-2"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Implementation </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleDynamoDBCrudRepository</span><span class="o">&lt;</span><span class="no">T</span><span class="o">,</span> <span class="no">ID</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="kd">protected</span> <span class="nc">EnableScanPermissions</span> <span class="n">enableScanPermissions</span><span class="o">;</span>
+
+    <span class="kt">void</span> <span class="nf">assertScanEnabled</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">scanEnabled</span><span class="o">,</span> <span class="nc">String</span> <span class="n">methodName</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Assert</span><span class="o">.</span><span class="na">isTrue</span><span class="o">(</span><span class="n">scanEnabled</span><span class="o">,</span>
+            <span class="s">"Scanning for unpaginated "</span> <span class="o">+</span> <span class="n">methodName</span> <span class="o">+</span> <span class="s">"() queries is not enabled. "</span> <span class="o">+</span>
+            <span class="s">"To enable, re-implement the "</span> <span class="o">+</span> <span class="n">methodName</span> <span class="o">+</span> <span class="s">"() method in your "</span> <span class="o">+</span>
+            <span class="s">"repository interface and annotate with @EnableScan, or enable scanning "</span> <span class="o">+</span>
+            <span class="s">"for all repository methods by annotating your repository interface with @EnableScan"</span>
+        <span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="nf">findAll</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertScanEnabled</span><span class="o">(</span>
+            <span class="n">enableScanPermissions</span><span class="o">.</span><span class="na">isFindAllUnpaginatedScanEnabled</span><span class="o">(),</span>
+            <span class="s">"findAll"</span>
+        <span class="o">);</span>
+        <span class="k">return</span> <span class="n">dynamoDBOperations</span><span class="o">.</span><span class="na">scan</span><span class="o">(</span><span class="n">domainType</span><span class="o">,</span> <span class="k">new</span> <span class="nc">DynamoDBScanExpression</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">long</span> <span class="nf">count</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertScanEnabled</span><span class="o">(</span>
+            <span class="n">enableScanPermissions</span><span class="o">.</span><span class="na">isCountUnpaginatedScanEnabled</span><span class="o">(),</span>
+            <span class="s">"count"</span>
+        <span class="o">);</span>
+        <span class="k">return</span> <span class="n">dynamoDBOperations</span><span class="o">.</span><span class="na">count</span><span class="o">(</span><span class="n">domainType</span><span class="o">,</span> <span class="k">new</span> <span class="nc">DynamoDBScanExpression</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="usage-patterns"> <a href="#usage-patterns" class="anchor-heading" aria-labelledby="usage-patterns"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Usage Patterns </h3> <p><strong>Repository-Level:</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@EnableScan</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserRepository</span> <span class="kd">extends</span> <span class="nc">DynamoDBCrudRepository</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="c1">// All scan operations enabled</span>
+<span class="o">}</span>
+</code></pre></div></div> <p><strong>Method-Level:</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserRepository</span> <span class="kd">extends</span> <span class="nc">DynamoDBCrudRepository</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="nd">@EnableScan</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">findAll</span><span class="o">();</span>  <span class="c1">// Only this method can scan</span>
+
+    <span class="c1">// count() and deleteAll() will throw exception</span>
+<span class="o">}</span>
+</code></pre></div></div> <p><strong>Disabled (Default):</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserRepository</span> <span class="kd">extends</span> <span class="nc">DynamoDBCrudRepository</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="c1">// All scan operations throw exception</span>
+    <span class="c1">// Must use query methods with hash key</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="benefits-5"> <a href="#benefits-5" class="anchor-heading" aria-labelledby="benefits-5"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Benefits </h3> <ul> <li><strong>Cost Protection</strong>: Prevents accidental expensive operations</li> <li><strong>Explicit Intent</strong>: Developers must acknowledge scan operations</li> <li><strong>Documentation</strong>: @EnableScan documents which operations scan</li> <li><strong>Safety</strong>: Protects production systems from performance issues</li> </ul> <h2 id="batch-operations-pattern"> <a href="#batch-operations-pattern" class="anchor-heading" aria-labelledby="batch-operations-pattern"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Batch Operations Pattern </h2> <h3 id="the-challenge"> <a href="#the-challenge" class="anchor-heading" aria-labelledby="the-challenge"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> The Challenge </h3> <p>DynamoDB batch operations can partially fail, requiring special handling.</p> <h3 id="failure-handling-strategy"> <a href="#failure-handling-strategy" class="anchor-heading" aria-labelledby="failure-handling-strategy"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Failure Handling Strategy </h3><pre><code class="language-mermaid">flowchart LR
+    A[Batch Operation] --&gt; B{All Items Processed?}
+    B --&gt;|Yes| C[Return Success]
+    B --&gt;|No| D[Collect Failed Batches]
+    D --&gt; E[Create BatchException]
+    E --&gt; F[Include Failed Items]
+    F --&gt; G[Throw Exception]
+</code></pre><h3 id="implementation-3"> <a href="#implementation-3" class="anchor-heading" aria-labelledby="implementation-3"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Implementation </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="o">&lt;</span><span class="no">S</span> <span class="kd">extends</span> <span class="no">T</span><span class="o">&gt;</span> <span class="nc">Iterable</span><span class="o">&lt;</span><span class="no">S</span><span class="o">&gt;</span> <span class="nf">saveAll</span><span class="o">(</span><span class="nc">Iterable</span><span class="o">&lt;</span><span class="no">S</span><span class="o">&gt;</span> <span class="n">entities</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Assert</span><span class="o">.</span><span class="na">notNull</span><span class="o">(</span><span class="n">entities</span><span class="o">,</span> <span class="s">"entities must not be null"</span><span class="o">);</span>
+
+    <span class="c1">// Execute batch save</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">FailedBatch</span><span class="o">&gt;</span> <span class="n">failedBatches</span> <span class="o">=</span> <span class="n">dynamoDBOperations</span><span class="o">.</span><span class="na">batchSave</span><span class="o">(</span><span class="n">entities</span><span class="o">);</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="n">failedBatches</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+        <span class="c1">// Happy path: all items saved</span>
+        <span class="k">return</span> <span class="n">entities</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="c1">// Error path: some items failed</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">BatchWriteException</span><span class="o">(</span><span class="n">failedBatches</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="exception-details"> <a href="#exception-details" class="anchor-heading" aria-labelledby="exception-details"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Exception Details </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BatchWriteException</span> <span class="kd">extends</span> <span class="nc">DynamoDBBatchException</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">BatchWriteException</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">FailedBatch</span><span class="o">&gt;</span> <span class="n">failedBatches</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="s">"Batch write operation failed"</span><span class="o">,</span> <span class="n">failedBatches</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">WriteRequest</span><span class="o">&gt;</span> <span class="nf">getFailedRequests</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">getFailedBatches</span><span class="o">().</span><span class="na">stream</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">flatMap</span><span class="o">(</span><span class="n">batch</span> <span class="o">-&gt;</span> <span class="n">batch</span><span class="o">.</span><span class="na">getUnprocessedItems</span><span class="o">().</span><span class="na">values</span><span class="o">().</span><span class="na">stream</span><span class="o">())</span>
+            <span class="o">.</span><span class="na">flatMap</span><span class="o">(</span><span class="nl">List:</span><span class="o">:</span><span class="n">stream</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getFailedItemCount</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">getFailedRequests</span><span class="o">().</span><span class="na">size</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">WriteRequest</span><span class="o">&gt;&gt;</span> <span class="nf">getUnprocessedItemsByTable</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">getFailedBatches</span><span class="o">().</span><span class="na">stream</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">flatMap</span><span class="o">(</span><span class="n">batch</span> <span class="o">-&gt;</span> <span class="n">batch</span><span class="o">.</span><span class="na">getUnprocessedItems</span><span class="o">().</span><span class="na">entrySet</span><span class="o">().</span><span class="na">stream</span><span class="o">())</span>
+            <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">groupingBy</span><span class="o">(</span>
+                <span class="nc">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">::</span><span class="n">getKey</span><span class="o">,</span>
+                <span class="nc">Collectors</span><span class="o">.</span><span class="na">flatMapping</span><span class="o">(</span>
+                    <span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span><span class="o">.</span><span class="na">getValue</span><span class="o">().</span><span class="na">stream</span><span class="o">(),</span>
+                    <span class="nc">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">()</span>
+                <span class="o">)</span>
+            <span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="retry-logic"> <a href="#retry-logic" class="anchor-heading" aria-labelledby="retry-logic"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Retry Logic </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ResilientUserService</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">UserRepository</span> <span class="n">userRepository</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">saveAllWithRetry</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">remainingUsers</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">users</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">maxRetries</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">retryCount</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="k">while</span> <span class="o">(!</span><span class="n">remainingUsers</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">retryCount</span> <span class="o">&lt;</span> <span class="n">maxRetries</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">userRepository</span><span class="o">.</span><span class="na">saveAll</span><span class="o">(</span><span class="n">remainingUsers</span><span class="o">);</span>
+                <span class="k">return</span><span class="o">;</span>  <span class="c1">// Success</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">BatchWriteException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">retryCount</span><span class="o">++;</span>
+
+                <span class="c1">// Extract failed items for retry</span>
+                <span class="n">remainingUsers</span> <span class="o">=</span> <span class="n">extractFailedEntities</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="n">remainingUsers</span><span class="o">);</span>
+
+                <span class="k">if</span> <span class="o">(</span><span class="n">retryCount</span> <span class="o">&lt;</span> <span class="n">maxRetries</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="c1">// Exponential backoff</span>
+                    <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">((</span><span class="kt">long</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">retryCount</span><span class="o">)</span> <span class="o">*</span> <span class="mi">100</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="k">if</span> <span class="o">(!</span><span class="n">remainingUsers</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span>
+                <span class="s">"Failed to save "</span> <span class="o">+</span> <span class="n">remainingUsers</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">+</span> <span class="s">" items after retries"</span>
+            <span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">extractFailedEntities</span><span class="o">(</span>
+            <span class="nc">BatchWriteException</span> <span class="n">e</span><span class="o">,</span>
+            <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">originalEntities</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">failedIds</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getFailedRequests</span><span class="o">().</span><span class="na">stream</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">WriteRequest:</span><span class="o">:</span><span class="n">getPutRequest</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">PutRequest:</span><span class="o">:</span><span class="n">getItem</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">item</span> <span class="o">-&gt;</span> <span class="n">item</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"userId"</span><span class="o">).</span><span class="na">getS</span><span class="o">())</span>
+            <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">toSet</span><span class="o">());</span>
+
+        <span class="k">return</span> <span class="n">originalEntities</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">user</span> <span class="o">-&gt;</span> <span class="n">failedIds</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">user</span><span class="o">.</span><span class="na">getUserId</span><span class="o">()))</span>
+            <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="batch-operation-limits"> <a href="#batch-operation-limits" class="anchor-heading" aria-labelledby="batch-operation-limits"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Batch Operation Limits </h3> <div class="table-wrapper"><table> <thead> <tr> <th>Operation</th> <th>AWS Limit</th> <th>Recommendation</th> </tr> </thead> <tbody> <tr> <td>BatchGetItem</td> <td>100 items</td> <td>Use for 10-100 items</td> </tr> <tr> <td>BatchWriteItem</td> <td>25 items</td> <td>Use for 10-25 items</td> </tr> <tr> <td>BatchDelete</td> <td>25 items</td> <td>Use for 10-25 items</td> </tr> </tbody> </table></div> <h3 id="best-practices"> <a href="#best-practices" class="anchor-heading" aria-labelledby="best-practices"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Best Practices </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BatchOperationHelper</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">25</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="kt">void</span> <span class="nf">batchSave</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">items</span><span class="o">,</span> <span class="nc">DynamoDBCrudRepository</span><span class="o">&lt;</span><span class="no">T</span><span class="o">,</span> <span class="o">?&gt;</span> <span class="n">repository</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Split into chunks</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;&gt;</span> <span class="n">batches</span> <span class="o">=</span> <span class="nc">Lists</span><span class="o">.</span><span class="na">partition</span><span class="o">(</span><span class="n">items</span><span class="o">,</span> <span class="no">BATCH_SIZE</span><span class="o">);</span>
+
+        <span class="nc">List</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">allFailed</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">batch</span> <span class="o">:</span> <span class="n">batches</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">repository</span><span class="o">.</span><span class="na">saveAll</span><span class="o">(</span><span class="n">batch</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">BatchWriteException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// Collect failed items</span>
+                <span class="n">allFailed</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">extractFailedItems</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="n">batch</span><span class="o">));</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="k">if</span> <span class="o">(!</span><span class="n">allFailed</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="c1">// Handle failed items (retry, log, etc.)</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span>
+                <span class="s">"Failed to save "</span> <span class="o">+</span> <span class="n">allFailed</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">+</span> <span class="s">" items"</span>
+            <span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h2 id="key-extractor-pattern"> <a href="#key-extractor-pattern" class="anchor-heading" aria-labelledby="key-extractor-pattern"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Key Extractor Pattern </h2> <h3 id="purpose"> <a href="#purpose" class="anchor-heading" aria-labelledby="purpose"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Purpose </h3> <p>Handles complexity of extracting hash and range keys from various ID types.</p> <h3 id="strategy-selection-1"> <a href="#strategy-selection-1" class="anchor-heading" aria-labelledby="strategy-selection-1"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Strategy Selection </h3><pre><code class="language-mermaid">flowchart TD
+    A[Entity Metadata] --&gt; B{Has Range Key?}
+    B --&gt;|No| C[HashKeyIsIdExtractor]
+    B --&gt;|Yes| D{ID Type?}
+    D --&gt;|Simple| E[HashAndRangeKeyExtractor]
+    D --&gt;|Composite| F[CompositeIdExtractor]
+    D --&gt;|Annotated| G[AnnotatedCompositeIdExtractor]
+</code></pre><h3 id="implementations"> <a href="#implementations" class="anchor-heading" aria-labelledby="implementations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Implementations </h3> <p><strong>Simple Hash Key:</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashKeyIsIdHashKeyExtractor</span><span class="o">&lt;</span><span class="no">ID</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="nc">HashKeyExtractor</span><span class="o">&lt;</span><span class="no">ID</span><span class="o">,</span> <span class="no">ID</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="no">ID</span> <span class="nf">getHashKey</span><span class="o">(</span><span class="no">ID</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>  <span class="c1">// ID is the hash key</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <p><strong>Composite ID:</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CompositeIdHashAndRangeKeyExtractor</span><span class="o">&lt;</span><span class="no">ID</span><span class="o">&gt;</span>
+        <span class="kd">implements</span> <span class="nc">HashAndRangeKeyExtractor</span><span class="o">&lt;</span><span class="no">ID</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">hashKeyPropertyName</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">rangeKeyPropertyName</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">getHashKey</span><span class="o">(</span><span class="no">ID</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">BeanUtils</span><span class="o">.</span><span class="na">getPropertyValue</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">hashKeyPropertyName</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">getRangeKey</span><span class="o">(</span><span class="no">ID</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">BeanUtils</span><span class="o">.</span><span class="na">getPropertyValue</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">rangeKeyPropertyName</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="benefits-6"> <a href="#benefits-6" class="anchor-heading" aria-labelledby="benefits-6"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Benefits </h3> <ul> <li><strong>Abstraction</strong>: Repository doesn’t know ID structure</li> <li><strong>Flexibility</strong>: Supports multiple ID types</li> <li><strong>Type Safety</strong>: Compile-time checking where possible</li> <li><strong>Reusability</strong>: Extractors shared across repositories</li> </ul> <h2 id="conclusion"> <a href="#conclusion" class="anchor-heading" aria-labelledby="conclusion"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Conclusion </h2> <p>These design patterns work together to create a robust, flexible, and performant data access layer:</p> <ul> <li><strong>Template Pattern</strong>: Consistent operations with cross-cutting concerns</li> <li><strong>Factory Pattern</strong>: Dynamic repository creation</li> <li><strong>Strategy Pattern</strong>: Flexible query execution</li> <li><strong>Observer Pattern</strong>: Event-driven architecture</li> <li><strong>Lazy Loading</strong>: Memory-efficient result iteration</li> <li><strong>Scan Protection</strong>: Cost and performance safety</li> <li><strong>Batch Operations</strong>: Efficient bulk operations with error handling</li> <li><strong>Key Extractors</strong>: Flexible ID handling</li> </ul> <p>Understanding these patterns helps developers:</p> <ul> <li>Use the library effectively</li> <li>Extend functionality when needed</li> <li>Debug issues quickly</li> <li>Make informed design decisions</li> </ul> <h2 id="next-steps"> <a href="#next-steps" class="anchor-heading" aria-labelledby="next-steps"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Next Steps </h2> <ul> <li><a href="core-components.html">Core Components</a> - See patterns in action</li> <li><a href="repository-layer.html">Repository Layer</a> - Factory and repository patterns</li> <li><a href="query-execution.html">Query Execution</a> - Strategy pattern implementation</li> <li><a href="entity-mapping.html">Entity Mapping</a> - Key extractor pattern details</li> </ul> </main> <hr> <footer> <div class="d-flex mt-2"> <p class="text-small text-grey-dk-000 mb-0"> <a href="https://github.com/naderfares/spring-data-dynamodb/tree/develop/docs/pages/documentation/architecture/design-patterns.md" id="edit-this-page">Edit this page on GitHub.</a> </p> </div> </footer> </div> </div> <div class="search-overlay"></div> </div> <script src="https://cdn.jsdelivr.net/npm/mermaid@9.1.3/dist/mermaid.min.js"></script> <script> var config = {} ; mermaid.initialize(config); window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid')); </script> </body> </html>

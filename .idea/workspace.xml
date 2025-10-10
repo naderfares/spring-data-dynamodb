@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="49cc0abd-cde6-4db3-ba3d-a0ad2efae6e2" name="Changes" comment="Add troubleshooting guide and API reference documentation; update .gitignore and Gemfile.lock">
+      <change afterPath="$PROJECT_DIR$/.claude-flow/metrics/agent-metrics.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude-flow/metrics/performance.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.claude-flow/metrics/task-metrics.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.swarm/memory.db" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Nader Fares &lt;naderfares@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SIGN_OFF_COMMIT" value="true" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;nader-jabbar_cyncly&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:naderfares/spring-data-dynamodb.git&quot;,
+    &quot;accountId&quot;: &quot;333db226-d448-4611-b990-80a6235ec2d1&quot;
+  }
+}</component>
+  <component name="McpProjectServerCommands">
+    <McpServerCommand>
+      <option name="enabled" value="true" />
+      <option name="name" value="nx-mcp" />
+      <option name="programPath" value="npx" />
+      <option name="arguments" value="-y nx-mcp@latest /Users/nader/workspace/personal/spring-data-dynamodb" />
+      <option name="workingDirectory" value="" />
+      <envs />
+    </McpServerCommand>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2qupITVJOf9wMZGPzvVPGMPDkHA" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.All in spring-data-dynamodb.executor": "Run",
+    "JUnit.CRUDOperationsIT.testFilterWithDateBetween.executor": "Debug",
+    "JUnit.dynamodb in spring-data-dynamodb.executor": "Run",
+    "Maven.spring-data-dynamodb [--batch-mode...].executor": "Run",
+    "Maven.spring-data-dynamodb [clean].executor": "Run",
+    "Maven.spring-data-dynamodb [compile].executor": "Run",
+    "Maven.spring-data-dynamodb [formatter:format].executor": "Run",
+    "Maven.spring-data-dynamodb [install].executor": "Run",
+    "Maven.spring-data-dynamodb [license:format].executor": "Run",
+    "Maven.spring-data-dynamodb [package].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "develop",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/nader/workspace/personal/spring-data-dynamodb/docs/assets/images",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "vcs.Git",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs/assets/images" />
+      <recent name="$PROJECT_DIR$/assets/images" />
+      <recent name="$PROJECT_DIR$/docs/pages" />
+      <recent name="$PROJECT_DIR$/docs" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs/pages/documentation/implementation" />
+      <recent name="$PROJECT_DIR$/docs/pages/documentation/operational" />
+      <recent name="$PROJECT_DIR$/docs/pages/documentation/conceptual" />
+      <recent name="$PROJECT_DIR$/docs/pages/documentation" />
+      <recent name="$PROJECT_DIR$/docs/pages" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean" />
+      <command value="mvn --batch-mode release:prepare &amp;&amp; mvn release:perform" />
+      <command value="mvn package" />
+      <command value="mvn compile" />
+      <command value="mvn  formatter:format " />
+      <command value="mvn license:format" />
+      <command value="mvn install" />
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.dynamodb in spring-data-dynamodb">
+    <configuration name="All in spring-data-dynamodb" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-data-dynamodb" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CRUDOperationsIT.testFilterWithDateBetween" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-data-dynamodb" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.socialsignin.spring.data.dynamodb.domain.sample.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.socialsignin.spring.data.dynamodb.domain.sample" />
+      <option name="MAIN_CLASS_NAME" value="org.socialsignin.spring.data.dynamodb.domain.sample.CRUDOperationsIT" />
+      <option name="METHOD_NAME" value="testFilterWithDateBetween" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dynamodb in spring-data-dynamodb" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-data-dynamodb" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java/org/socialsignin/spring/data/dynamodb" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.dynamodb in spring-data-dynamodb" />
+        <item itemvalue="JUnit.CRUDOperationsIT.testFilterWithDateBetween" />
+        <item itemvalue="JUnit.All in spring-data-dynamodb" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="49cc0abd-cde6-4db3-ba3d-a0ad2efae6e2" name="Changes" comment="" />
+      <created>1735522234336</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1735522234336</updated>
+      <workItem from="1735522235435" duration="20415000" />
+      <workItem from="1735868903937" duration="28290000" />
+      <workItem from="1741976750083" duration="3790000" />
+      <workItem from="1742622274158" duration="9000" />
+      <workItem from="1759654128936" duration="3260000" />
+      <workItem from="1759760910216" duration="1869000" />
+    </task>
+    <task id="LOCAL-00001" summary="include jenv local version file to always use JDK 17">
+      <option name="closed" value="true" />
+      <created>1735531108537</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1735531108537</updated>
+    </task>
+    <task id="LOCAL-00002" summary="The change involves how the values are fetched from the parameterAccessor in the `AbstractDynamoDBQueryCreator.java` file. Previously, the value was directly cast to a String type, which could potentially cause a `ClassCastException` if the value was not of type String. &#10;&#10;Now, the change uses `String.valueOf()` method, which would convert the value to a String regardless of its original type. This is a safer approach as it prevents potential runtime exceptions when the value is not a String.">
+      <option name="closed" value="true" />
+      <created>1735531189100</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1735531189100</updated>
+    </task>
+    <task id="LOCAL-00003" summary="The change involves how the values are fetched from the parameterAccessor in the `AbstractDynamoDBQueryCreator.java` file. Previously, the value was directly cast to a String type, which could potentially cause a `ClassCastException` if the value was not of type String. &#10;&#10;Now, the change uses `String.valueOf()` method, which would convert the value to a String regardless of its original type. This is a safer approach as it prevents potential runtime exceptions when the value is not a String.">
+      <option name="closed" value="true" />
+      <created>1735532060633</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1735532060633</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Reformat code to follow Google Java Style Standard Format.">
+      <option name="closed" value="true" />
+      <created>1735536226634</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1735536226634</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Reformat code to follow Google Java Style Standard Format.">
+      <option name="closed" value="true" />
+      <created>1735537873791</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1735537873791</updated>
+    </task>
+    <task id="LOCAL-00006" summary="AttributeValue Handling: A significant part of the code changes involve how the system handles `AttributeValue` objects within `ExpressionAttributeValues`. Previously, the value of an `ExpressionAttribute` was directly added as a string to an `AttributeValue`. The updated code now checks if the value can be converted to a Boolean or a Number, and if so, it is added as such to the `AttributeValue`. If not, it is added as a string. This makes the handling of `AttributeValue` more flexible, accommodating different data types and not just strings.&#10;&#10;Overall, these changes improve the readability and flexibility of the code, potentially making it easier to maintain and extend in the future.">
+      <option name="closed" value="true" />
+      <created>1735537911203</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1735537911203</updated>
+    </task>
+    <task id="LOCAL-00007" summary="AttributeValue Handling: A significant part of the code changes involve how the system handles `AttributeValue` objects within `ExpressionAttributeValues`. Previously, the value of an `ExpressionAttribute` was directly added as a string to an `AttributeValue`. The updated code now checks if the value can be converted to a Boolean or a Number, and if so, it is added as such to the `AttributeValue`. If not, it is added as a string. This makes the handling of `AttributeValue` more flexible, accommodating different data types and not just strings.&#10;&#10;Overall, these changes improve the readability and flexibility of the code, potentially making it easier to maintain and extend in the future.">
+      <option name="closed" value="true" />
+      <created>1735538338785</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1735538338785</updated>
+    </task>
+    <task id="LOCAL-00008" summary="AttributeValue Handling: A significant part of the code changes involve how the system handles `AttributeValue` objects within `ExpressionAttributeValues`. Previously, the value of an `ExpressionAttribute` was directly added as a string to an `AttributeValue`. The updated code now checks if the value can be converted to a Boolean or a Number, and if so, it is added as such to the `AttributeValue`. If not, it is added as a string. This makes the handling of `AttributeValue` more flexible, accommodating different data types and not just strings.&#10;&#10;Overall, these changes improve the readability and flexibility of the code, potentially making it easier to maintain and extend in the future.&#10;&#10;Signed-off-by: Nader Fares &lt;naderfares@gmail.com&gt;">
+      <option name="closed" value="true" />
+      <created>1735538402377</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1735538402377</updated>
+    </task>
+    <task id="LOCAL-00009" summary="AttributeValue Handling: A significant part of the code changes involve how the system handles `AttributeValue` objects within `ExpressionAttributeValues`. Previously, the value of an `ExpressionAttribute` was directly added as a string to an `AttributeValue`. The updated code now checks if the value can be converted to a Boolean or a Number, and if so, it is added as such to the `AttributeValue`. If not, it is added as a string. This makes the handling of `AttributeValue` more flexible, accommodating different data types and not just strings.&#10;&#10;Overall, these changes improve the readability and flexibility of the code, potentially making it easier to maintain and extend in the future.&#10;&#10;Signed-off-by: Nader Fares &lt;naderfares@gmail.com&gt;">
+      <option name="closed" value="true" />
+      <created>1735540099121</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1735540099121</updated>
+    </task>
+    <task id="LOCAL-00010" summary="[maven-release-plugin] prepare for next development iteration">
+      <option name="closed" value="true" />
+      <created>1735564284588</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1735564284588</updated>
+    </task>
+    <task id="LOCAL-00011" summary="[maven-release-plugin] prepare for next development iteration&#10;&#10;Signed-off-by: Nader Fares &lt;naderfares@gmail.com&gt;">
+      <option name="closed" value="true" />
+      <created>1735564696728</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1735564696728</updated>
+    </task>
+    <task id="LOCAL-00012" summary="[maven-release-plugin] prepare for next development iteration&#10;&#10;Signed-off-by: Nader Fares &lt;naderfares@gmail.com&gt;">
+      <option name="closed" value="true" />
+      <created>1735564708102</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1735564708102</updated>
+    </task>
+    <task id="LOCAL-00013" summary="[maven-release-plugin] prepare for next development iteration">
+      <option name="closed" value="true" />
+      <created>1735565681716</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1735565681716</updated>
+    </task>
+    <task id="LOCAL-00014" summary="In this update, several changes were made. Firstly, two directories 'docs/' and 'tmp/' were added to the .gitignore file, which means these folders will be ignored by git and changes in them will not be tracked. &#10;&#10;The README.md file was updated to change the link to the XML-based configuration guide. It now points to a markdown file within the 'docs' directory.&#10;&#10;In the 'DynamoDBEntityWithHashAndRangeKeyCriteria.java' file, a method was created to handle attribute value conversion. This improves code readability and maintainability by reducing redundancy in the code.&#10;&#10;A new file named '_config.yml' was added in the 'docs' directory. This file is used to configure the settings for a Jekyll site, a simple, blog-aware static site generator. This suggests that the project is setting up a Jekyll site for documentation purposes. The configuration file contains site settings such as title, email, description, base URL, twitter username, and Github username. It also includes build settings like the theme and plugins. &#10;&#10;Overall, from a business perspective, the project is improving its code structure and setting up a documentation site for better readability and accessibility for users or developers.">
+      <option name="closed" value="true" />
+      <created>1736023834288</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1736023834288</updated>
+    </task>
+    <task id="LOCAL-00015" summary="The codebase now handles `Date` and `Instant` types more robustly when creating DynamoDB queries. Previously, when mapping expression values, the value was directly converted to a string regardless of its type. Now two new checks have been added: if the value is an instance of `Date` or `Instant`, it is marshalled into an ISO format string using `Date2IsoDynamoDBMarshaller` or `Instant2IsoDynamoDBMarshaller` respectively. This change ensures proper string representation for `Date` and `Instant` types, allowing for accurate querying.&#10;&#10;In addition, there has been a change in the location of the `getAttributeValue` method within DynamoDBEntityWithHashAndRangeKeyCriteria.java. However, this is a structural change and doesn't affect the function's behavior or the overall logic.">
+      <option name="closed" value="true" />
+      <created>1736025905587</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1736025905587</updated>
+    </task>
+    <task id="LOCAL-00016" summary="The changes made to the codebase pertain to handling the test environment and repository methods. &#10;&#10;In the User Repository file, a new import statement for `java.util.Date` has been added. This indicates that date-related operations might be performed in the repository.&#10;&#10;A significant update was made to the User Pagination Repository. A new method `findByPostCode` was added. This method returns a paginated list of users based on their postal code and the range of joining dates. This allows for more specific and flexible user queries in the application.&#10;&#10;In the integration test file `CRUDOperationsIT.java`, a new test case `testFilterWithDateBetween` was added. This test case tests the functionality of filtering users based on their postal code and a date range. &#10;&#10;Overall, the update improves the application's ability to filter and retrieve user data.">
+      <option name="closed" value="true" />
+      <created>1736051953559</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1736051953559</updated>
+    </task>
+    <task id="LOCAL-00017" summary="The changes in this commit are mainly to the documentation (README.md) file of the Spring Data DynamoDB project. Here is what has been updated:&#10;&#10;1. The layout for the web page is set and the title is changed to &quot;About&quot;.&#10;2. The Maven Central link was changed to point to 'io.github.naderfares' instead of 'io.github.prasanna0586'. This suggests that the project's maintenance has been taken over by a new user named 'naderfares'.&#10;3. The version of the 'spring-data-dynamodb' artifact in the Maven dependency was updated from '6.0.4' to '6.0.9'.&#10;4. The 'Quick Start' section has been simplified and no longer includes detailed instructions on how to set up a DynamoDB configuration, create a DynamoDB entity, create a CRUD repository interface, etc. Instead, it now simply contains instructions on how to add the 'spring-data-dynamodb' dependency to a Maven or Gradle project.&#10;5. The 'Version &amp; Spring Framework compatibility' section's text was updated to be on a single line.&#10;6. The 'History' section has been updated to include the latest forks of the project, showing that it was lastly forked and maintained by 'naderfares' after being handled by 'prasanna0586'.&#10;7. Some sections of the document, like 'Supported Features', 'Demo application', 'More', 'Setup DynamoDB configuration', 'Create a DynamoDB entity', 'Create a CRUD repository interface', 'Create the configuration class', 'And finally write a test client', have been removed, simplifying the document considerably.">
+      <option name="closed" value="true" />
+      <created>1741976807521</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1741976807521</updated>
+    </task>
+    <task id="LOCAL-00018" summary="The updates in this commit do not impact the functionality of the program. Instead, they alter the code's formatting to improve readability. The change is breaking the line of code that adds an entry to the query expression's attribute values into two lines, making it easier to read and understand. This update was applied in two files: `DynamoDBEntityWithHashAndRangeKeyCriteria.java` and `AbstractDynamoDBQueryCriteria.java`.">
+      <option name="closed" value="true" />
+      <created>1741980114627</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1741980114627</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Refactor code formatting for improved readability in AbstractDynamoDBQuery and DynamoDBQueryLookupStrategy">
+      <option name="closed" value="true" />
+      <created>1759656053531</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1759656053531</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Improve code formatting for better readability across multiple classes">
+      <option name="closed" value="true" />
+      <created>1759893000138</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1759893000138</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Update release process documentation and GitHub Actions workflows">
+      <option name="closed" value="true" />
+      <created>1759895762393</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1759895762393</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Add troubleshooting guide and API reference documentation; update .gitignore and Gemfile.lock">
+      <option name="closed" value="true" />
+      <created>1759932998168</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1759932998168</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="9351781d-ae4f-450d-a4e3-b5582d87a548" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="9351781d-ae4f-450d-a4e3-b5582d87a548">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+            </State>
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT_PROFILE" value="Project Default" />
+    <MESSAGE value="include jenv local version file to always use JDK 17" />
+    <MESSAGE value="The change involves how the values are fetched from the parameterAccessor in the `AbstractDynamoDBQueryCreator.java` file. Previously, the value was directly cast to a String type, which could potentially cause a `ClassCastException` if the value was not of type String. &#10;&#10;Now, the change uses `String.valueOf()` method, which would convert the value to a String regardless of its original type. This is a safer approach as it prevents potential runtime exceptions when the value is not a String." />
+    <MESSAGE value="Reformat code to follow Google Java Style Standard Format." />
+    <MESSAGE value="AttributeValue Handling: A significant part of the code changes involve how the system handles `AttributeValue` objects within `ExpressionAttributeValues`. Previously, the value of an `ExpressionAttribute` was directly added as a string to an `AttributeValue`. The updated code now checks if the value can be converted to a Boolean or a Number, and if so, it is added as such to the `AttributeValue`. If not, it is added as a string. This makes the handling of `AttributeValue` more flexible, accommodating different data types and not just strings.&#10;&#10;Overall, these changes improve the readability and flexibility of the code, potentially making it easier to maintain and extend in the future." />
+    <MESSAGE value="AttributeValue Handling: A significant part of the code changes involve how the system handles `AttributeValue` objects within `ExpressionAttributeValues`. Previously, the value of an `ExpressionAttribute` was directly added as a string to an `AttributeValue`. The updated code now checks if the value can be converted to a Boolean or a Number, and if so, it is added as such to the `AttributeValue`. If not, it is added as a string. This makes the handling of `AttributeValue` more flexible, accommodating different data types and not just strings.&#10;&#10;Overall, these changes improve the readability and flexibility of the code, potentially making it easier to maintain and extend in the future.&#10;&#10;Signed-off-by: Nader Fares &lt;naderfares@gmail.com&gt;" />
+    <MESSAGE value="[maven-release-plugin] prepare for next development iteration&#10;&#10;Signed-off-by: Nader Fares &lt;naderfares@gmail.com&gt;" />
+    <MESSAGE value="[maven-release-plugin] prepare for next development iteration" />
+    <MESSAGE value="In this update, several changes were made. Firstly, two directories 'docs/' and 'tmp/' were added to the .gitignore file, which means these folders will be ignored by git and changes in them will not be tracked. &#10;&#10;The README.md file was updated to change the link to the XML-based configuration guide. It now points to a markdown file within the 'docs' directory.&#10;&#10;In the 'DynamoDBEntityWithHashAndRangeKeyCriteria.java' file, a method was created to handle attribute value conversion. This improves code readability and maintainability by reducing redundancy in the code.&#10;&#10;A new file named '_config.yml' was added in the 'docs' directory. This file is used to configure the settings for a Jekyll site, a simple, blog-aware static site generator. This suggests that the project is setting up a Jekyll site for documentation purposes. The configuration file contains site settings such as title, email, description, base URL, twitter username, and Github username. It also includes build settings like the theme and plugins. &#10;&#10;Overall, from a business perspective, the project is improving its code structure and setting up a documentation site for better readability and accessibility for users or developers." />
+    <MESSAGE value="The codebase now handles `Date` and `Instant` types more robustly when creating DynamoDB queries. Previously, when mapping expression values, the value was directly converted to a string regardless of its type. Now two new checks have been added: if the value is an instance of `Date` or `Instant`, it is marshalled into an ISO format string using `Date2IsoDynamoDBMarshaller` or `Instant2IsoDynamoDBMarshaller` respectively. This change ensures proper string representation for `Date` and `Instant` types, allowing for accurate querying.&#10;&#10;In addition, there has been a change in the location of the `getAttributeValue` method within DynamoDBEntityWithHashAndRangeKeyCriteria.java. However, this is a structural change and doesn't affect the function's behavior or the overall logic." />
+    <MESSAGE value="The changes made to the codebase pertain to handling the test environment and repository methods. &#10;&#10;In the User Repository file, a new import statement for `java.util.Date` has been added. This indicates that date-related operations might be performed in the repository.&#10;&#10;A significant update was made to the User Pagination Repository. A new method `findByPostCode` was added. This method returns a paginated list of users based on their postal code and the range of joining dates. This allows for more specific and flexible user queries in the application.&#10;&#10;In the integration test file `CRUDOperationsIT.java`, a new test case `testFilterWithDateBetween` was added. This test case tests the functionality of filtering users based on their postal code and a date range. &#10;&#10;Overall, the update improves the application's ability to filter and retrieve user data." />
+    <MESSAGE value="The changes in this commit are mainly to the documentation (README.md) file of the Spring Data DynamoDB project. Here is what has been updated:&#10;&#10;1. The layout for the web page is set and the title is changed to &quot;About&quot;.&#10;2. The Maven Central link was changed to point to 'io.github.naderfares' instead of 'io.github.prasanna0586'. This suggests that the project's maintenance has been taken over by a new user named 'naderfares'.&#10;3. The version of the 'spring-data-dynamodb' artifact in the Maven dependency was updated from '6.0.4' to '6.0.9'.&#10;4. The 'Quick Start' section has been simplified and no longer includes detailed instructions on how to set up a DynamoDB configuration, create a DynamoDB entity, create a CRUD repository interface, etc. Instead, it now simply contains instructions on how to add the 'spring-data-dynamodb' dependency to a Maven or Gradle project.&#10;5. The 'Version &amp; Spring Framework compatibility' section's text was updated to be on a single line.&#10;6. The 'History' section has been updated to include the latest forks of the project, showing that it was lastly forked and maintained by 'naderfares' after being handled by 'prasanna0586'.&#10;7. Some sections of the document, like 'Supported Features', 'Demo application', 'More', 'Setup DynamoDB configuration', 'Create a DynamoDB entity', 'Create a CRUD repository interface', 'Create the configuration class', 'And finally write a test client', have been removed, simplifying the document considerably." />
+    <MESSAGE value="The updates in this commit do not impact the functionality of the program. Instead, they alter the code's formatting to improve readability. The change is breaking the line of code that adds an entry to the query expression's attribute values into two lines, making it easier to read and understand. This update was applied in two files: `DynamoDBEntityWithHashAndRangeKeyCriteria.java` and `AbstractDynamoDBQueryCriteria.java`." />
+    <MESSAGE value="Refactor code formatting for improved readability in AbstractDynamoDBQuery and DynamoDBQueryLookupStrategy" />
+    <MESSAGE value="Improve code formatting for better readability across multiple classes" />
+    <MESSAGE value="Update release process documentation and GitHub Actions workflows" />
+    <MESSAGE value="Add troubleshooting guide and API reference documentation; update .gitignore and Gemfile.lock" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add troubleshooting guide and API reference documentation; update .gitignore and Gemfile.lock" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

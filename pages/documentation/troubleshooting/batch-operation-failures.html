@@ -1,0 +1,439 @@
+<!DOCTYPE html> <html lang="en-US"> <head> <meta charset="UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=Edge"> <link rel="stylesheet" href="/spring-data-dynamodb/assets/css/just-the-docs-default.css"> <link rel="stylesheet" href="/spring-data-dynamodb/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet"> <style id="jtd-nav-activation"> .site-nav > ul.nav-list:first-child > li > a, .site-nav > ul.nav-list:first-child > li > ul > li > a, .site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(3)) > a, .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li a { background-image: none; } .site-nav > ul.nav-list:not(:first-child) a, .site-nav li.external a { background-image: none; } .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(6) > ul > li:nth-child(3) > a { font-weight: 600; text-decoration: none; }.site-nav > ul.nav-list:first-child > li:nth-child(3) > button svg, .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(6) > button svg, .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(6) > ul > li:nth-child(3) > button svg { transform: rotate(-90deg); }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list, .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(6) > ul.nav-list, .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(6) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list { display: block; } </style> <script src="/spring-data-dynamodb/assets/js/vendor/lunr.min.js"></script> <script src="/spring-data-dynamodb/assets/js/just-the-docs.js"></script> <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Begin Jekyll SEO tag v2.8.0 --> <title>Batch Operation Failures | Spring Data DynamoDB</title> <meta name="generator" content="Jekyll v3.10.0" /> <meta property="og:title" content="Batch Operation Failures" /> <meta property="og:locale" content="en_US" /> <meta name="description" content="The Spring® Data project simplifies building Spring-powered applications by providing a consistent and intuitive programming model for various data access technologies. Spring Data DynamoDB integrates Spring with Amazon DynamoDB, a fully managed NoSQL database, enabling seamless data access with familiar Spring abstractions. It supports CRUD operations, declarative queries, and automatic object-to-table mapping, all while leveraging DynamoDB’s scalability and performance. This module makes working with DynamoDB straightforward, allowing developers to focus on building robust and scalable applications with minimal boilerplate code." /> <meta property="og:description" content="The Spring® Data project simplifies building Spring-powered applications by providing a consistent and intuitive programming model for various data access technologies. Spring Data DynamoDB integrates Spring with Amazon DynamoDB, a fully managed NoSQL database, enabling seamless data access with familiar Spring abstractions. It supports CRUD operations, declarative queries, and automatic object-to-table mapping, all while leveraging DynamoDB’s scalability and performance. This module makes working with DynamoDB straightforward, allowing developers to focus on building robust and scalable applications with minimal boilerplate code." /> <link rel="canonical" href="https://naderfares.github.io/spring-data-dynamodb/pages/documentation/troubleshooting/batch-operation-failures.html" /> <meta property="og:url" content="https://naderfares.github.io/spring-data-dynamodb/pages/documentation/troubleshooting/batch-operation-failures.html" /> <meta property="og:site_name" content="Spring Data DynamoDB" /> <meta property="og:type" content="website" /> <meta name="twitter:card" content="summary" /> <meta property="twitter:title" content="Batch Operation Failures" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"WebPage","description":"The Spring® Data project simplifies building Spring-powered applications by providing a consistent and intuitive programming model for various data access technologies. Spring Data DynamoDB integrates Spring with Amazon DynamoDB, a fully managed NoSQL database, enabling seamless data access with familiar Spring abstractions. It supports CRUD operations, declarative queries, and automatic object-to-table mapping, all while leveraging DynamoDB’s scalability and performance. This module makes working with DynamoDB straightforward, allowing developers to focus on building robust and scalable applications with minimal boilerplate code.","headline":"Batch Operation Failures","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://naderfares.github.io/spring-data-dynamodb/assets/images/logo.png"}},"url":"https://naderfares.github.io/spring-data-dynamodb/pages/documentation/troubleshooting/batch-operation-failures.html"}</script> <!-- End Jekyll SEO tag --> </head> <body> <a class="skip-to-main" href="#main-content">Skip to main content</a> <svg xmlns="http://www.w3.org/2000/svg" class="d-none"> <symbol id="svg-link" viewBox="0 0 24 24"> <title>Link</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"> <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-menu" viewBox="0 0 24 24"> <title>Menu</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"> <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewBox="0 0 24 24"> <title>Expand</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"> <polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE --> <symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"> <title id="svg-external-link-title">(external link)</title> <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line> </symbol> <symbol id="svg-doc" viewBox="0 0 24 24"> <title>Document</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"> <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> <symbol id="svg-search" viewBox="0 0 24 24"> <title>Search</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md --> <symbol id="svg-copy" viewBox="0 0 16 16"> <title>Copy</title> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"> <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/> <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/> </svg> </symbol> <symbol id="svg-copied" viewBox="0 0 16 16"> <title>Copied</title> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16"> <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/> <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/> </svg> </symbol> </svg> <div class="side-bar"> <div class="site-header" role="banner"> <a href="/spring-data-dynamodb/" class="site-title lh-tight"> <div class="site-logo" role="img" aria-label="Spring Data DynamoDB"></div> </a> <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false"> <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg> </button> </div> <nav aria-label="Main" id="site-nav" class="site-nav"> <ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/" class="nav-list-link">Home</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/about/" class="nav-list-link">About</a></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Documentation category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/documentation/" class="nav-list-link">Documentation</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/getting-started.html" class="nav-list-link">Getting Started</a></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Implementation category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/implementation/implementation.html" class="nav-list-link">Implementation</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Access-to-releases.html" class="nav-list-link">Access to releases</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Autocreate-Tables.html" class="nav-list-link">Autocreate Tables</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Composite-Primary-Keys-Kotlin-Example.html" class="nav-list-link">Composite Primary Keys Kotlin Example</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Custom-repository-implementations.html" class="nav-list-link">Custom repository implementations</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/DynamoDB-GSI-Example.html" class="nav-list-link">DynamoDB GSI Example</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/DynamoDB-Hash-Key-Example.html" class="nav-list-link">DynamoDB Hash Key Example</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Projections.html" class="nav-list-link">Projections</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Query-Size-Limits-and-Pageable.html" class="nav-list-link">Query Size Limits and Pageable</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Quick-Start---XML-based-configuration.html" class="nav-list-link">Quick Start - XML based configuration</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Conceptual category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/conceptual/conceptual.html" class="nav-list-link">Conceptual</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/conceptual/Supported-Spring-Data-Comparison-Operators.html" class="nav-list-link">Supported Spring Data Comparison Operators</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/conceptual/Use-Hash-Range-keys.html" class="nav-list-link">Use Hash-Range keys</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Architecture category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/architecture/architecture.html" class="nav-list-link">Architecture</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/architecture/core-components.html" class="nav-list-link">Core Components</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/architecture/repository-layer.html" class="nav-list-link">Repository Layer</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/architecture/query-execution.html" class="nav-list-link">Query Execution</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/architecture/entity-mapping.html" class="nav-list-link">Entity Mapping</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/architecture/design-patterns.html" class="nav-list-link">Design Patterns</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in API Reference category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/api-reference/api-reference.html" class="nav-list-link">API Reference</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/api-reference/dynamodb-template.html" class="nav-list-link">DynamoDBTemplate</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/api-reference/repository-interfaces.html" class="nav-list-link">Repository Interfaces</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/api-reference/annotations.html" class="nav-list-link">Annotations</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/api-reference/query-methods.html" class="nav-list-link">Query Methods</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/api-reference/configuration.html" class="nav-list-link">Configuration</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Troubleshooting category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/troubleshooting.html" class="nav-list-link">Troubleshooting</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/common-errors.html" class="nav-list-link">Common Errors</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/scan-exceptions.html" class="nav-list-link">Scan Exceptions</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/batch-operation-failures.html" class="nav-list-link">Batch Operation Failures</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/performance-tuning.html" class="nav-list-link">Performance Tuning</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/faq.html" class="nav-list-link">FAQ</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Operational category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/operational/operational.html" class="nav-list-link">Operational</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/operational/Alter-table-name-during-runtime.html" class="nav-list-link">Alter table name during runtime</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/operational/Amazon-DynamoDB-Accelerator-(DAX).html" class="nav-list-link">Amazon DynamoDB Accelerator (DAX)</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/operational/Multi-Repository-configuration.html" class="nav-list-link">Multi Repository configuration</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/operational/Spring-Data-REST.html" class="nav-list-link">Spring Data REST</a></li></ul></li></ul></li></ul> </nav> <footer class="site-footer"> This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll. </footer> </div> <div class="main" id="top"> <div id="main-header" class="main-header"> <div class="search" role="search"> <div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search Spring Data DynamoDB" aria-label="Search Spring Data DynamoDB" autocomplete="off"> <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label> </div> <div id="search-results" class="search-results"></div> </div> <nav aria-label="Auxiliary" class="aux-nav"> <ul class="aux-nav-list"> <li class="aux-nav-list-item"> <a href="https://github.com/naderfares/spring-data-dynamodb" class="site-button" target="_blank" rel="noopener noreferrer" > Spring Data DynamoDB on GitHub </a> </li> </ul> </nav> </div> <div class="main-content-wrap"> <nav aria-label="Breadcrumb" class="breadcrumb-nav"> <ol class="breadcrumb-nav-list"> <li class="breadcrumb-nav-list-item"><a href="/spring-data-dynamodb/documentation/">Documentation</a></li> <li class="breadcrumb-nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/troubleshooting.html">Troubleshooting</a></li> <li class="breadcrumb-nav-list-item"><span>Batch Operation Failures</span></li> </ol> </nav> <div id="main-content" class="main-content"> <main> <h1 id="batch-operation-failures"> <a href="#batch-operation-failures" class="anchor-heading" aria-labelledby="batch-operation-failures"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Batch Operation Failures </h1> <p>This guide explains how to handle batch write and delete operation failures in Spring Data DynamoDB.</p> <h2 id="table-of-contents"> <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of Contents </h2> <ol class="no_toc text-delta"> <li>TOC</li> </ol><hr /> <h2 id="understanding-batch-operations"> <a href="#understanding-batch-operations" class="anchor-heading" aria-labelledby="understanding-batch-operations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Understanding Batch Operations </h2> <p>DynamoDB’s batch operations can process up to 25 items per request. However, <strong>batch operations can partially fail</strong>, meaning some items succeed while others fail.</p> <h3 id="key-characteristics"> <a href="#key-characteristics" class="anchor-heading" aria-labelledby="key-characteristics"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Key Characteristics </h3> <ul> <li><strong>Partial Failures</strong>: Some items may succeed while others fail</li> <li><strong>No Transactions</strong>: BatchWrite is not transactional</li> <li><strong>Automatic Retry</strong>: Failed items are NOT automatically retried</li> <li><strong>Return Type</strong>: Operations return <code class="language-plaintext highlighter-rouge">List&lt;FailedBatch&gt;</code> for failed items</li> </ul><hr /> <h2 id="batch-write-exceptions"> <a href="#batch-write-exceptions" class="anchor-heading" aria-labelledby="batch-write-exceptions"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Batch Write Exceptions </h2> <h3 id="batchwriteexception"> <a href="#batchwriteexception" class="anchor-heading" aria-labelledby="batchwriteexception"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> BatchWriteException </h3> <p><strong>Error:</strong></p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>org.socialsignin.spring.data.dynamodb.exception.BatchWriteException:
+Failed to write 3 items to DynamoDB
+</code></pre></div></div> <p><strong>Cause:</strong> One or more items in a <code class="language-plaintext highlighter-rouge">saveAll()</code> operation failed to write.</p> <p><strong>Common Reasons:</strong></p> <ul> <li>Provisioned throughput exceeded</li> <li>Item size exceeds 400KB</li> <li>Invalid attribute values</li> <li>Conditional check failures</li> <li>Internal server errors</li> </ul> <h3 id="handling-batchwriteexception"> <a href="#handling-batchwriteexception" class="anchor-heading" aria-labelledby="handling-batchwriteexception"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Handling BatchWriteException </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">org.socialsignin.spring.data.dynamodb.exception.BatchWriteException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper.FailedBatch</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserService</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">UserRepository</span> <span class="n">repository</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">saveUsers</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">repository</span><span class="o">.</span><span class="na">saveAll</span><span class="o">(</span><span class="n">users</span><span class="o">);</span>
+            <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"Successfully saved {} users"</span><span class="o">,</span> <span class="n">users</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">BatchWriteException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">List</span><span class="o">&lt;</span><span class="nc">FailedBatch</span><span class="o">&gt;</span> <span class="n">failedBatches</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getFailedBatches</span><span class="o">();</span>
+
+            <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Failed to save {} batches"</span><span class="o">,</span> <span class="n">failedBatches</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+
+            <span class="k">for</span> <span class="o">(</span><span class="nc">FailedBatch</span> <span class="n">failedBatch</span> <span class="o">:</span> <span class="n">failedBatches</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// Get the exception for this batch</span>
+                <span class="nc">Exception</span> <span class="n">batchException</span> <span class="o">=</span> <span class="n">failedBatch</span><span class="o">.</span><span class="na">getException</span><span class="o">();</span>
+
+                <span class="c1">// Get the unprocessed items</span>
+                <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">WriteRequest</span><span class="o">&gt;&gt;</span> <span class="n">unprocessedItems</span> <span class="o">=</span>
+                    <span class="n">failedBatch</span><span class="o">.</span><span class="na">getUnprocessedItems</span><span class="o">();</span>
+
+                <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Batch failed with {} unprocessed items: {}"</span><span class="o">,</span>
+                    <span class="n">unprocessedItems</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="n">batchException</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+
+                <span class="c1">// Handle based on exception type</span>
+                <span class="n">handleFailedBatch</span><span class="o">(</span><span class="n">failedBatch</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">handleFailedBatch</span><span class="o">(</span><span class="nc">FailedBatch</span> <span class="n">batch</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Exception</span> <span class="n">ex</span> <span class="o">=</span> <span class="n">batch</span><span class="o">.</span><span class="na">getException</span><span class="o">();</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">ex</span> <span class="k">instanceof</span> <span class="nc">ProvisionedThroughputExceededException</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// Retry with exponential backoff</span>
+            <span class="n">retryWithBackoff</span><span class="o">(</span><span class="n">batch</span><span class="o">);</span>
+
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">ex</span> <span class="k">instanceof</span> <span class="nc">AmazonServiceException</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">AmazonServiceException</span> <span class="n">ase</span> <span class="o">=</span> <span class="o">(</span><span class="nc">AmazonServiceException</span><span class="o">)</span> <span class="n">ex</span><span class="o">;</span>
+
+            <span class="k">if</span> <span class="o">(</span><span class="n">ase</span><span class="o">.</span><span class="na">getErrorCode</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"ValidationException"</span><span class="o">))</span> <span class="o">{</span>
+                <span class="c1">// Log invalid items for manual review</span>
+                <span class="n">logInvalidItems</span><span class="o">(</span><span class="n">batch</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="c1">// Retry other service exceptions</span>
+                <span class="n">retryWithBackoff</span><span class="o">(</span><span class="n">batch</span><span class="o">);</span>
+            <span class="o">}</span>
+
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="c1">// Unknown error - log for investigation</span>
+            <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Unknown batch failure"</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="extracting-failed-items"> <a href="#extracting-failed-items" class="anchor-heading" aria-labelledby="extracting-failed-items"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Extracting Failed Items </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">extractFailedUsers</span><span class="o">(</span><span class="nc">BatchWriteException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">failedUsers</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+    <span class="k">for</span> <span class="o">(</span><span class="nc">FailedBatch</span> <span class="n">batch</span> <span class="o">:</span> <span class="n">e</span><span class="o">.</span><span class="na">getFailedBatches</span><span class="o">())</span> <span class="o">{</span>
+        <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">WriteRequest</span><span class="o">&gt;&gt;</span> <span class="n">unprocessedItems</span> <span class="o">=</span>
+            <span class="n">batch</span><span class="o">.</span><span class="na">getUnprocessedItems</span><span class="o">();</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="nc">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">WriteRequest</span><span class="o">&gt;&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">unprocessedItems</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+            <span class="nc">String</span> <span class="n">tableName</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">();</span>
+            <span class="nc">List</span><span class="o">&lt;</span><span class="nc">WriteRequest</span><span class="o">&gt;</span> <span class="n">requests</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">();</span>
+
+            <span class="k">for</span> <span class="o">(</span><span class="nc">WriteRequest</span> <span class="n">request</span> <span class="o">:</span> <span class="n">requests</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// Extract item attributes</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getPutRequest</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">AttributeValue</span><span class="o">&gt;</span> <span class="n">item</span> <span class="o">=</span>
+                        <span class="n">request</span><span class="o">.</span><span class="na">getPutRequest</span><span class="o">().</span><span class="na">getItem</span><span class="o">();</span>
+
+                    <span class="c1">// Convert back to User object</span>
+                    <span class="nc">User</span> <span class="n">user</span> <span class="o">=</span> <span class="n">convertToUser</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
+                    <span class="n">failedUsers</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="k">return</span> <span class="n">failedUsers</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">private</span> <span class="nc">User</span> <span class="nf">convertToUser</span><span class="o">(</span><span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">AttributeValue</span><span class="o">&gt;</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">User</span><span class="o">();</span>
+    <span class="n">user</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"id"</span><span class="o">).</span><span class="na">getS</span><span class="o">());</span>
+    <span class="n">user</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"name"</span><span class="o">).</span><span class="na">getS</span><span class="o">());</span>
+    <span class="c1">// ... set other attributes</span>
+    <span class="k">return</span> <span class="n">user</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div><hr /> <h2 id="batch-delete-exceptions"> <a href="#batch-delete-exceptions" class="anchor-heading" aria-labelledby="batch-delete-exceptions"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Batch Delete Exceptions </h2> <h3 id="batchdeleteexception"> <a href="#batchdeleteexception" class="anchor-heading" aria-labelledby="batchdeleteexception"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> BatchDeleteException </h3> <p><strong>Error:</strong></p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>org.socialsignin.spring.data.dynamodb.exception.BatchDeleteException:
+Failed to delete 5 items from DynamoDB
+</code></pre></div></div> <p><strong>Cause:</strong> One or more items in a <code class="language-plaintext highlighter-rouge">deleteAll()</code> operation failed to delete.</p> <h3 id="handling-batchdeleteexception"> <a href="#handling-batchdeleteexception" class="anchor-heading" aria-labelledby="handling-batchdeleteexception"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Handling BatchDeleteException </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">org.socialsignin.spring.data.dynamodb.exception.BatchDeleteException</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserService</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">UserRepository</span> <span class="n">repository</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">deleteUsers</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">repository</span><span class="o">.</span><span class="na">deleteAll</span><span class="o">(</span><span class="n">users</span><span class="o">);</span>
+            <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"Successfully deleted {} users"</span><span class="o">,</span> <span class="n">users</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">BatchDeleteException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">List</span><span class="o">&lt;</span><span class="nc">FailedBatch</span><span class="o">&gt;</span> <span class="n">failedBatches</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getFailedBatches</span><span class="o">();</span>
+
+            <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Failed to delete {} batches"</span><span class="o">,</span> <span class="n">failedBatches</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+
+            <span class="c1">// Retry failed deletions</span>
+            <span class="n">retryFailedDeletions</span><span class="o">(</span><span class="n">failedBatches</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">retryFailedDeletions</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">FailedBatch</span><span class="o">&gt;</span> <span class="n">failedBatches</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">FailedBatch</span> <span class="n">batch</span> <span class="o">:</span> <span class="n">failedBatches</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">WriteRequest</span><span class="o">&gt;&gt;</span> <span class="n">unprocessedItems</span> <span class="o">=</span>
+                <span class="n">batch</span><span class="o">.</span><span class="na">getUnprocessedItems</span><span class="o">();</span>
+
+            <span class="c1">// Extract keys and retry individual deletes</span>
+            <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">failedIds</span> <span class="o">=</span> <span class="n">extractDeleteKeys</span><span class="o">(</span><span class="n">unprocessedItems</span><span class="o">);</span>
+
+            <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">id</span> <span class="o">:</span> <span class="n">failedIds</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">try</span> <span class="o">{</span>
+                    <span class="n">repository</span><span class="o">.</span><span class="na">deleteById</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Failed to delete user {}: {}"</span><span class="o">,</span> <span class="n">id</span><span class="o">,</span> <span class="n">ex</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">extractDeleteKeys</span><span class="o">(</span>
+            <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">WriteRequest</span><span class="o">&gt;&gt;</span> <span class="n">unprocessedItems</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">ids</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">WriteRequest</span><span class="o">&gt;</span> <span class="n">requests</span> <span class="o">:</span> <span class="n">unprocessedItems</span><span class="o">.</span><span class="na">values</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nc">WriteRequest</span> <span class="n">request</span> <span class="o">:</span> <span class="n">requests</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getDeleteRequest</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">AttributeValue</span><span class="o">&gt;</span> <span class="n">key</span> <span class="o">=</span>
+                        <span class="n">request</span><span class="o">.</span><span class="na">getDeleteRequest</span><span class="o">().</span><span class="na">getKey</span><span class="o">();</span>
+                    <span class="n">ids</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">key</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"id"</span><span class="o">).</span><span class="na">getS</span><span class="o">());</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">ids</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><hr /> <h2 id="retry-strategies"> <a href="#retry-strategies" class="anchor-heading" aria-labelledby="retry-strategies"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Retry Strategies </h2> <h3 id="simple-retry-with-exponential-backoff"> <a href="#simple-retry-with-exponential-backoff" class="anchor-heading" aria-labelledby="simple-retry-with-exponential-backoff"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Simple Retry with Exponential Backoff </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BatchRetryService</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">MAX_RETRIES</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="no">INITIAL_BACKOFF_MS</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">saveWithRetry</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">,</span> <span class="nc">UserRepository</span> <span class="n">repository</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">remainingUsers</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">users</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">retryCount</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="k">while</span> <span class="o">(!</span><span class="n">remainingUsers</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">retryCount</span> <span class="o">&lt;</span> <span class="no">MAX_RETRIES</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">repository</span><span class="o">.</span><span class="na">saveAll</span><span class="o">(</span><span class="n">remainingUsers</span><span class="o">);</span>
+                <span class="n">remainingUsers</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span> <span class="c1">// Success - clear list</span>
+
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">BatchWriteException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">retryCount</span><span class="o">++;</span>
+
+                <span class="c1">// Extract failed items</span>
+                <span class="n">remainingUsers</span> <span class="o">=</span> <span class="n">extractFailedUsers</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+
+                <span class="k">if</span> <span class="o">(!</span><span class="n">remainingUsers</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+                    <span class="kt">long</span> <span class="n">backoffMs</span> <span class="o">=</span> <span class="no">INITIAL_BACKOFF_MS</span> <span class="o">*</span> <span class="o">(</span><span class="kt">long</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">retryCount</span><span class="o">);</span>
+
+                    <span class="n">log</span><span class="o">.</span><span class="na">warn</span><span class="o">(</span><span class="s">"Batch write failed, retrying {} items after {}ms (attempt {}/{})"</span><span class="o">,</span>
+                        <span class="n">remainingUsers</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="n">backoffMs</span><span class="o">,</span> <span class="n">retryCount</span><span class="o">,</span> <span class="no">MAX_RETRIES</span><span class="o">);</span>
+
+                    <span class="k">try</span> <span class="o">{</span>
+                        <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">backoffMs</span><span class="o">);</span>
+                    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">InterruptedException</span> <span class="n">ie</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="nc">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">interrupt</span><span class="o">();</span>
+                        <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="s">"Retry interrupted"</span><span class="o">,</span> <span class="n">ie</span><span class="o">);</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="k">if</span> <span class="o">(!</span><span class="n">remainingUsers</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span>
+                <span class="s">"Failed to save "</span> <span class="o">+</span> <span class="n">remainingUsers</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">+</span>
+                <span class="s">" items after "</span> <span class="o">+</span> <span class="no">MAX_RETRIES</span> <span class="o">+</span> <span class="s">" retries"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="using-spring-retry"> <a href="#using-spring-retry" class="anchor-heading" aria-labelledby="using-spring-retry"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Using Spring Retry </h3> <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Add dependency --&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.springframework.retry<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>spring-retry<span class="nt">&lt;/artifactId&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>spring-aspects<span class="nt">&lt;/artifactId&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Configuration</span>
+<span class="nd">@EnableRetry</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RetryConfig</span> <span class="o">{</span>
+    <span class="c1">// Enable retry support</span>
+<span class="o">}</span>
+
+<span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserService</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">UserRepository</span> <span class="n">repository</span><span class="o">;</span>
+
+    <span class="nd">@Retryable</span><span class="o">(</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="o">{</span><span class="nc">BatchWriteException</span><span class="o">.</span><span class="na">class</span><span class="o">},</span>
+        <span class="n">maxAttempts</span> <span class="o">=</span> <span class="mi">3</span><span class="o">,</span>
+        <span class="n">backoff</span> <span class="o">=</span> <span class="nd">@Backoff</span><span class="o">(</span><span class="n">delay</span> <span class="o">=</span> <span class="mi">100</span><span class="o">,</span> <span class="n">multiplier</span> <span class="o">=</span> <span class="mi">2</span><span class="o">)</span>
+    <span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">saveUsers</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">repository</span><span class="o">.</span><span class="na">saveAll</span><span class="o">(</span><span class="n">users</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Recover</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">recoverFromBatchWrite</span><span class="o">(</span><span class="nc">BatchWriteException</span> <span class="n">e</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Failed to save users after retries: {}"</span><span class="o">,</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+
+        <span class="c1">// Handle permanent failure</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">failedUsers</span> <span class="o">=</span> <span class="n">extractFailedUsers</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="n">saveToDeadLetterQueue</span><span class="o">(</span><span class="n">failedUsers</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><hr /> <h2 id="batch-size-optimization"> <a href="#batch-size-optimization" class="anchor-heading" aria-labelledby="batch-size-optimization"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Batch Size Optimization </h2> <h3 id="split-large-batches"> <a href="#split-large-batches" class="anchor-heading" aria-labelledby="split-large-batches"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Split Large Batches </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BatchService</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">25</span><span class="o">;</span> <span class="c1">// DynamoDB limit</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">saveInBatches</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">,</span> <span class="nc">UserRepository</span> <span class="n">repository</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Split into batches of 25</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;&gt;</span> <span class="n">batches</span> <span class="o">=</span> <span class="nc">Lists</span><span class="o">.</span><span class="na">partition</span><span class="o">(</span><span class="n">users</span><span class="o">,</span> <span class="no">BATCH_SIZE</span><span class="o">);</span>
+
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">allFailedUsers</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">batches</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">batch</span> <span class="o">=</span> <span class="n">batches</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">repository</span><span class="o">.</span><span class="na">saveAll</span><span class="o">(</span><span class="n">batch</span><span class="o">);</span>
+                <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"Saved batch {}/{} ({} users)"</span><span class="o">,</span>
+                    <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">batches</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="n">batch</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">BatchWriteException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">failedUsers</span> <span class="o">=</span> <span class="n">extractFailedUsers</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+                <span class="n">allFailedUsers</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">failedUsers</span><span class="o">);</span>
+
+                <span class="n">log</span><span class="o">.</span><span class="na">warn</span><span class="o">(</span><span class="s">"Batch {}/{} had {} failures"</span><span class="o">,</span>
+                    <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">batches</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="n">failedUsers</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+            <span class="o">}</span>
+
+            <span class="c1">// Small delay between batches to avoid throttling</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">batches</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">try</span> <span class="o">{</span>
+                    <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">50</span><span class="o">);</span>
+                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="nc">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">interrupt</span><span class="o">();</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="c1">// Retry failed items</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">allFailedUsers</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">log</span><span class="o">.</span><span class="na">warn</span><span class="o">(</span><span class="s">"Retrying {} failed users"</span><span class="o">,</span> <span class="n">allFailedUsers</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+            <span class="n">retryFailedUsers</span><span class="o">(</span><span class="n">allFailedUsers</span><span class="o">,</span> <span class="n">repository</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="parallel-batch-processing"> <a href="#parallel-batch-processing" class="anchor-heading" aria-labelledby="parallel-batch-processing"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Parallel Batch Processing </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ParallelBatchService</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">UserRepository</span> <span class="n">repository</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">ExecutorService</span> <span class="n">executor</span> <span class="o">=</span>
+        <span class="nc">Executors</span><span class="o">.</span><span class="na">newFixedThreadPool</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+
+    <span class="kd">public</span> <span class="nc">CompletableFuture</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;</span> <span class="nf">saveInParallel</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;&gt;</span> <span class="n">batches</span> <span class="o">=</span> <span class="nc">Lists</span><span class="o">.</span><span class="na">partition</span><span class="o">(</span><span class="n">users</span><span class="o">,</span> <span class="mi">25</span><span class="o">);</span>
+
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">CompletableFuture</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;&gt;</span> <span class="n">futures</span> <span class="o">=</span> <span class="n">batches</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">batch</span> <span class="o">-&gt;</span> <span class="nc">CompletableFuture</span><span class="o">.</span><span class="na">runAsync</span><span class="o">(</span>
+                <span class="o">()</span> <span class="o">-&gt;</span> <span class="n">saveBatchWithRetry</span><span class="o">(</span><span class="n">batch</span><span class="o">),</span>
+                <span class="n">executor</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+
+        <span class="k">return</span> <span class="nc">CompletableFuture</span><span class="o">.</span><span class="na">allOf</span><span class="o">(</span>
+            <span class="n">futures</span><span class="o">.</span><span class="na">toArray</span><span class="o">(</span><span class="k">new</span> <span class="nc">CompletableFuture</span><span class="o">[</span><span class="mi">0</span><span class="o">]));</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">saveBatchWithRetry</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">batch</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">retries</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">remaining</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">batch</span><span class="o">);</span>
+
+        <span class="k">while</span> <span class="o">(!</span><span class="n">remaining</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">retries</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">repository</span><span class="o">.</span><span class="na">saveAll</span><span class="o">(</span><span class="n">remaining</span><span class="o">);</span>
+                <span class="n">remaining</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">BatchWriteException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">remaining</span> <span class="o">=</span> <span class="n">extractFailedUsers</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+                <span class="n">retries</span><span class="o">++;</span>
+
+                <span class="k">if</span> <span class="o">(!</span><span class="n">remaining</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+                    <span class="k">try</span> <span class="o">{</span>
+                        <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">100</span> <span class="o">*</span> <span class="o">(</span><span class="kt">long</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">retries</span><span class="o">));</span>
+                    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">InterruptedException</span> <span class="n">ie</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="nc">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">interrupt</span><span class="o">();</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><hr /> <h2 id="monitoring-and-alerting"> <a href="#monitoring-and-alerting" class="anchor-heading" aria-labelledby="monitoring-and-alerting"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Monitoring and Alerting </h2> <h3 id="metrics-collection"> <a href="#metrics-collection" class="anchor-heading" aria-labelledby="metrics-collection"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Metrics Collection </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MetricsAwareBatchService</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">MeterRegistry</span> <span class="n">meterRegistry</span><span class="o">;</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">UserRepository</span> <span class="n">repository</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">saveUsersWithMetrics</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Timer</span><span class="o">.</span><span class="na">Sample</span> <span class="n">sample</span> <span class="o">=</span> <span class="nc">Timer</span><span class="o">.</span><span class="na">start</span><span class="o">(</span><span class="n">meterRegistry</span><span class="o">);</span>
+
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">repository</span><span class="o">.</span><span class="na">saveAll</span><span class="o">(</span><span class="n">users</span><span class="o">);</span>
+
+            <span class="n">meterRegistry</span><span class="o">.</span><span class="na">counter</span><span class="o">(</span><span class="s">"dynamodb.batch.write.success"</span><span class="o">,</span>
+                <span class="s">"size"</span><span class="o">,</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">users</span><span class="o">.</span><span class="na">size</span><span class="o">()))</span>
+                <span class="o">.</span><span class="na">increment</span><span class="o">();</span>
+
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">BatchWriteException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">List</span><span class="o">&lt;</span><span class="nc">FailedBatch</span><span class="o">&gt;</span> <span class="n">failed</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getFailedBatches</span><span class="o">();</span>
+
+            <span class="n">meterRegistry</span><span class="o">.</span><span class="na">counter</span><span class="o">(</span><span class="s">"dynamodb.batch.write.failure"</span><span class="o">,</span>
+                <span class="s">"batches"</span><span class="o">,</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">failed</span><span class="o">.</span><span class="na">size</span><span class="o">()))</span>
+                <span class="o">.</span><span class="na">increment</span><span class="o">();</span>
+
+            <span class="c1">// Track failure reasons</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nc">FailedBatch</span> <span class="n">batch</span> <span class="o">:</span> <span class="n">failed</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">String</span> <span class="n">errorType</span> <span class="o">=</span> <span class="n">batch</span><span class="o">.</span><span class="na">getException</span><span class="o">().</span><span class="na">getClass</span><span class="o">().</span><span class="na">getSimpleName</span><span class="o">();</span>
+                <span class="n">meterRegistry</span><span class="o">.</span><span class="na">counter</span><span class="o">(</span><span class="s">"dynamodb.batch.write.error"</span><span class="o">,</span>
+                    <span class="s">"type"</span><span class="o">,</span> <span class="n">errorType</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">increment</span><span class="o">();</span>
+            <span class="o">}</span>
+
+            <span class="k">throw</span> <span class="n">e</span><span class="o">;</span>
+
+        <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+            <span class="n">sample</span><span class="o">.</span><span class="na">stop</span><span class="o">(</span><span class="n">meterRegistry</span><span class="o">.</span><span class="na">timer</span><span class="o">(</span><span class="s">"dynamodb.batch.write.duration"</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="logging-failed-items"> <a href="#logging-failed-items" class="anchor-heading" aria-labelledby="logging-failed-items"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Logging Failed Items </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Slf4j</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BatchAuditService</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">logBatchFailures</span><span class="o">(</span><span class="nc">BatchWriteException</span> <span class="n">e</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">originalUsers</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">failedUsers</span> <span class="o">=</span> <span class="n">extractFailedUsers</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+
+        <span class="c1">// Log to structured logging system</span>
+        <span class="n">failedUsers</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">user</span> <span class="o">-&gt;</span>
+            <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Failed to save user: id={}, name={}, reason={}"</span><span class="o">,</span>
+                <span class="n">user</span><span class="o">.</span><span class="na">getId</span><span class="o">(),</span>
+                <span class="n">user</span><span class="o">.</span><span class="na">getName</span><span class="o">(),</span>
+                <span class="n">getFailureReason</span><span class="o">(</span><span class="n">user</span><span class="o">,</span> <span class="n">e</span><span class="o">)));</span>
+
+        <span class="c1">// Save to dead letter queue</span>
+        <span class="n">saveToDeadLetterQueue</span><span class="o">(</span><span class="n">failedUsers</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="nf">getFailureReason</span><span class="o">(</span><span class="nc">User</span> <span class="n">user</span><span class="o">,</span> <span class="nc">BatchWriteException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Extract specific failure reason for this user</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">FailedBatch</span> <span class="n">batch</span> <span class="o">:</span> <span class="n">e</span><span class="o">.</span><span class="na">getFailedBatches</span><span class="o">())</span> <span class="o">{</span>
+            <span class="c1">// Check if this batch contains this user</span>
+            <span class="c1">// Return exception message</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="s">"Unknown"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">saveToDeadLetterQueue</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Persist failed items for manual review</span>
+        <span class="c1">// Could use: S3, SQS, separate DynamoDB table, etc.</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><hr /> <h2 id="best-practices"> <a href="#best-practices" class="anchor-heading" aria-labelledby="best-practices"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Best Practices </h2> <h3 id="1-handle-partial-failures"> <a href="#1-handle-partial-failures" class="anchor-heading" aria-labelledby="1-handle-partial-failures"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1. Handle Partial Failures </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✅ Always catch and handle batch exceptions</span>
+<span class="k">try</span> <span class="o">{</span>
+    <span class="n">repository</span><span class="o">.</span><span class="na">saveAll</span><span class="o">(</span><span class="n">users</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">BatchWriteException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// Extract and retry failed items</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">failed</span> <span class="o">=</span> <span class="n">extractFailedUsers</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+    <span class="n">retryFailedUsers</span><span class="o">(</span><span class="n">failed</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="c1">// ❌ Don't ignore batch exceptions</span>
+<span class="n">repository</span><span class="o">.</span><span class="na">saveAll</span><span class="o">(</span><span class="n">users</span><span class="o">);</span> <span class="c1">// Some items might have failed silently</span>
+</code></pre></div></div> <h3 id="2-implement-retry-logic"> <a href="#2-implement-retry-logic" class="anchor-heading" aria-labelledby="2-implement-retry-logic"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 2. Implement Retry Logic </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✅ Retry with exponential backoff</span>
+<span class="nd">@Retryable</span><span class="o">(</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="o">{</span><span class="nc">BatchWriteException</span><span class="o">.</span><span class="na">class</span><span class="o">},</span>
+    <span class="n">maxAttempts</span> <span class="o">=</span> <span class="mi">3</span><span class="o">,</span>
+    <span class="n">backoff</span> <span class="o">=</span> <span class="nd">@Backoff</span><span class="o">(</span><span class="n">delay</span> <span class="o">=</span> <span class="mi">100</span><span class="o">,</span> <span class="n">multiplier</span> <span class="o">=</span> <span class="mi">2</span><span class="o">)</span>
+<span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">saveUsers</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">users</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">repository</span><span class="o">.</span><span class="na">saveAll</span><span class="o">(</span><span class="n">users</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="c1">// ❌ Don't retry immediately without backoff</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">repository</span><span class="o">.</span><span class="na">saveAll</span><span class="o">(</span><span class="n">users</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">BatchWriteException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// No backoff = likely to fail again</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="3-monitor-failures"> <a href="#3-monitor-failures" class="anchor-heading" aria-labelledby="3-monitor-failures"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3. Monitor Failures </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✅ Track metrics and alert on high failure rates</span>
+<span class="n">meterRegistry</span><span class="o">.</span><span class="na">counter</span><span class="o">(</span><span class="s">"batch.failures"</span><span class="o">).</span><span class="na">increment</span><span class="o">();</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">failureRate</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">alerting</span><span class="o">.</span><span class="na">sendAlert</span><span class="o">(</span><span class="s">"High batch failure rate detected"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="4-use-appropriate-batch-sizes"> <a href="#4-use-appropriate-batch-sizes" class="anchor-heading" aria-labelledby="4-use-appropriate-batch-sizes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 4. Use Appropriate Batch Sizes </h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✅ Respect DynamoDB limits</span>
+<span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;&gt;</span> <span class="n">batches</span> <span class="o">=</span> <span class="nc">Lists</span><span class="o">.</span><span class="na">partition</span><span class="o">(</span><span class="n">users</span><span class="o">,</span> <span class="mi">25</span><span class="o">);</span>
+
+<span class="c1">// ❌ Don't send oversized batches</span>
+<span class="n">repository</span><span class="o">.</span><span class="na">saveAll</span><span class="o">(</span><span class="n">users</span><span class="o">);</span> <span class="c1">// If &gt; 25 items, will fail</span>
+</code></pre></div></div><hr /> <h2 id="next-steps"> <a href="#next-steps" class="anchor-heading" aria-labelledby="next-steps"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Next Steps </h2> <ul> <li>Review <a href="performance-tuning">Performance Tuning</a> for throughput optimization</li> <li>Check <a href="common-errors">Common Errors</a> for configuration issues</li> <li>See the <a href="faq">FAQ</a> for additional questions</li> </ul> </main> <hr> <footer> <div class="d-flex mt-2"> <p class="text-small text-grey-dk-000 mb-0"> <a href="https://github.com/naderfares/spring-data-dynamodb/tree/develop/docs/pages/documentation/troubleshooting/batch-operation-failures.md" id="edit-this-page">Edit this page on GitHub.</a> </p> </div> </footer> </div> </div> <div class="search-overlay"></div> </div> <script src="https://cdn.jsdelivr.net/npm/mermaid@9.1.3/dist/mermaid.min.js"></script> <script> var config = {} ; mermaid.initialize(config); window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid')); </script> </body> </html>

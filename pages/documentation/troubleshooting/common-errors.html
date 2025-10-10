@@ -1,0 +1,335 @@
+<!DOCTYPE html> <html lang="en-US"> <head> <meta charset="UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=Edge"> <link rel="stylesheet" href="/spring-data-dynamodb/assets/css/just-the-docs-default.css"> <link rel="stylesheet" href="/spring-data-dynamodb/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet"> <style id="jtd-nav-activation"> .site-nav > ul.nav-list:first-child > li > a, .site-nav > ul.nav-list:first-child > li > ul > li > a, .site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(1)) > a, .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li a { background-image: none; } .site-nav > ul.nav-list:not(:first-child) a, .site-nav li.external a { background-image: none; } .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(6) > ul > li:nth-child(1) > a { font-weight: 600; text-decoration: none; }.site-nav > ul.nav-list:first-child > li:nth-child(3) > button svg, .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(6) > button svg, .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(6) > ul > li:nth-child(1) > button svg { transform: rotate(-90deg); }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list, .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(6) > ul.nav-list, .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(6) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list { display: block; } </style> <script src="/spring-data-dynamodb/assets/js/vendor/lunr.min.js"></script> <script src="/spring-data-dynamodb/assets/js/just-the-docs.js"></script> <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Begin Jekyll SEO tag v2.8.0 --> <title>Common Errors | Spring Data DynamoDB</title> <meta name="generator" content="Jekyll v3.10.0" /> <meta property="og:title" content="Common Errors" /> <meta property="og:locale" content="en_US" /> <meta name="description" content="The Spring® Data project simplifies building Spring-powered applications by providing a consistent and intuitive programming model for various data access technologies. Spring Data DynamoDB integrates Spring with Amazon DynamoDB, a fully managed NoSQL database, enabling seamless data access with familiar Spring abstractions. It supports CRUD operations, declarative queries, and automatic object-to-table mapping, all while leveraging DynamoDB’s scalability and performance. This module makes working with DynamoDB straightforward, allowing developers to focus on building robust and scalable applications with minimal boilerplate code." /> <meta property="og:description" content="The Spring® Data project simplifies building Spring-powered applications by providing a consistent and intuitive programming model for various data access technologies. Spring Data DynamoDB integrates Spring with Amazon DynamoDB, a fully managed NoSQL database, enabling seamless data access with familiar Spring abstractions. It supports CRUD operations, declarative queries, and automatic object-to-table mapping, all while leveraging DynamoDB’s scalability and performance. This module makes working with DynamoDB straightforward, allowing developers to focus on building robust and scalable applications with minimal boilerplate code." /> <link rel="canonical" href="https://naderfares.github.io/spring-data-dynamodb/pages/documentation/troubleshooting/common-errors.html" /> <meta property="og:url" content="https://naderfares.github.io/spring-data-dynamodb/pages/documentation/troubleshooting/common-errors.html" /> <meta property="og:site_name" content="Spring Data DynamoDB" /> <meta property="og:type" content="website" /> <meta name="twitter:card" content="summary" /> <meta property="twitter:title" content="Common Errors" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"WebPage","description":"The Spring® Data project simplifies building Spring-powered applications by providing a consistent and intuitive programming model for various data access technologies. Spring Data DynamoDB integrates Spring with Amazon DynamoDB, a fully managed NoSQL database, enabling seamless data access with familiar Spring abstractions. It supports CRUD operations, declarative queries, and automatic object-to-table mapping, all while leveraging DynamoDB’s scalability and performance. This module makes working with DynamoDB straightforward, allowing developers to focus on building robust and scalable applications with minimal boilerplate code.","headline":"Common Errors","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://naderfares.github.io/spring-data-dynamodb/assets/images/logo.png"}},"url":"https://naderfares.github.io/spring-data-dynamodb/pages/documentation/troubleshooting/common-errors.html"}</script> <!-- End Jekyll SEO tag --> </head> <body> <a class="skip-to-main" href="#main-content">Skip to main content</a> <svg xmlns="http://www.w3.org/2000/svg" class="d-none"> <symbol id="svg-link" viewBox="0 0 24 24"> <title>Link</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"> <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-menu" viewBox="0 0 24 24"> <title>Menu</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"> <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewBox="0 0 24 24"> <title>Expand</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"> <polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE --> <symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"> <title id="svg-external-link-title">(external link)</title> <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line> </symbol> <symbol id="svg-doc" viewBox="0 0 24 24"> <title>Document</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"> <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> <symbol id="svg-search" viewBox="0 0 24 24"> <title>Search</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md --> <symbol id="svg-copy" viewBox="0 0 16 16"> <title>Copy</title> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"> <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/> <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/> </svg> </symbol> <symbol id="svg-copied" viewBox="0 0 16 16"> <title>Copied</title> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16"> <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/> <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/> </svg> </symbol> </svg> <div class="side-bar"> <div class="site-header" role="banner"> <a href="/spring-data-dynamodb/" class="site-title lh-tight"> <div class="site-logo" role="img" aria-label="Spring Data DynamoDB"></div> </a> <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false"> <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg> </button> </div> <nav aria-label="Main" id="site-nav" class="site-nav"> <ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/" class="nav-list-link">Home</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/about/" class="nav-list-link">About</a></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Documentation category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/documentation/" class="nav-list-link">Documentation</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/getting-started.html" class="nav-list-link">Getting Started</a></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Implementation category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/implementation/implementation.html" class="nav-list-link">Implementation</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Access-to-releases.html" class="nav-list-link">Access to releases</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Autocreate-Tables.html" class="nav-list-link">Autocreate Tables</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Composite-Primary-Keys-Kotlin-Example.html" class="nav-list-link">Composite Primary Keys Kotlin Example</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Custom-repository-implementations.html" class="nav-list-link">Custom repository implementations</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/DynamoDB-GSI-Example.html" class="nav-list-link">DynamoDB GSI Example</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/DynamoDB-Hash-Key-Example.html" class="nav-list-link">DynamoDB Hash Key Example</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Projections.html" class="nav-list-link">Projections</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Query-Size-Limits-and-Pageable.html" class="nav-list-link">Query Size Limits and Pageable</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/implementation/Quick-Start---XML-based-configuration.html" class="nav-list-link">Quick Start - XML based configuration</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Conceptual category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/conceptual/conceptual.html" class="nav-list-link">Conceptual</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/conceptual/Supported-Spring-Data-Comparison-Operators.html" class="nav-list-link">Supported Spring Data Comparison Operators</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/conceptual/Use-Hash-Range-keys.html" class="nav-list-link">Use Hash-Range keys</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Architecture category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/architecture/architecture.html" class="nav-list-link">Architecture</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/architecture/core-components.html" class="nav-list-link">Core Components</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/architecture/repository-layer.html" class="nav-list-link">Repository Layer</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/architecture/query-execution.html" class="nav-list-link">Query Execution</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/architecture/entity-mapping.html" class="nav-list-link">Entity Mapping</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/architecture/design-patterns.html" class="nav-list-link">Design Patterns</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in API Reference category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/api-reference/api-reference.html" class="nav-list-link">API Reference</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/api-reference/dynamodb-template.html" class="nav-list-link">DynamoDBTemplate</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/api-reference/repository-interfaces.html" class="nav-list-link">Repository Interfaces</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/api-reference/annotations.html" class="nav-list-link">Annotations</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/api-reference/query-methods.html" class="nav-list-link">Query Methods</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/api-reference/configuration.html" class="nav-list-link">Configuration</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Troubleshooting category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/troubleshooting.html" class="nav-list-link">Troubleshooting</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/common-errors.html" class="nav-list-link">Common Errors</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/scan-exceptions.html" class="nav-list-link">Scan Exceptions</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/batch-operation-failures.html" class="nav-list-link">Batch Operation Failures</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/performance-tuning.html" class="nav-list-link">Performance Tuning</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/faq.html" class="nav-list-link">FAQ</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Operational category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/spring-data-dynamodb/pages/documentation/operational/operational.html" class="nav-list-link">Operational</a><ul class="nav-list"><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/operational/Alter-table-name-during-runtime.html" class="nav-list-link">Alter table name during runtime</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/operational/Amazon-DynamoDB-Accelerator-(DAX).html" class="nav-list-link">Amazon DynamoDB Accelerator (DAX)</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/operational/Multi-Repository-configuration.html" class="nav-list-link">Multi Repository configuration</a></li><li class="nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/operational/Spring-Data-REST.html" class="nav-list-link">Spring Data REST</a></li></ul></li></ul></li></ul> </nav> <footer class="site-footer"> This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll. </footer> </div> <div class="main" id="top"> <div id="main-header" class="main-header"> <div class="search" role="search"> <div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search Spring Data DynamoDB" aria-label="Search Spring Data DynamoDB" autocomplete="off"> <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label> </div> <div id="search-results" class="search-results"></div> </div> <nav aria-label="Auxiliary" class="aux-nav"> <ul class="aux-nav-list"> <li class="aux-nav-list-item"> <a href="https://github.com/naderfares/spring-data-dynamodb" class="site-button" target="_blank" rel="noopener noreferrer" > Spring Data DynamoDB on GitHub </a> </li> </ul> </nav> </div> <div class="main-content-wrap"> <nav aria-label="Breadcrumb" class="breadcrumb-nav"> <ol class="breadcrumb-nav-list"> <li class="breadcrumb-nav-list-item"><a href="/spring-data-dynamodb/documentation/">Documentation</a></li> <li class="breadcrumb-nav-list-item"><a href="/spring-data-dynamodb/pages/documentation/troubleshooting/troubleshooting.html">Troubleshooting</a></li> <li class="breadcrumb-nav-list-item"><span>Common Errors</span></li> </ol> </nav> <div id="main-content" class="main-content"> <main> <h1 id="common-errors-and-solutions"> <a href="#common-errors-and-solutions" class="anchor-heading" aria-labelledby="common-errors-and-solutions"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Common Errors and Solutions </h1> <p>This guide covers frequently encountered errors and their solutions.</p> <h2 id="table-of-contents"> <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of Contents </h2> <ol class="no_toc text-delta"> <li>TOC</li> </ol><hr /> <h2 id="configuration-errors"> <a href="#configuration-errors" class="anchor-heading" aria-labelledby="configuration-errors"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Configuration Errors </h2> <h3 id="amazondynamodb-bean-not-found"> <a href="#amazondynamodb-bean-not-found" class="anchor-heading" aria-labelledby="amazondynamodb-bean-not-found"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> AmazonDynamoDB Bean Not Found </h3> <p><strong>Error:</strong></p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>No qualifying bean of type 'com.amazonaws.services.dynamodbv2.AmazonDynamoDB'
+</code></pre></div></div> <p><strong>Cause:</strong> Missing DynamoDB client configuration.</p> <p><strong>Solution:</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Configuration</span>
+<span class="nd">@EnableDynamoDBRepositories</span><span class="o">(</span><span class="n">basePackages</span> <span class="o">=</span> <span class="s">"com.example.repository"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DynamoDBConfig</span> <span class="o">{</span>
+
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="nc">AmazonDynamoDB</span> <span class="nf">amazonDynamoDB</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">AmazonDynamoDBClientBuilder</span><span class="o">.</span><span class="na">standard</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">withCredentials</span><span class="o">(</span><span class="k">new</span> <span class="nc">DefaultAWSCredentialsProviderChain</span><span class="o">())</span>
+            <span class="o">.</span><span class="na">withRegion</span><span class="o">(</span><span class="nc">Regions</span><span class="o">.</span><span class="na">US_EAST_1</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="nc">DynamoDBMapperConfig</span> <span class="nf">dynamoDBMapperConfig</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">DynamoDBMapperConfig</span><span class="o">.</span><span class="na">DEFAULT</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="nc">DynamoDBMapper</span> <span class="nf">dynamoDBMapper</span><span class="o">(</span><span class="nc">AmazonDynamoDB</span> <span class="n">amazonDynamoDB</span><span class="o">,</span>
+                                          <span class="nc">DynamoDBMapperConfig</span> <span class="n">config</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">DynamoDBMapper</span><span class="o">(</span><span class="n">amazonDynamoDB</span><span class="o">,</span> <span class="n">config</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="aws-credentials-not-found"> <a href="#aws-credentials-not-found" class="anchor-heading" aria-labelledby="aws-credentials-not-found"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> AWS Credentials Not Found </h3> <p><strong>Error:</strong></p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Unable to load AWS credentials from any provider in the chain
+</code></pre></div></div> <p><strong>Cause:</strong> AWS credentials are not configured properly.</p> <p><strong>Solution 1: Environment Variables</strong></p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span>your_access_key
+<span class="nb">export </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span>your_secret_key
+<span class="nb">export </span><span class="nv">AWS_REGION</span><span class="o">=</span>us-east-1
+</code></pre></div></div> <p><strong>Solution 2: AWS Credentials File</strong></p> <p>Create <code class="language-plaintext highlighter-rouge">~/.aws/credentials</code>:</p> <div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[default]</span>
+<span class="py">aws_access_key_id</span> <span class="p">=</span> <span class="s">your_access_key</span>
+<span class="py">aws_secret_access_key</span> <span class="p">=</span> <span class="s">your_secret_key</span>
+</code></pre></div></div> <p>And <code class="language-plaintext highlighter-rouge">~/.aws/config</code>:</p> <div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[default]</span>
+<span class="py">region</span> <span class="p">=</span> <span class="s">us-east-1</span>
+</code></pre></div></div> <p><strong>Solution 3: Application Properties</strong></p> <div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">amazon.dynamodb.accesskey</span><span class="p">=</span><span class="s">your_access_key</span>
+<span class="py">amazon.dynamodb.secretkey</span><span class="p">=</span><span class="s">your_secret_key</span>
+<span class="py">amazon.dynamodb.region</span><span class="p">=</span><span class="s">us-east-1</span>
+</code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DynamoDBConfig</span> <span class="o">{</span>
+
+    <span class="nd">@Value</span><span class="o">(</span><span class="s">"${amazon.dynamodb.accesskey}"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">amazonAWSAccessKey</span><span class="o">;</span>
+
+    <span class="nd">@Value</span><span class="o">(</span><span class="s">"${amazon.dynamodb.secretkey}"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">amazonAWSSecretKey</span><span class="o">;</span>
+
+    <span class="nd">@Value</span><span class="o">(</span><span class="s">"${amazon.dynamodb.region}"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">amazonAWSRegion</span><span class="o">;</span>
+
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="nc">AmazonDynamoDB</span> <span class="nf">amazonDynamoDB</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">BasicAWSCredentials</span> <span class="n">awsCredentials</span> <span class="o">=</span>
+            <span class="k">new</span> <span class="nf">BasicAWSCredentials</span><span class="o">(</span><span class="n">amazonAWSAccessKey</span><span class="o">,</span> <span class="n">amazonAWSSecretKey</span><span class="o">);</span>
+
+        <span class="k">return</span> <span class="nc">AmazonDynamoDBClientBuilder</span><span class="o">.</span><span class="na">standard</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">withCredentials</span><span class="o">(</span><span class="k">new</span> <span class="nc">AWSStaticCredentialsProvider</span><span class="o">(</span><span class="n">awsCredentials</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">withRegion</span><span class="o">(</span><span class="n">amazonAWSRegion</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><hr /> <h2 id="entity-mapping-errors"> <a href="#entity-mapping-errors" class="anchor-heading" aria-labelledby="entity-mapping-errors"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Entity Mapping Errors </h2> <h3 id="no-hash-key-found"> <a href="#no-hash-key-found" class="anchor-heading" aria-labelledby="no-hash-key-found"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> No Hash Key Found </h3> <p><strong>Error:</strong></p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>No method annotated with @DynamoDBHashKey found in class
+</code></pre></div></div> <p><strong>Cause:</strong> Entity class is missing a hash key annotation.</p> <p><strong>Solution:</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@DynamoDBTable</span><span class="o">(</span><span class="n">tableName</span> <span class="o">=</span> <span class="s">"User"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="nd">@DynamoDBHashKey</span>
+    <span class="nd">@DynamoDBAutoGeneratedKey</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@DynamoDBAttribute</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="multiple-hash-keys-defined"> <a href="#multiple-hash-keys-defined" class="anchor-heading" aria-labelledby="multiple-hash-keys-defined"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Multiple Hash Keys Defined </h3> <p><strong>Error:</strong></p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Multiple methods annotated with @DynamoDBHashKey found
+</code></pre></div></div> <p><strong>Cause:</strong> More than one field or method is annotated with <code class="language-plaintext highlighter-rouge">@DynamoDBHashKey</code>.</p> <p><strong>Solution:</strong> Ensure only one hash key per entity:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@DynamoDBTable</span><span class="o">(</span><span class="n">tableName</span> <span class="o">=</span> <span class="s">"Order"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Order</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">orderId</span><span class="o">;</span>      <span class="c1">// Hash key</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">orderDate</span><span class="o">;</span>    <span class="c1">// Range key</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">customerId</span><span class="o">;</span>   <span class="c1">// Regular attribute</span>
+
+    <span class="nd">@DynamoDBHashKey</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getOrderId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">orderId</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@DynamoDBRangeKey</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getOrderDate</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">orderDate</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@DynamoDBAttribute</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getCustomerId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">customerId</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// setters...</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="composite-id-not-properly-configured"> <a href="#composite-id-not-properly-configured" class="anchor-heading" aria-labelledby="composite-id-not-properly-configured"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Composite ID Not Properly Configured </h3> <p><strong>Error:</strong></p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Could not extract id from entity
+</code></pre></div></div> <p><strong>Cause:</strong> Composite key (hash + range) not properly mapped.</p> <p><strong>Solution 1: Using @DynamoDBHashKey and @DynamoDBRangeKey</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@DynamoDBTable</span><span class="o">(</span><span class="n">tableName</span> <span class="o">=</span> <span class="s">"Order"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Order</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">customerId</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">orderDate</span><span class="o">;</span>
+
+    <span class="nd">@DynamoDBHashKey</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getCustomerId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">customerId</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@DynamoDBRangeKey</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getOrderDate</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">orderDate</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// setters...</span>
+<span class="o">}</span>
+</code></pre></div></div> <p><strong>Solution 2: Using Composite ID Class</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ID class</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">OrderId</span> <span class="kd">implements</span> <span class="nc">Serializable</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">customerId</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">orderDate</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">OrderId</span><span class="o">()</span> <span class="o">{}</span>
+
+    <span class="kd">public</span> <span class="nf">OrderId</span><span class="o">(</span><span class="nc">String</span> <span class="n">customerId</span><span class="o">,</span> <span class="nc">String</span> <span class="n">orderDate</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">customerId</span> <span class="o">=</span> <span class="n">customerId</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">orderDate</span> <span class="o">=</span> <span class="n">orderDate</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@DynamoDBHashKey</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getCustomerId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">customerId</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@DynamoDBRangeKey</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getOrderDate</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">orderDate</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// setters, equals, hashCode...</span>
+<span class="o">}</span>
+
+<span class="c1">// Entity class</span>
+<span class="nd">@DynamoDBTable</span><span class="o">(</span><span class="n">tableName</span> <span class="o">=</span> <span class="s">"Order"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Order</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">OrderId</span> <span class="n">orderId</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Double</span> <span class="n">amount</span><span class="o">;</span>
+
+    <span class="nd">@Id</span>
+    <span class="kd">public</span> <span class="nc">OrderId</span> <span class="nf">getOrderId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">orderId</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@DynamoDBAttribute</span>
+    <span class="kd">public</span> <span class="nc">Double</span> <span class="nf">getAmount</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">amount</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// setters...</span>
+<span class="o">}</span>
+</code></pre></div></div><hr /> <h2 id="table-errors"> <a href="#table-errors" class="anchor-heading" aria-labelledby="table-errors"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table Errors </h2> <h3 id="table-not-found"> <a href="#table-not-found" class="anchor-heading" aria-labelledby="table-not-found"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table Not Found </h3> <p><strong>Error:</strong></p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Requested resource not found: Table: User not found
+</code></pre></div></div> <p><strong>Cause:</strong> The DynamoDB table doesn’t exist in your AWS account/region.</p> <p><strong>Solution 1: Create Table Manually</strong></p> <p>Using AWS Console or CLI:</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aws dynamodb create-table <span class="se">\</span>
+    <span class="nt">--table-name</span> User <span class="se">\</span>
+    <span class="nt">--attribute-definitions</span> <span class="se">\</span>
+        <span class="nv">AttributeName</span><span class="o">=</span><span class="nb">id</span>,AttributeType<span class="o">=</span>S <span class="se">\</span>
+    <span class="nt">--key-schema</span> <span class="se">\</span>
+        <span class="nv">AttributeName</span><span class="o">=</span><span class="nb">id</span>,KeyType<span class="o">=</span>HASH <span class="se">\</span>
+    <span class="nt">--provisioned-throughput</span> <span class="se">\</span>
+        <span class="nv">ReadCapacityUnits</span><span class="o">=</span>5,WriteCapacityUnits<span class="o">=</span>5
+</code></pre></div></div> <p><strong>Solution 2: Create Table Programmatically</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Bean</span>
+<span class="kd">public</span> <span class="nc">CommandLineRunner</span> <span class="nf">initializeTables</span><span class="o">(</span><span class="nc">AmazonDynamoDB</span> <span class="n">amazonDynamoDB</span><span class="o">,</span>
+                                           <span class="nc">DynamoDBMapper</span> <span class="n">mapper</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">args</span> <span class="o">-&gt;</span> <span class="o">{</span>
+        <span class="nc">CreateTableRequest</span> <span class="n">tableRequest</span> <span class="o">=</span> <span class="n">mapper</span>
+            <span class="o">.</span><span class="na">generateCreateTableRequest</span><span class="o">(</span><span class="nc">User</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">tableRequest</span><span class="o">.</span><span class="na">setProvisionedThroughput</span><span class="o">(</span>
+            <span class="k">new</span> <span class="nf">ProvisionedThroughput</span><span class="o">(</span><span class="mi">5L</span><span class="o">,</span> <span class="mi">5L</span><span class="o">));</span>
+
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">amazonDynamoDB</span><span class="o">.</span><span class="na">createTable</span><span class="o">(</span><span class="n">tableRequest</span><span class="o">);</span>
+
+            <span class="c1">// Wait for table to become active</span>
+            <span class="nc">DynamoDB</span> <span class="n">dynamoDB</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DynamoDB</span><span class="o">(</span><span class="n">amazonDynamoDB</span><span class="o">);</span>
+            <span class="nc">Table</span> <span class="n">table</span> <span class="o">=</span> <span class="n">dynamoDB</span><span class="o">.</span><span class="na">getTable</span><span class="o">(</span><span class="s">"User"</span><span class="o">);</span>
+            <span class="n">table</span><span class="o">.</span><span class="na">waitForActive</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">ResourceInUseException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// Table already exists</span>
+        <span class="o">}</span>
+    <span class="o">};</span>
+<span class="o">}</span>
+</code></pre></div></div> <p><strong>Solution 3: Using DynamoDB Local</strong></p> <p>For local development:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Bean</span>
+<span class="kd">public</span> <span class="nc">AmazonDynamoDB</span> <span class="nf">amazonDynamoDB</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="nc">AmazonDynamoDBClientBuilder</span><span class="o">.</span><span class="na">standard</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">withEndpointConfiguration</span><span class="o">(</span>
+            <span class="k">new</span> <span class="nc">AwsClientBuilder</span><span class="o">.</span><span class="na">EndpointConfiguration</span><span class="o">(</span>
+                <span class="s">"http://localhost:8000"</span><span class="o">,</span> <span class="s">"us-east-1"</span><span class="o">))</span>
+        <span class="o">.</span><span class="na">withCredentials</span><span class="o">(</span><span class="k">new</span> <span class="nc">AWSStaticCredentialsProvider</span><span class="o">(</span>
+            <span class="k">new</span> <span class="nf">BasicAWSCredentials</span><span class="o">(</span><span class="s">"dummy"</span><span class="o">,</span> <span class="s">"dummy"</span><span class="o">)))</span>
+        <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="table-name-mismatch"> <a href="#table-name-mismatch" class="anchor-heading" aria-labelledby="table-name-mismatch"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table Name Mismatch </h3> <p><strong>Error:</strong></p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Requested resource not found: Table: user not found
+</code></pre></div></div> <p><strong>Cause:</strong> Table name doesn’t match between entity annotation and actual table.</p> <p><strong>Solution:</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Ensure @DynamoDBTable matches actual table name (case-sensitive)</span>
+<span class="nd">@DynamoDBTable</span><span class="o">(</span><span class="n">tableName</span> <span class="o">=</span> <span class="s">"User"</span><span class="o">)</span>  <span class="c1">// Must match exactly</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="c1">// ...</span>
+<span class="o">}</span>
+</code></pre></div></div> <p>Or use table name prefix/override:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Bean</span>
+<span class="kd">public</span> <span class="nc">DynamoDBMapperConfig</span> <span class="nf">dynamoDBMapperConfig</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">DynamoDBMapperConfig</span><span class="o">.</span><span class="na">TableNameOverride</span> <span class="n">tableNameOverride</span> <span class="o">=</span>
+        <span class="nc">DynamoDBMapperConfig</span><span class="o">.</span><span class="na">TableNameOverride</span>
+            <span class="o">.</span><span class="na">withTableNamePrefix</span><span class="o">(</span><span class="s">"dev_"</span><span class="o">);</span>
+
+    <span class="k">return</span> <span class="nc">DynamoDBMapperConfig</span><span class="o">.</span><span class="na">builder</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">withTableNameOverride</span><span class="o">(</span><span class="n">tableNameOverride</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div><hr /> <h2 id="dynamodb-local-issues"> <a href="#dynamodb-local-issues" class="anchor-heading" aria-labelledby="dynamodb-local-issues"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> DynamoDB Local Issues </h2> <h3 id="sqlite4java-library-not-found"> <a href="#sqlite4java-library-not-found" class="anchor-heading" aria-labelledby="sqlite4java-library-not-found"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> SQLite4Java Library Not Found </h3> <p><strong>Error:</strong></p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java.lang.UnsatisfiedLinkError: no sqlite4java-osx-x86_64 in java.library.path
+</code></pre></div></div> <p><strong>Cause:</strong> SQLite native libraries required by DynamoDB Local are not in the Java library path.</p> <p><strong>Solution 1: Maven Configuration</strong></p> <p>Add to your <code class="language-plaintext highlighter-rouge">pom.xml</code>:</p> <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;build&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+        <span class="nt">&lt;plugin&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>maven-dependency-plugin<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;executions&gt;</span>
+                <span class="nt">&lt;execution&gt;</span>
+                    <span class="nt">&lt;id&gt;</span>copy-native-libs<span class="nt">&lt;/id&gt;</span>
+                    <span class="nt">&lt;phase&gt;</span>process-test-resources<span class="nt">&lt;/phase&gt;</span>
+                    <span class="nt">&lt;goals&gt;</span>
+                        <span class="nt">&lt;goal&gt;</span>copy-dependencies<span class="nt">&lt;/goal&gt;</span>
+                    <span class="nt">&lt;/goals&gt;</span>
+                    <span class="nt">&lt;configuration&gt;</span>
+                        <span class="nt">&lt;outputDirectory&gt;</span>${project.build.directory}/lib<span class="nt">&lt;/outputDirectory&gt;</span>
+                        <span class="nt">&lt;includeArtifactIds&gt;</span>
+                            sqlite4java,sqlite4java-win32-x86,sqlite4java-win32-x64,
+                            sqlite4java-osx,sqlite4java-linux-i386,sqlite4java-linux-amd64
+                        <span class="nt">&lt;/includeArtifactIds&gt;</span>
+                        <span class="nt">&lt;stripVersion&gt;</span>true<span class="nt">&lt;/stripVersion&gt;</span>
+                    <span class="nt">&lt;/configuration&gt;</span>
+                <span class="nt">&lt;/execution&gt;</span>
+            <span class="nt">&lt;/executions&gt;</span>
+        <span class="nt">&lt;/plugin&gt;</span>
+    <span class="nt">&lt;/plugins&gt;</span>
+<span class="nt">&lt;/build&gt;</span>
+</code></pre></div></div> <p><strong>Solution 2: System Property</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@BeforeAll</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setupDynamoDBLocal</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">"sqlite4java.library.path"</span><span class="o">,</span> <span class="s">"target/lib"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div> <p><strong>Solution 3: JVM Argument</strong></p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn <span class="nb">test</span> <span class="nt">-Dsqlite4java</span>.library.path<span class="o">=</span>target/lib
+</code></pre></div></div> <h3 id="dynamodb-local-not-starting"> <a href="#dynamodb-local-not-starting" class="anchor-heading" aria-labelledby="dynamodb-local-not-starting"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> DynamoDB Local Not Starting </h3> <p><strong>Error:</strong></p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Unable to connect to local DynamoDB at http://localhost:8000
+</code></pre></div></div> <p><strong>Cause:</strong> DynamoDB Local server is not running.</p> <p><strong>Solution 1: Start DynamoDB Local Manually</strong></p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java <span class="nt">-Djava</span>.library.path<span class="o">=</span>./DynamoDBLocal_lib <span class="nt">-jar</span> DynamoDBLocal.jar <span class="nt">-sharedDb</span>
+</code></pre></div></div> <p><strong>Solution 2: Use Docker</strong></p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-p</span> 8000:8000 amazon/dynamodb-local
+</code></pre></div></div> <p><strong>Solution 3: Embedded DynamoDB for Tests</strong></p> <p>Add dependency:</p> <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>com.amazonaws<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>DynamoDBLocal<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.21.1<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div> <p>Start in tests:</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@TestConfiguration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DynamoDBLocalConfig</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">DynamoDBProxyServer</span> <span class="n">server</span><span class="o">;</span>
+
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="nc">AmazonDynamoDB</span> <span class="nf">amazonDynamoDB</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">"sqlite4java.library.path"</span><span class="o">,</span> <span class="s">"target/lib"</span><span class="o">);</span>
+
+        <span class="n">server</span> <span class="o">=</span> <span class="nc">ServerRunner</span><span class="o">.</span><span class="na">createServerFromCommandLineArgs</span><span class="o">(</span>
+            <span class="k">new</span> <span class="nc">String</span><span class="o">[]{</span><span class="s">"-inMemory"</span><span class="o">,</span> <span class="s">"-port"</span><span class="o">,</span> <span class="s">"8000"</span><span class="o">});</span>
+        <span class="n">server</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+
+        <span class="k">return</span> <span class="nc">AmazonDynamoDBClientBuilder</span><span class="o">.</span><span class="na">standard</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">withEndpointConfiguration</span><span class="o">(</span>
+                <span class="k">new</span> <span class="nc">AwsClientBuilder</span><span class="o">.</span><span class="na">EndpointConfiguration</span><span class="o">(</span>
+                    <span class="s">"http://localhost:8000"</span><span class="o">,</span> <span class="s">"us-east-1"</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">withCredentials</span><span class="o">(</span><span class="k">new</span> <span class="nc">AWSStaticCredentialsProvider</span><span class="o">(</span>
+                <span class="k">new</span> <span class="nf">BasicAWSCredentials</span><span class="o">(</span><span class="s">"dummy"</span><span class="o">,</span> <span class="s">"dummy"</span><span class="o">)))</span>
+            <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@PreDestroy</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">shutdown</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">server</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">server</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><hr /> <h2 id="repository-errors"> <a href="#repository-errors" class="anchor-heading" aria-labelledby="repository-errors"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Repository Errors </h2> <h3 id="no-property-found-for-type"> <a href="#no-property-found-for-type" class="anchor-heading" aria-labelledby="no-property-found-for-type"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> No Property Found for Type </h3> <p><strong>Error:</strong></p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>No property 'email' found for type 'User'
+</code></pre></div></div> <p><strong>Cause:</strong> Query method references a property that doesn’t exist or isn’t properly mapped.</p> <p><strong>Solution:</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@DynamoDBTable</span><span class="o">(</span><span class="n">tableName</span> <span class="o">=</span> <span class="s">"User"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">email</span><span class="o">;</span>  <span class="c1">// Property must exist</span>
+
+    <span class="nd">@DynamoDBHashKey</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@DynamoDBAttribute</span><span class="o">(</span><span class="n">attributeName</span> <span class="o">=</span> <span class="s">"email"</span><span class="o">)</span>  <span class="c1">// Explicitly map if needed</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getEmail</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">email</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// setters...</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserRepository</span> <span class="kd">extends</span> <span class="nc">CrudRepository</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">findByEmail</span><span class="o">(</span><span class="nc">String</span> <span class="n">email</span><span class="o">);</span>  <span class="c1">// Now properly mapped</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="invalid-query-method-signature"> <a href="#invalid-query-method-signature" class="anchor-heading" aria-labelledby="invalid-query-method-signature"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Invalid Query Method Signature </h3> <p><strong>Error:</strong></p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Could not create query for method findByName
+</code></pre></div></div> <p><strong>Cause:</strong> Query method signature doesn’t follow Spring Data naming conventions or uses unsupported operations.</p> <p><strong>Solution:</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✅ Valid query methods</span>
+<span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">findByName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">);</span>
+<span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">findByNameAndEmail</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="nc">String</span> <span class="n">email</span><span class="o">);</span>
+<span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">findById</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">);</span>
+<span class="nc">Page</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">findByStatus</span><span class="o">(</span><span class="nc">String</span> <span class="n">status</span><span class="o">,</span> <span class="nc">Pageable</span> <span class="n">pageable</span><span class="o">);</span>
+
+<span class="c1">// ❌ Invalid - DynamoDB doesn't support OR in query methods</span>
+<span class="c1">// Use scan with @EnableScan instead</span>
+<span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">findByNameOrEmail</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="nc">String</span> <span class="n">email</span><span class="o">);</span>
+
+<span class="c1">// ❌ Invalid - Use findByIdAndDate for composite keys</span>
+<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Order</span><span class="o">&gt;</span> <span class="nf">findByCustomerIdAndOrderDate</span><span class="o">(</span><span class="nc">String</span> <span class="n">customerId</span><span class="o">,</span> <span class="nc">String</span> <span class="n">orderDate</span><span class="o">);</span>
+</code></pre></div></div><hr /> <h2 id="next-steps"> <a href="#next-steps" class="anchor-heading" aria-labelledby="next-steps"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Next Steps </h2> <ul> <li>For scan-related errors, see <a href="scan-exceptions">Scan Exceptions</a></li> <li>For batch operation issues, see <a href="batch-operation-failures">Batch Operation Failures</a></li> <li>For performance problems, see <a href="performance-tuning">Performance Tuning</a></li> <li>Check the <a href="faq">FAQ</a> for additional questions</li> </ul> </main> <hr> <footer> <div class="d-flex mt-2"> <p class="text-small text-grey-dk-000 mb-0"> <a href="https://github.com/naderfares/spring-data-dynamodb/tree/develop/docs/pages/documentation/troubleshooting/common-errors.md" id="edit-this-page">Edit this page on GitHub.</a> </p> </div> </footer> </div> </div> <div class="search-overlay"></div> </div> <script src="https://cdn.jsdelivr.net/npm/mermaid@9.1.3/dist/mermaid.min.js"></script> <script> var config = {} ; mermaid.initialize(config); window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid')); </script> </body> </html>
